@@ -1,0 +1,115 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Vishnu",
+      "email": "vishnu@gmail.com",
+      "password": "vishnu123",
+      "role": "user"
+    },
+    {
+      "id": "296e",
+      "email": "nis@gmail.com",
+      "password": "1234",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "products": [
+        {
+          "id": 1,
+          "name": "Dairy Milk Silk",
+          "description": "Smooth and creamy chocolate with rich milk flavor",
+          "price": 120,
+          "category": "Milk Chocolate",
+          "image": "https://m.media-amazon.com/images/I/71PfF7D-QeL._SX679_.jpg"
+        },
+        {
+          "id": 2,
+          "name": "KitKat",
+          "description": "Crispy wafer fingers covered with delicious milk chocolate",
+          "price": 50,
+          "category": "Wafer",
+          "image": "https://m.media-amazon.com/images/I/71YXzeOuslL._SX679_.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Ferrero Rocher",
+          "description": "Hazelnut and chocolate layered crunchy balls",
+          "price": 499,
+          "category": "Premium",
+          "image": "https://m.media-amazon.com/images/I/81o5ZJdsujL._SX679_.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Perk",
+          "description": "Light, crispy chocolate coated wafer sticks",
+          "price": 10,
+          "category": "Wafer",
+          "image": "https://m.media-amazon.com/images/I/61ST4GKrKXL._SX679_.jpg"
+        },
+        {
+          "id": 5,
+          "name": "5 Star",
+          "description": "Chewy chocolate bar filled with caramel and nougat",
+          "price": 20,
+          "category": "Caramel",
+          "image": "https://m.media-amazon.com/images/I/61L0oHeGC9L._SX679_.jpg"
+        },
+        {
+          "id": 6,
+          "name": "Toblerone",
+          "description": "Swiss chocolate with honey and almond nougat",
+          "price": 320,
+          "category": "Premium",
+          "image": "https://m.media-amazon.com/images/I/81e1Q3gWpjL._SX679_.jpg"
+        },
+        {
+          "id": 7,
+          "name": "Munch",
+          "description": "Crunchy wafer bars with a chocolaty coating",
+          "price": 15,
+          "category": "Wafer",
+          "image": "https://m.media-amazon.com/images/I/81TOFq3EpAL._SX679_.jpg"
+        },
+        {
+          "id": 8,
+          "name": "Bournville",
+          "description": "Rich dark chocolate made with premium cocoa",
+          "price": 160,
+          "category": "Dark Chocolate",
+          "image": "https://m.media-amazon.com/images/I/61So2UuDNlL._SX679_.jpg"
+        },
+        {
+          "id": 9,
+          "name": "Amul Dark Chocolate",
+          "description": "Strong dark chocolate with 55% cocoa",
+          "price": 110,
+          "category": "Dark Chocolate",
+          "image": "https://m.media-amazon.com/images/I/71wshDAdS7L._SX679_.jpg"
+        },
+        {
+          "id": 10,
+          "name": "Cadbury Celebrations",
+          "description": "Assorted chocolate gift box for special moments",
+          "price": 299,
+          "category": "Gift Pack",
+          "image": "https://m.media-amazon.com/images/I/81YZtKIE8sL._SX679_.jpg"
+        }
+      ],
+      "users": [],
+      "carts": [],
+      "orders": []
+    }
+  ],
+  "carts": [],
+  "orders": []
+}
