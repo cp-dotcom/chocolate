@@ -87,8 +87,8 @@ function Home() {
           <p className="text-gray-600 mt-2">Wrapped with elegance and ready to impress.</p>
         </div>
       </section>
-
-    
+<div>
+  jlimkW</div>    
       <section className="bg-[#f3e8e3] py-12 px-4">
         <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
