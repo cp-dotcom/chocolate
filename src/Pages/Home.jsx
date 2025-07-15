@@ -1,74 +1,30 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
+
+
 function Home() {
+  const navigate=useNavigate()
+  
+
   return (
+    
     <div className="font-serif bg-[#fef6f3]">
       
-      <nav className="bg-[#6f4e37] text-white shadow-md px-6 py-4 flex justify-between items-center ">
-        <div className="text-2xl font-bold tracking-wide">ChocoLuxe</div>
-        <div className="flex gap-6 items-center">
-          <NavLink to="/" className="hover:underline">Home</NavLink>
-          <NavLink to="/Products" className="hover:underline">Products</NavLink>
-          <NavLink to="/Cart" className="hover:underline">Cart</NavLink>
-          <NavLink to="/Wishlist" className="hover:underline">Wishlist</NavLink>
+      
+     
 
-         
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button className="flex items-center gap-1 hover:text-gray-300">
-                <FaUserCircle size={24} />
-              </Menu.Button>
-            </div>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 mt-2 w-32 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
-                <div className="p-1 text-sm text-gray-700">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <NavLink
-                        to="/login"
-                        className={`block px-4 py-2 rounded ${active ? 'bg-gray-100' : ''}`}
-                      >
-                        Login
-                      </NavLink>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <NavLink
-                        to="/register"
-                        className={`block px-4 py-2 rounded ${active ? 'bg-gray-100' : ''}`}
-                      >
-                        Register
-                      </NavLink>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        </div>
-      </nav>
 
      
       <section className="bg-cover bg-center text-center text-white h-[100vh] flex flex-col justify-center items-center" style={{ backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)" }}>
         <h1 className="text-5xl font-bold">Delight in Every Bite</h1>
         <p className="text-xl mt-4">Premium handcrafted chocolates made with love</p>
         <div className="mt-6 space-x-4">
-          <button className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-6 rounded">Shop Now</button>
-          <button className="border border-white py-2 px-6 rounded hover:bg-white hover:text-[#6f4e37] transition">Our Story</button>
+          <button className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-6 rounded" onClick={()=>navigate("/Products")} >Shop Now</button>
+          <button className="border border-white py-2 px-6 rounded hover:bg-white hover:text-[#6f4e37] transition" onClick={()=>navigate("/About")}>Our Story</button>
         </div>
       </section>
 
@@ -89,23 +45,87 @@ function Home() {
       </section>
    
       <section className="bg-[#f3e8e3] py-12 px-4">
-        <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow text-center overflow-hidden">
-            <img src="/images/dark-chocolate.jpg" alt="Dark Chocolate" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold">Dark Indulgence</h3>
-              <p className="text-[#6f4e37] font-medium my-2">$14.99</p>
-              <button className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </section>
+  <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+  {/* Card 1 */}
+  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
+    <img src="candy1.jpeg" alt="Dark Chocolate" className="w-full h-48 object-cover" />
+    <div className="p-4">
+      <h3 className="text-lg font-semibold">Dark Indulgence</h3>
+      <p className="text-[#6f4e37] font-medium my-2">₹14.99</p>
+      <button
+        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
+        onClick={() =>
+          addToCart({ id: 101, name: "Dark Indulgence", image: "candy1.jpeg", price: 14.99 })
+        }
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  {/* Card 2 */}
+  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
+    <img src="candy2.jpeg" alt="Milk Chocolate" className="w-full h-48 object-cover" />
+    <div className="p-4">
+      <h3 className="text-lg font-semibold">Milk Bliss</h3>
+      <p className="text-[#6f4e37] font-medium my-2">₹12.49</p>
+      <button
+        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
+        onClick={() =>
+          addToCart({ id: 102, name: "Milk Bliss", image: "candy2.jpeg", price: 12.49 })
+        }
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  {/* Card 3 */}
+  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
+    <img src="candy3.jpeg" alt="White Chocolate" className="w-full h-48 object-cover" />
+    <div className="p-4">
+      <h3 className="text-lg font-semibold">White Charm</h3>
+      <p className="text-[#6f4e37] font-medium my-2">₹13.99</p>
+      <button
+        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
+        onClick={() =>
+          addToCart({ id: 103, name: "White Charm", image: "candy3.jpeg", price: 13.99 })
+        }
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  {/* Card 4 */}
+  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
+    <img src="candy4.jpeg" alt="Hazelnut Chocolate" className="w-full h-48 object-cover" />
+    <div className="p-4">
+      <h3 className="text-lg font-semibold">Nutty Crunch</h3>
+      <p className="text-[#6f4e37] font-medium my-2">₹15.99</p>
+      <button
+        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
+        onClick={() =>
+          addToCart({ id: 104, name: "Nutty Crunch", image: "candy4.jpeg", price: 15.99 })
+        }
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+      
 
      
       <section className="flex flex-wrap justify-center items-center bg-white py-12 px-4">
-        <img src="/images/mission-chocolate.jpg" alt="Our mission" className="w-full max-w-md rounded-lg mb-6 md:mb-0" />
-        <div className="md:ml-8 max-w-md">
+        <img src="image.png" alt="Our mission" className="w-full max-w-md rounded-lg mb-3 md:mb-0 mr-50" />
+        <div className="md:ml- max-w-md">
           <h2 className="text-2xl font-bold text-[#6f4e37]">Our Sweet Mission</h2>
           <p className="text-gray-600 mt-4">We create chocolate that not only tastes heavenly, but also supports ethical farming and eco-friendly packaging.</p>
           <button className="mt-4 bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]">Learn More</button>
