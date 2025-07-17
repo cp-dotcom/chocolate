@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
 import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
@@ -7,10 +7,14 @@ import Products from './Pages/Products'
 import ProtectedRoute from './auth/ProtectedRoute'
 import Cart from './Components/Cart'
 import About from './Pages/About'
-import Navbar from './Components/Navbar'
+import Navbar from './auth/Navbar'
 import Wishlist from './Components/Wishlist'
 import Checkout from './Pages/Checkout'
+import Orders from './Components/Order'
+// import ProductDetails from './Components/ProductDetails'
+
 function App() {
+  
   return (
    <>
    <BrowserRouter>
@@ -24,6 +28,10 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Wishlist" element={<Wishlist />} />
           <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/Orders" element={<Orders />} />
+          {/* <Route path="/Orders" element={<ProductDetails />} /> */}
+          
+          
 
 
       </Routes>

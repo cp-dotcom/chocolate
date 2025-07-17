@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
+import { ShoppingBag } from 'lucide-react';
 
 
 
@@ -13,20 +14,28 @@ function Home() {
   return (
     
     <div className="font-serif bg-[#fef6f3]">
-      
-      
-     
+ <section className="w-full h-screen bg-cover bg-center bg-no-repeat text-center text-white flex flex-col justify-center items-center pt-0"
+  style={{backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)" }}>
+
+  <h1 className="text-5xl font-bold">Delight in Every Bite</h1>
+  <p className="text-xl mt-4">Premium handcrafted chocolates made with love</p>
+  <div className="mt-6 space-x-4">
+    <button
+      className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-6 rounded"
+      onClick={() => navigate("/Products")}
+    >
+      Shop Now
+    </button>
+    <button
+      className="border border-white py-2 px-6 rounded hover:bg-white hover:text-[#6f4e37] transition"
+      onClick={() => navigate("/About")}
+    >
+      Our Story
+    </button>
+  </div>
+</section>
 
 
-     
-      <section className="bg-cover bg-center text-center text-white h-[100vh] flex flex-col justify-center items-center" style={{ backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)" }}>
-        <h1 className="text-5xl font-bold">Delight in Every Bite</h1>
-        <p className="text-xl mt-4">Premium handcrafted chocolates made with love</p>
-        <div className="mt-6 space-x-4">
-          <button className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-6 rounded" onClick={()=>navigate("/Products")} >Shop Now</button>
-          <button className="border border-white py-2 px-6 rounded hover:bg-white hover:text-[#6f4e37] transition" onClick={()=>navigate("/About")}>Our Story</button>
-        </div>
-      </section>
 
 
       <section className="flex flex-wrap justify-around text-center bg-white py-12 px-4 gap-8">
@@ -44,79 +53,142 @@ function Home() {
         </div>
       </section>
    
-      <section className="bg-[#f3e8e3] py-12 px-4">
+     <section className="bg-[#f3e8e3] py-12 px-4">
   <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-  {/* Card 1 */}
-  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
-    <img src="candy1.jpeg" alt="Dark Chocolate" className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-lg font-semibold">Dark Indulgence</h3>
-      <p className="text-[#6f4e37] font-medium my-2">₹14.99</p>
-      <button
-        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
-        onClick={() =>
-          addToCart({ id: 101, name: "Dark Indulgence", image: "candy1.jpeg", price: 14.99 })
-        }
-      >
-        Add to Cart
-      </button>
-    </div>
-  </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    {/* Chocolate Card 1 */}
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <div className="relative overflow-hidden h-60">
+        <img 
+          src="candy1.jpeg" 
+          alt="Dark Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
+        />
+        <span className="absolute top-2 right-2 bg-[#6f4e37] text-white text-xs font-bold px-2 py-1 rounded-full">
+          NEW
+        </span>
+      </div>
+      <div className="p-5 text-center">
+        <div className="flex justify-center mb-2">
+          {[...Array(5)].map((_, i) => (
+            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+        </div>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Dark Indulgence</h3>
+        <p className="text-sm text-gray-500 mb-3">70% Cocoa | Rich Flavor</p>
 
-  {/* Card 2 */}
-  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
-    <img src="candy2.jpeg" alt="Milk Chocolate" className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-lg font-semibold">Milk Bliss</h3>
-      <p className="text-[#6f4e37] font-medium my-2">₹12.49</p>
-      <button
-        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
-        onClick={() =>
-          addToCart({ id: 102, name: "Milk Bliss", image: "candy2.jpeg", price: 12.49 })
-        }
-      >
-        Add to Cart
-      </button>
-    </div>
-  </div>
 
-  {/* Card 3 */}
-  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
-    <img src="candy3.jpeg" alt="White Chocolate" className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-lg font-semibold">White Charm</h3>
-      <p className="text-[#6f4e37] font-medium my-2">₹13.99</p>
-      <button
-        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
-        onClick={() =>
-          addToCart({ id: 103, name: "White Charm", image: "candy3.jpeg", price: 13.99 })
-        }
-      >
-        Add to Cart
-      </button>
-    </div>
-  </div>
+     
 
-  {/* Card 4 */}
-  <div className="bg-white rounded-lg shadow text-center overflow-hidden">
-    <img src="candy4.jpeg" alt="Hazelnut Chocolate" className="w-full h-48 object-cover" />
-    <div className="p-4">
-      <h3 className="text-lg font-semibold">Nutty Crunch</h3>
-      <p className="text-[#6f4e37] font-medium my-2">₹15.99</p>
-      <button
-        className="bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]"
-        onClick={() =>
-          addToCart({ id: 104, name: "Nutty Crunch", image: "candy4.jpeg", price: 15.99 })
-        }
-      >
-        Add to Cart
-      </button>
-    </div>
-  </div>
-</div>
 
+      </div>
+    </div>
+
+    {/* Chocolate Card 2 */}
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <div className="relative overflow-hidden h-60">
+        <img 
+          src="candy2.jpeg" 
+          alt="Milk Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
+        />
+        <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+          BESTSELLER
+        </span>
+      </div>
+      <div className="p-5 text-center">
+        <div className="flex justify-center mb-2">
+          {[...Array(5)].map((_, i) => (
+            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+        </div>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Milk Bliss</h3>
+        <p className="text-sm text-gray-500 mb-3">Creamy | Smooth Texture</p>
+
+
+
+
+
+
+      </div>
+    </div>
+
+    {/* Chocolate Card 3 */}
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <div className="relative overflow-hidden h-60">
+        <img 
+          src="candy3.jpeg" 
+          alt="White Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
+        />
+      </div>
+      <div className="p-5 text-center">
+        <div className="flex justify-center mb-2">
+          {[...Array(4)].map((_, i) => (
+            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+          <svg className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </div>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">White Charm</h3>
+        <p className="text-sm text-gray-500 mb-3">Vanilla Infused | Sweet</p>
+
+
+
+      
+
+
+
+      </div>
+    </div>
+
+    {/* Chocolate Card 4 */}
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+      <div className="relative overflow-hidden h-60">
+        <img 
+          src="candy4.jpeg" 
+          alt="Hazelnut Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
+        />
+        <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+          LIMITED
+        </span>
+      </div>
+      <div className="p-5 text-center">
+        <div className="flex justify-center mb-2">
+          {[...Array(5)].map((_, i) => (
+            <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+        </div>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Nutty Crunch</h3>
+        <p className="text-sm text-gray-500 mb-3">Hazelnut | Crunchy</p>
+
+
+
+        
+
+
+
+      </div>
+    </div>
+    
+  </div>
+   <button
+          className="w-half bg-[#6f4e37] text-white py-2 px-4 rounded-md hover:bg-[#5a3f2d] transition-colors duration-300 flex items-center justify-center gap-2 ml-137 mt-10 "
+          onClick={() => navigate("/Products")}>
+         <ShoppingBag></ShoppingBag>
+          Shop Now
+        </button>
 </section>
 
 
@@ -124,11 +196,11 @@ function Home() {
 
      
       <section className="flex flex-wrap justify-center items-center bg-white py-12 px-4">
-        <img src="image.png" alt="Our mission" className="w-full max-w-md rounded-lg mb-3 md:mb-0 mr-50" />
+        <img src="packing.jpg" alt="Our mission" className="w-full max-w-md rounded-lg mb-3 md:mb-0 mr-50" />
         <div className="md:ml- max-w-md">
           <h2 className="text-2xl font-bold text-[#6f4e37]">Our Sweet Mission</h2>
           <p className="text-gray-600 mt-4">We create chocolate that not only tastes heavenly, but also supports ethical farming and eco-friendly packaging.</p>
-          <button className="mt-4 bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]">Learn More</button>
+          <button className="mt-4 bg-[#6f4e37] text-white py-2 px-4 rounded hover:bg-[#5a3f2d]" onClick={()=>navigate("About")}>Learn More</button>
         </div>
       </section>
 
@@ -158,12 +230,47 @@ function Home() {
       </section>
 
     
-      <footer className="bg-[#3e2c23] text-white text-center py-6">
-        <p>&copy; 2025 ChocoLuxe. All rights reserved.</p>
-        <div className="mt-2 space-x-4">
-          <a href="#" className="underline">About</a>
-          <a href="#" className="underline">Shop</a>
-          <a href="#" className="underline">Contact</a>
+      <footer className="bg-[#3e2c23] text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-[#f3a847]">ChocoLux</h3>
+            <p className="mb-4">Crafting exceptional chocolate experiences since 2025</p>
+            <div className="flex gap-4">
+              {['facebook', 'twitter', 'instagram'].map((social) => (
+                <a key={social} href="#" className="w-8 h-8 bg-[#5a3f2d] rounded-full flex items-center justify-center hover:bg-[#f3a847] transition">
+                  <span className="sr-only">{social}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 className="font-bold mb-4">Shop</h4>
+            <ul className="space-y-2">
+              {['All Chocolates', 'Collections', 'Gift Boxes', 'Seasonal Specials'].map((item) => (
+                <li key={item}><a href="/Products" className="hover:text-[#f3a847] transition">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold mb-4">About</h4>
+            <ul className="space-y-2">
+              {['Our Story', 'Sustainability', 'Chocolate Making', 'Locations'].map((item) => (
+                <li key={item}><a href="/About" className="hover:text-[#f3a847] transition">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold mb-4">Contact</h4>
+            <address className="not-italic">
+              <p className="mb-2">ChocoLux</p>
+              <p className="mb-2">malappuram</p>
+              <p className="mb-2">Phone: 0000000000</p>
+              <p>Email: vishnu@gmail.com</p>
+            </address>
+          </div>
+        </div>
+        <div className="border-t border-[#5a3f2d] mt-8 pt-8 text-center text-sm">
+          <p>&copy; {new Date().getFullYear()} ChocoLux. All rights reserved.</p>
         </div>
       </footer>
     </div>
@@ -171,3 +278,4 @@ function Home() {
 }
 
 export default Home;
+

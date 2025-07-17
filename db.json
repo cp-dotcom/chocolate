@@ -61,135 +61,170 @@
       "email": "risalz@gmail.com",
       "password": "risalz@gmail.com",
       "role": "user"
+    },
+    {
+      "id": "7fb6",
+      "username": "vishnu",
+      "email": "cpo@gmail.com",
+      "password": "cpo@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "7b0a",
+      "username": "got",
+      "email": "got@gmail.com",
+      "password": "got@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "c998",
+      "username": "sinan",
+      "email": "op@gmail.com",
+      "password": "op@gmail.com",
+      "role": "user"
+    },
+    {
+      "id": "94dc",
+      "username": "json",
+      "email": "dummy@gmail.com",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "44bc",
+      "username": "op",
+      "email": "opf@gmail.com",
+      "password": "opf@gmail.com",
+      "role": "user"
     }
   ],
   "products": [
     {
       "id": "5",
-      "name": "5 Star",
-      "description": "Chewy chocolate bar filled with caramel and nougat",
-      "price": 20,
-      "category": "Caramel",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "description": "Luxurious milk chocolate with crispy Kadayif (shredded pastry) and pistachio filling,inspired by Middle Eastern desserts.",
+      "price": 600,
+      "category": "Dubai chocolates",
       "image": "productsimg/dubai1.jpg"
     },
     {
       "id": "6",
-      "name": "Toblerone",
-      "description": "Swiss chocolate with honey and almond nougat",
-      "price": 320,
-      "category": "Premium",
+      "name": "HELOS Dark Chocolate Bar",
+      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
+      "price": 380,
+      "category": "Dubai chocolates",
       "image": "productsimg/dubai2.jpg"
     },
     {
       "id": "7",
-      "name": "Munch",
-      "description": "Crunchy wafer bars with a chocolaty coating",
-      "price": 15,
-      "category": "Wafer",
+      "name": "MABON Dark Chocolate Almonds",
+      "description": "55% dark chocolate with roasted almonds, organic cacao, vegan-friendly, and crafted in India.",
+      "price": 300,
+      "category": "Dubai chocolates",
       "image": "productsimg/dubai3.jpg"
     },
     {
       "id": "8",
-      "name": "Bournville",
-      "description": "Rich dark chocolate made with premium cocoa",
-      "price": 160,
-      "category": "Dark Chocolate",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "description": "Creamy milk chocolate blended with Kunafa (Middle Eastern pastry) and pistachio flakes.",
+      "price": 800,
+      "category": "Dubai chocolates",
       "image": "productsimg/dubai4.jpg"
     },
     {
       "id": "9",
-      "name": "Amul Dark Chocolate",
-      "description": "Strong dark chocolate with 55% cocoa",
-      "price": 110,
-      "category": "Dark Chocolate",
+      "name": "Miskets Dubai Kadayif Chocolate",
+      "description": "Milk chocolate with crispy Kadayif and Antep pistachios. Bilingual packaging (English/Turkish).",
+      "price": 600,
+      "category": "Gift Pack",
       "image": "productsimg/gift1.jpg"
     },
     {
       "id": "10",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
+      "name": "Happy Joy Premium Milk Chocolate",
+      "description": "Smooth milk chocolate with a playful design, possibly limited edition or artist collaboration.",
+      "price": 1200,
       "category": "Gift Pack",
       "image": "productsimg/gift2.jpg"
     },
     {
       "id": "11",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
       "price": 299,
-      "category": "Gift Pack",
+      "category": "Milk Chocolate",
       "image": "productsimg/milk1.jpg"
     },
     {
       "id": "12",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
-      "category": "Gift Pack",
+      "name": "Royal Delights Premium Sweets",
+      "description": "Handcrafted traditional sweets, 500g box. Includes assorted flavors and textures.",
+      "price": 850,
+      "category": "Premium",
       "image": "productsimg/premium1.jpg"
     },
     {
       "id": "13",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
-      "category": "Gift Pack",
+      "name": "Kumara Cocoa Pistachio Chocolate",
+      "description": "Decadent cocoa melt with pistachio bits, possibly a truffle or spreadable format.",
+      "price": 1600,
+      "category": "Premium",
       "image": "productsimg/premium2.jpg"
     },
     {
       "id": "14",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
-      "category": "Gift Pack",
+      "name": "GIRUULTY Artisan Chocolate",
+      "description": "Limited-edition premium chocolate with artistic packaging. May include unique flavor infusions.",
+      "price": 1999,
+      "category": "Premium",
       "image": "productsimg/premium3.jpg"
     },
     {
       "id": "15",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
-      "category": "Gift Pack",
+      "name": "Royal Delights Premium Sweets",
+      "description": "A handcrafted assortment of traditional sweets, made with pure ingredients. Luxuriously packaged in a 500g box, perfect for gifting or indulging in premium confectionery.",
+      "price": 1560,
+      "category": "Premium",
       "image": "productsimg/premium4.jpg"
     },
     {
       "id": "16",
-      "name": "Cadbury Celebrations",
-      "description": "Assorted chocolate gift box for special moments",
-      "price": 299,
-      "category": "Gift Pack",
+      "name": "Ferrero Rocher",
+      "description": "Premium chocolate confection with a whole roasted hazelnut encased in a thin wafer shell, filled with hazelnut cream, and coated in milk chocolate and chopped hazelnuts. Individually wrapped in gold foil for a luxurious experience.",
+      "price": 340,
+      "category": "Premium",
       "image": "productsimg/premium5.jpg"
     },
     {
       "id": "1",
-      "name": "Dairy Milk Silk",
-      "description": "Smooth and creamy chocolate with rich milk flavor",
-      "price": 120,
+      "name": "Happy Hempo Joy",
+      "description": "A unique chocolate bar blending rich cocoa with hemp seeds for a nutty, earthy flavor. Made with organic ingredients for a joyful, uplifting experience.",
+      "price": 270,
       "category": "Milk Chocolate",
       "image": "productsimg/choco1.jpg"
     },
     {
       "id": "2",
-      "name": "KitKat",
-      "description": "Crispy wafer fingers covered with delicious milk chocolate",
-      "price": 50,
-      "category": "Wafer",
+      "name": "Castean Dairy Milk Chocolate with Roasted Almonds",
+      "description": "Creamy dairy milk chocolate loaded with crunchy roasted almonds for a perfect balance of smoothness and texture. Made with high-quality ingredients for a classic chocolate experience.",
+      "price": 220,
+      "category": "Milk Chocolate",
       "image": "productsimg/dairy1.jpg"
     },
     {
       "id": "3",
-      "name": "Ferrero Rocher",
-      "description": "Hazelnut and chocolate layered crunchy balls",
+      "name": "Mabon 55% Dark Chocolate with Roasted Almonds",
+      "description": "A premium single-origin dark chocolate bar with 55% cocoa content, loaded with crunchy roasted almonds. Crafted for a balanced bittersweet flavor and artisanal texture.",
       "price": 499,
-      "category": "Premium",
+      "category": "Dark Chocolate",
       "image": "productsimg/dark1.jpg"
     },
     {
       "id": "4",
-      "name": "Perk",
-      "description": "Light, crispy chocolate coated wafer sticks",
-      "price": 10,
-      "category": "Wafer",
+      "name": "Elos Single Origin 70% Dark Chocolate",
+      "description": "A premium dark chocolate bar crafted from single-origin cocoa beans with 70% cocoa content. Intense yet balanced flavor profile with notes of red fruit and subtle earthiness, ideal for dark chocolate connoisseurs.",
+      "price": 380,
+      "category": "Dark Chocolate",
       "image": "productsimg/dark2.jpg"
     }
   ],
@@ -204,26 +239,61 @@
       "qty": 4
     },
     {
-      "id": "e521",
-      "userId": "3",
+      "id": "f0e7",
+      "userId": "7fb6",
       "productId": "6",
       "name": "Toblerone",
       "image": "productsimg/dubai2.jpg",
       "price": 320,
-      "qty": 11
-    },
-    {
-      "id": "c3f3",
-      "userId": "3",
-      "productId": "8",
-      "name": "Bournville",
-      "image": "productsimg/dubai4.jpg",
-      "price": 160,
       "qty": 1
     },
     {
-      "id": "e9fd",
-      "userId": "3",
+      "id": "239f",
+      "userId": "7fb6",
+      "productId": "5",
+      "name": "5 Star",
+      "image": "productsimg/dubai1.jpg",
+      "price": 20,
+      "qty": 4
+    },
+    {
+      "id": "d18a",
+      "userId": "7fb6",
+      "productId": "15",
+      "name": "Cadbury Celebrations",
+      "image": "productsimg/premium4.jpg",
+      "price": 299,
+      "qty": 1
+    },
+    {
+      "id": "938e",
+      "userId": "7fb6",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15,
+      "qty": 1
+    },
+    {
+      "id": "101",
+      "name": "Dark Indulgence",
+      "image": "candy1.jpeg",
+      "price": 14.99,
+      "userId": "7fb6",
+      "qty": 1
+    },
+    {
+      "id": "8aac",
+      "userId": "7b0a",
+      "productId": "6",
+      "name": "Toblerone",
+      "image": "productsimg/dubai2.jpg",
+      "price": 320,
+      "qty": 1
+    },
+    {
+      "id": "abe7",
+      "userId": "7b0a",
       "productId": "11",
       "name": "Cadbury Celebrations",
       "image": "productsimg/milk1.jpg",
@@ -231,12 +301,30 @@
       "qty": 1
     },
     {
-      "id": "a9d5",
-      "userId": "3",
-      "productId": "2",
-      "name": "KitKat",
-      "image": "productsimg/dairy1.jpg",
-      "price": 50,
+      "id": "f6d6",
+      "userId": "7b0a",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15,
+      "qty": 1
+    },
+    {
+      "id": "efae",
+      "userId": "44bc",
+      "productId": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "image": "productsimg/dubai1.jpg",
+      "price": 600,
+      "qty": 1
+    },
+    {
+      "id": "c392",
+      "userId": "c998",
+      "productId": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "image": "productsimg/dubai1.jpg",
+      "price": 600,
       "qty": 1
     }
   ],
@@ -264,6 +352,462 @@
       "name": "Bournville",
       "image": "productsimg/dubai4.jpg",
       "price": 160
+    },
+    {
+      "id": "9eac",
+      "userId": "7fb6",
+      "productId": "6",
+      "name": "Toblerone",
+      "image": "productsimg/dubai2.jpg",
+      "price": 320
+    },
+    {
+      "id": "bb21",
+      "userId": "7fb6",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15
+    },
+    {
+      "id": "ced1",
+      "userId": "7fb6",
+      "productId": "8",
+      "name": "Bournville",
+      "image": "productsimg/dubai4.jpg",
+      "price": 160
+    },
+    {
+      "id": "4b15",
+      "userId": "7b0a",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15
+    },
+    {
+      "id": "231c",
+      "userId": "c998",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15
+    },
+    {
+      "id": "6737",
+      "userId": "c998",
+      "productId": "8",
+      "name": "Bournville",
+      "image": "productsimg/dubai4.jpg",
+      "price": 160
+    },
+    {
+      "id": "cffe",
+      "userId": "2919",
+      "productId": "6",
+      "name": "Toblerone",
+      "image": "productsimg/dubai2.jpg",
+      "price": 320
+    },
+    {
+      "id": "97dd",
+      "userId": "94dc",
+      "productId": "7",
+      "name": "Munch",
+      "image": "productsimg/dubai3.jpg",
+      "price": 15
+    },
+    {
+      "id": "8414",
+      "userId": "94dc",
+      "productId": "6",
+      "name": "Toblerone",
+      "image": "productsimg/dubai2.jpg",
+      "price": 320
+    },
+    {
+      "id": "b4fa",
+      "userId": "94dc",
+      "productId": "8",
+      "name": "Bournville",
+      "image": "productsimg/dubai4.jpg",
+      "price": 160
+    },
+    {
+      "id": "b0c9",
+      "userId": "94dc",
+      "productId": "5",
+      "name": "5 Star",
+      "image": "productsimg/dubai1.jpg",
+      "price": 20
+    },
+    {
+      "id": "80f8",
+      "userId": "44bc",
+      "productId": "8",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "image": "productsimg/dubai4.jpg",
+      "price": 800
+    },
+    {
+      "id": "79dc",
+      "userId": "44bc",
+      "productId": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "image": "productsimg/dubai1.jpg",
+      "price": 600
+    },
+    {
+      "id": "005b",
+      "userId": "44bc",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380
+    },
+    {
+      "id": "8962",
+      "userId": "44bc",
+      "productId": "11",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "image": "productsimg/milk1.jpg",
+      "price": 299
+    },
+    {
+      "id": "cf09",
+      "userId": "44bc",
+      "productId": "1",
+      "name": "Happy Hempo Joy",
+      "image": "productsimg/choco1.jpg",
+      "price": 270
+    },
+    {
+      "id": "0402",
+      "userId": "c998",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380
+    },
+    {
+      "id": "e70a",
+      "userId": "c998",
+      "productId": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "image": "productsimg/dubai1.jpg",
+      "price": 600
+    },
+    {
+      "id": "2ab3",
+      "userId": "c998",
+      "productId": "10",
+      "name": "Happy Joy Premium Milk Chocolate",
+      "image": "productsimg/gift2.jpg",
+      "price": 1200
+    }
+  ],
+  "orders": [
+    {
+      "id": "0b40",
+      "userId": "3",
+      "items": [
+        {
+          "id": "e521",
+          "userId": "3",
+          "productId": "6",
+          "name": "Toblerone",
+          "image": "productsimg/dubai2.jpg",
+          "price": 320,
+          "qty": 11
+        },
+        {
+          "id": "c3f3",
+          "userId": "3",
+          "productId": "8",
+          "name": "Bournville",
+          "image": "productsimg/dubai4.jpg",
+          "price": 160,
+          "qty": 1
+        },
+        {
+          "id": "e9fd",
+          "userId": "3",
+          "productId": "11",
+          "name": "Cadbury Celebrations",
+          "image": "productsimg/milk1.jpg",
+          "price": 299,
+          "qty": 1
+        },
+        {
+          "id": "a9d5",
+          "userId": "3",
+          "productId": "2",
+          "name": "KitKat",
+          "image": "productsimg/dairy1.jpg",
+          "price": 50,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "oolanpara",
+      "phone": "222334555",
+      "payment": "cod",
+      "total": 4029,
+      "status": "Processing",
+      "date": "2025-07-16T11:17:39.448Z"
+    },
+    {
+      "id": "cbff",
+      "userId": "3",
+      "items": [
+        {
+          "id": "cce3",
+          "userId": "3",
+          "productId": "11",
+          "name": "Cadbury Celebrations",
+          "image": "productsimg/milk1.jpg",
+          "price": 299,
+          "qty": 1
+        },
+        {
+          "id": "fae7",
+          "userId": "3",
+          "productId": "8",
+          "name": "Bournville",
+          "image": "productsimg/dubai4.jpg",
+          "price": 160,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "oolanpara",
+      "phone": "21345678",
+      "payment": "cod",
+      "total": 459,
+      "status": "Processing",
+      "date": "2025-07-16T11:23:24.241Z"
+    },
+    {
+      "id": "8e59",
+      "userId": "c998",
+      "items": [
+        {
+          "id": "8105",
+          "userId": "c998",
+          "productId": "6",
+          "name": "Toblerone",
+          "image": "productsimg/dubai2.jpg",
+          "price": 320,
+          "qty": 1
+        },
+        {
+          "id": "8680",
+          "userId": "c998",
+          "productId": "7",
+          "name": "Munch",
+          "image": "productsimg/dubai3.jpg",
+          "price": 15,
+          "qty": 1
+        },
+        {
+          "id": "fbce",
+          "userId": "c998",
+          "productId": "8",
+          "name": "Bournville",
+          "image": "productsimg/dubai4.jpg",
+          "price": 160,
+          "qty": 1
+        }
+      ],
+      "name": "cp",
+      "address": "rrtrtr",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 495,
+      "status": "Processing",
+      "date": "2025-07-16T13:03:50.059Z"
+    },
+    {
+      "id": "a12f",
+      "userId": "44bc",
+      "items": [
+        {
+          "id": "a341",
+          "userId": "44bc",
+          "productId": "5",
+          "name": "5 Star",
+          "image": "productsimg/dubai1.jpg",
+          "price": 20,
+          "qty": 7
+        },
+        {
+          "id": "4876",
+          "userId": "44bc",
+          "productId": "7",
+          "name": "Munch",
+          "image": "productsimg/dubai3.jpg",
+          "price": 15,
+          "qty": 2
+        },
+        {
+          "id": "401d",
+          "userId": "44bc",
+          "productId": "6",
+          "name": "Toblerone",
+          "image": "productsimg/dubai2.jpg",
+          "price": 320,
+          "qty": 1
+        }
+      ],
+      "name": "cp",
+      "address": "dfgh",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 490,
+      "status": "Processing",
+      "date": "2025-07-16T17:53:02.150Z"
+    },
+    {
+      "id": "0992",
+      "userId": "44bc",
+      "items": [
+        {
+          "id": "1fdf",
+          "userId": "44bc",
+          "productId": "6",
+          "name": "Toblerone",
+          "image": "productsimg/dubai2.jpg",
+          "price": 320,
+          "qty": 1
+        },
+        {
+          "id": "dbc6",
+          "userId": "44bc",
+          "productId": "8",
+          "name": "Bournville",
+          "image": "productsimg/dubai4.jpg",
+          "price": 160,
+          "qty": 1
+        },
+        {
+          "id": "7b84",
+          "userId": "44bc",
+          "productId": "16",
+          "name": "Cadbury Celebrations",
+          "image": "productsimg/premium5.jpg",
+          "price": 299,
+          "qty": 1
+        },
+        {
+          "id": "65ef",
+          "userId": "44bc",
+          "productId": "5",
+          "name": "5 Star",
+          "image": "productsimg/dubai1.jpg",
+          "price": 20,
+          "qty": 1
+        },
+        {
+          "id": "61ac",
+          "userId": "44bc",
+          "productId": "7",
+          "name": "MABON Dark Chocolate Almonds",
+          "image": "productsimg/dubai3.jpg",
+          "price": "300 rs",
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "yugbhjn",
+      "phone": "7684546274",
+      "payment": "upi",
+      "total": null,
+      "status": "Processing",
+      "date": "2025-07-17T11:06:10.765Z"
+    },
+    {
+      "id": "92ea",
+      "userId": "44bc",
+      "items": [
+        {
+          "id": "5762",
+          "userId": "44bc",
+          "productId": "13",
+          "name": "Kumara Cocoa Pistachio Chocolate",
+          "image": "productsimg/premium2.jpg",
+          "price": 1600,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "DDFFDDDD",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 1600,
+      "status": "Processing",
+      "date": "2025-07-17T11:12:43.272Z"
+    },
+    {
+      "id": "61e1",
+      "userId": "44bc",
+      "items": [
+        {
+          "id": "f7a2",
+          "userId": "44bc",
+          "productId": "3",
+          "name": "Mabon 55% Dark Chocolate with Roasted Almonds",
+          "image": "productsimg/dark1.jpg",
+          "price": 499,
+          "qty": 14
+        }
+      ],
+      "name": "e",
+      "address": "eecew",
+      "phone": "8888888888",
+      "payment": "cod",
+      "total": 6986,
+      "status": "Processing",
+      "date": "2025-07-17T11:32:29.407Z"
+    },
+    {
+      "id": "f09b",
+      "userId": "44bc",
+      "items": [
+        {
+          "id": "6f0e",
+          "userId": "44bc",
+          "productId": "16",
+          "name": "Cadbury Celebrations",
+          "image": "productsimg/premium5.jpg",
+          "price": 299,
+          "qty": 5
+        },
+        {
+          "id": "72df",
+          "userId": "44bc",
+          "productId": "7",
+          "name": "MABON Dark Chocolate Almonds",
+          "image": "productsimg/dubai3.jpg",
+          "price": 300,
+          "qty": 5
+        },
+        {
+          "id": "d371",
+          "userId": "44bc",
+          "productId": "5",
+          "name": "5 Star",
+          "image": "productsimg/dubai1.jpg",
+          "price": 20,
+          "qty": 6
+        }
+      ],
+      "name": "e",
+      "address": "nk ",
+      "phone": "mn",
+      "payment": "cod",
+      "total": 3115,
+      "status": "Processing",
+      "date": "2025-07-17T11:33:59.383Z"
     }
   ]
 }
