@@ -150,12 +150,12 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  useEffect(() => {
-    if (user) {
-      fetchCart();
-      fetchWishlist();
-    }
-  }, [location.pathname],[wishlist]);
+useEffect(() => {
+  if (user) {
+    fetchCart();
+    fetchWishlist();
+  }
+}, [location.pathname, user]);
 
   return (
     <nav className={`sticky top-0 z-50 shadow-md transition duration-300 

@@ -96,6 +96,13 @@
       "email": "opf@gmail.com",
       "password": "opf@gmail.com",
       "role": "user"
+    },
+    {
+      "id": "83c4",
+      "username": "goot",
+      "email": "jood@gmail.com",
+      "password": "jood@gmail.com",
+      "role": "user"
     }
   ],
   "products": [
@@ -325,6 +332,60 @@
       "name": "Gold Quibai Kadayif Chocolate",
       "image": "productsimg/dubai1.jpg",
       "price": 600,
+      "qty": 3
+    },
+    {
+      "id": "2629",
+      "userId": "c998",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "a6bd",
+      "userId": "c998",
+      "productId": "8",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "image": "productsimg/dubai4.jpg",
+      "price": 800,
+      "qty": 1
+    },
+    {
+      "id": "7618",
+      "userId": "c998",
+      "productId": "4",
+      "name": "Elos Single Origin 70% Dark Chocolate",
+      "image": "productsimg/dark2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "4e2c",
+      "userId": "c998",
+      "productId": "2",
+      "name": "Castean Dairy Milk Chocolate with Roasted Almonds",
+      "image": "productsimg/dairy1.jpg",
+      "price": 220,
+      "qty": 1
+    },
+    {
+      "id": "de8d",
+      "userId": "c998",
+      "productId": "11",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "image": "productsimg/milk1.jpg",
+      "price": 299,
+      "qty": 1
+    },
+    {
+      "id": "633c",
+      "userId": "c998",
+      "productId": "9",
+      "name": "Miskets Dubai Kadayif Chocolate",
+      "image": "productsimg/gift1.jpg",
+      "price": 600,
       "qty": 1
     }
   ],
@@ -384,22 +445,6 @@
       "name": "Munch",
       "image": "productsimg/dubai3.jpg",
       "price": 15
-    },
-    {
-      "id": "231c",
-      "userId": "c998",
-      "productId": "7",
-      "name": "Munch",
-      "image": "productsimg/dubai3.jpg",
-      "price": 15
-    },
-    {
-      "id": "6737",
-      "userId": "c998",
-      "productId": "8",
-      "name": "Bournville",
-      "image": "productsimg/dubai4.jpg",
-      "price": 160
     },
     {
       "id": "cffe",
@@ -480,30 +525,6 @@
       "name": "Happy Hempo Joy",
       "image": "productsimg/choco1.jpg",
       "price": 270
-    },
-    {
-      "id": "0402",
-      "userId": "c998",
-      "productId": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "image": "productsimg/dubai2.jpg",
-      "price": 380
-    },
-    {
-      "id": "e70a",
-      "userId": "c998",
-      "productId": "5",
-      "name": "Gold Quibai Kadayif Chocolate",
-      "image": "productsimg/dubai1.jpg",
-      "price": 600
-    },
-    {
-      "id": "2ab3",
-      "userId": "c998",
-      "productId": "10",
-      "name": "Happy Joy Premium Milk Chocolate",
-      "image": "productsimg/gift2.jpg",
-      "price": 1200
     }
   ],
   "orders": [
