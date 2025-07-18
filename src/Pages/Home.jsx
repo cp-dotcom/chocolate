@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
-import { ShoppingBag } from 'lucide-react';
+import { Facebook, Instagram, LucideTwitter, ShoppingBag } from 'lucide-react';
 
 
 
@@ -15,21 +15,22 @@ function Home() {
     
     <div className="font-serif bg-[#fef6f3]">
  <section className="w-full h-screen bg-cover bg-center bg-no-repeat text-center text-white flex flex-col justify-center items-center pt-0"
-  style={{backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)" }}>
+  style={{backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)" } }>
 
   <h1 className="text-5xl font-bold">Delight in Every Bite</h1>
   <p className="text-xl mt-4">Premium handcrafted chocolates made with love</p>
   <div className="mt-6 space-x-4">
+
     <button
       className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-6 rounded"
-      onClick={() => navigate("/Products")}
-    >
+      onClick={() => navigate("/Products")}>
       Shop Now
     </button>
+
+
     <button
       className="border border-white py-2 px-6 rounded hover:bg-white hover:text-[#6f4e37] transition"
-      onClick={() => navigate("/About")}
-    >
+      onClick={() => navigate("/About")}>
       Our Story
     </button>
   </div>
@@ -38,7 +39,7 @@ function Home() {
 
 
 
-      <section className="flex flex-wrap justify-around text-center bg-white py-12 px-4 gap-8">
+  <section className="flex flex-wrap justify-around text-center bg-white py-12 px-4 gap-8">
         <div className="max-w-xs">
           <h2 className="text-xl font-semibold text-[#6f4e37]">🍫 All Natural</h2>
           <p className="text-gray-600 mt-2">No additives, just pure chocolate goodness.</p>
@@ -54,20 +55,18 @@ function Home() {
       </section>
    
      <section className="bg-[#f3e8e3] py-12 px-4">
-  <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
+        <h2 className="text-center text-3xl font-bold text-[#6f4e37] mb-8">Featured Chocolates</h2>
+
+
 
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-    {/* Chocolate Card 1 */}
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative overflow-hidden h-60">
-        <img 
-          src="candy1.jpeg" 
-          alt="Dark Chocolate" 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
-        />
-        <span className="absolute top-2 right-2 bg-[#6f4e37] text-white text-xs font-bold px-2 py-1 rounded-full">
-          NEW
-        </span>
+        <img src="candy1.jpeg" alt="Dark Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
+            <span className="absolute top-2 right-2 bg-[#6f4e37] text-white text-xs font-bold px-2 py-1 rounded-full">
+              NEW
+            </span>
       </div>
       <div className="p-5 text-center">
         <div className="flex justify-center mb-2">
@@ -79,22 +78,16 @@ function Home() {
         </div>
         <h3 className="text-lg font-bold text-gray-800 mb-1">Dark Indulgence</h3>
         <p className="text-sm text-gray-500 mb-3">70% Cocoa | Rich Flavor</p>
-
-
-     
-
-
       </div>
     </div>
 
-    {/* Chocolate Card 2 */}
+  
+
+
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative overflow-hidden h-60">
-        <img 
-          src="candy2.jpeg" 
-          alt="Milk Chocolate" 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
-        />
+        <img src="candy2.jpeg" alt="Milk Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
         <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
           BESTSELLER
         </span>
@@ -109,23 +102,17 @@ function Home() {
         </div>
         <h3 className="text-lg font-bold text-gray-800 mb-1">Milk Bliss</h3>
         <p className="text-sm text-gray-500 mb-3">Creamy | Smooth Texture</p>
-
-
-
-
-
-
       </div>
     </div>
 
-    {/* Chocolate Card 3 */}
+  
+
+
+
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative overflow-hidden h-60">
-        <img 
-          src="candy3.jpeg" 
-          alt="White Chocolate" 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
-        />
+        <img src="candy3.jpeg" alt="White Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
       </div>
       <div className="p-5 text-center">
         <div className="flex justify-center mb-2">
@@ -140,24 +127,14 @@ function Home() {
         </div>
         <h3 className="text-lg font-bold text-gray-800 mb-1">White Charm</h3>
         <p className="text-sm text-gray-500 mb-3">Vanilla Infused | Sweet</p>
-
-
-
-      
-
-
-
       </div>
     </div>
 
-    {/* Chocolate Card 4 */}
+    
     <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative overflow-hidden h-60">
-        <img 
-          src="candy4.jpeg" 
-          alt="Hazelnut Chocolate" 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" 
-        />
+        <img src="candy4.jpeg" alt="Hazelnut Chocolate" 
+          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
         <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
           LIMITED
         </span>
@@ -172,13 +149,6 @@ function Home() {
         </div>
         <h3 className="text-lg font-bold text-gray-800 mb-1">Nutty Crunch</h3>
         <p className="text-sm text-gray-500 mb-3">Hazelnut | Crunchy</p>
-
-
-
-        
-
-
-
       </div>
     </div>
     
@@ -186,7 +156,7 @@ function Home() {
    <button
           className="w-half bg-[#6f4e37] text-white py-2 px-4 rounded-md hover:bg-[#5a3f2d] transition-colors duration-300 flex items-center justify-center gap-2 ml-137 mt-10 "
           onClick={() => navigate("/Products")}>
-         <ShoppingBag></ShoppingBag>
+         <ShoppingBag/>
           Shop Now
         </button>
 </section>
@@ -204,75 +174,43 @@ function Home() {
         </div>
       </section>
 
+
+
       
       <section className="bg-[#f3e8e3] py-12 px-4 text-center">
         <h2 className="text-2xl font-bold text-[#6f4e37] mb-8">What Our Customers Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <div className="bg-white p-4 rounded-lg shadow">
-            <p>“Absolutely divine chocolates – rich, smooth, and beautifully packaged!”</p>
-            <p className="text-gray-600 text-sm mt-2">– Emily R.</p>
+            <p>“Absolutely divine chocolates - rich, smooth, and beautifully packaged!”</p>
+            <p className="text-gray-600 text-sm mt-2">- Nishad k.</p>
           </div>
           <div className="bg-white p-4 rounded-lg shadow">
-            <p>“I gifted these to my team – and everyone was obsessed!”</p>
-            <p className="text-gray-600 text-sm mt-2">– Arjun P.</p>
+            <p>“I gifted these to my team - and everyone was obsessed!”</p>
+            <p className="text-gray-600 text-sm mt-2">- Affan p.</p>
           </div>
         </div>
       </section>
 
     
-      <section className="bg-[#6f4e37] text-white text-center py-12 px-4">
-        <h2 className="text-2xl font-bold">Get the Sweetest News</h2>
-        <p className="mt-2">Sign up to receive new flavors, deals & chocolate stories.</p>
-        <div className="mt-4 flex justify-center gap-2 flex-wrap">
-          <input type="email" placeholder="you@example.com" className="px-4 py-2 rounded w-64 text-black" />
-          <button className="bg-[#3e2c23] py-2 px-4 rounded hover:bg-[#2f201a]">Subscribe</button>
-        </div>
-      </section>
 
-    
-      <footer className="bg-[#3e2c23] text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-[#f3a847]">ChocoLux</h3>
-            <p className="mb-4">Crafting exceptional chocolate experiences since 2025</p>
-            <div className="flex gap-4">
-              {['facebook', 'twitter', 'instagram'].map((social) => (
-                <a key={social} href="#" className="w-8 h-8 bg-[#5a3f2d] rounded-full flex items-center justify-center hover:bg-[#f3a847] transition">
-                  <span className="sr-only">{social}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Shop</h4>
-            <ul className="space-y-2">
-              {['All Chocolates', 'Collections', 'Gift Boxes', 'Seasonal Specials'].map((item) => (
-                <li key={item}><a href="/Products" className="hover:text-[#f3a847] transition">{item}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">About</h4>
-            <ul className="space-y-2">
-              {['Our Story', 'Sustainability', 'Chocolate Making', 'Locations'].map((item) => (
-                <li key={item}><a href="/About" className="hover:text-[#f3a847] transition">{item}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Contact</h4>
-            <address className="not-italic">
-              <p className="mb-2">ChocoLux</p>
-              <p className="mb-2">malappuram</p>
-              <p className="mb-2">Phone: 0000000000</p>
-              <p>Email: vishnu@gmail.com</p>
-            </address>
-          </div>
-        </div>
-        <div className="border-t border-[#5a3f2d] mt-8 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} ChocoLux. All rights reserved.</p>
-        </div>
-      </footer>
+  <section className="relative bg-[#6f4e37] text-white text-center py-12 px-4 overflow-hidden">
+  <video
+    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+    src="video/Video .mp4" 
+    autoPlay
+    loop
+    muted
+    playsInline>
+    </video>
+
+  <div className="relative z-10 bg-black/50 py-12 px-4 rounded-xl backdrop-blur-sm h-60">
+    <h2 className="text-2xl font-bold">ChocoLuxe</h2>
+    <p className="mt-2">Only selling good quality and premium chocolates...!</p>
+    <div className="mt-4 flex justify-center gap-2 flex-wrap">
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }

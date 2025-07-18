@@ -1,32 +1,12 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem("user")));
-  const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
 
-
-
-  const addToWishlist = (item) => {
-  setWishlist(prev => [...prev, item]); // ✅ update immediately
-};
-
-const removeFromWishlist = (itemId) => {
-  setWishlist(prev => prev.filter(item => item.id !== itemId)); // ✅ update immediately
-};
-
-const addToCart = (item) => {
-  setCart(prev => [...prev, item]); // ✅ update UI instantly
-};
-
-const removeFromCart = (itemId) => {
-  setCart(prev => prev.filter(item => item.id !== itemId)); // ✅ update UI instantly
-};
-
-
+  
   const login = async (email, password) => {
     try {
       const res = await axios.get(`http://localhost:3001/users?email=${email}&password=${password}`);
@@ -43,61 +23,22 @@ const removeFromCart = (itemId) => {
     }
   };
 
-  const fetchCart = useCallback(async () => {
-    if (!user?.id) return;
-    try {
-      const res = await axios.get(`http://localhost:3001/carts?userId=${user.id}`);
-      setCart(res.data);
-    } catch (err) {
-      console.error("Failed to fetch cart:", err);
-    }
-  }, [user?.id]);
 
-  const fetchWishlist = useCallback(async () => {
-    if (!user?.id) return;
-    try {
-      const res = await axios.get(`http://localhost:3001/wishlist?userId=${user.id}`);
-      setWishlist(res.data);
-    } catch (err) {
-      console.error("Failed to fetch wishlist:", err);
-    }
-  }, [user?.id]);
 
   const logout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    setCart([]);
-    setWishlist([]);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      await fetchCart();
-      await fetchWishlist();
-    };
-    
-    fetchData();
-  }, [fetchCart, fetchWishlist]);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
 
   return (
-    <UserContext.Provider
-      value={{
-        user,
-        setUser,
-        login,
-        cart,
-        setCart,
-        wishlist,
-        setWishlist,
-        fetchCart,
-        fetchWishlist,
-        logout,
-        addToWishlist,        // ✅ exposed
-      removeFromWishlist,   // ✅ exposed
-      addToCart,           // ✅ export this
-    removeFromCart       // ✅ export this
-      }}
-    >
+    <UserContext.Provider value={{ user, login, logout }}>
       {children}
     </UserContext.Provider>
   );

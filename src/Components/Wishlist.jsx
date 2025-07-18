@@ -101,15 +101,19 @@
 
 
 
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
 import axios from "axios";
 import { Heart, ShoppingCart, Trash2, ArrowRight } from "lucide-react";
+import { useWishlist } from "../Context/WishlistContext";
+import { useCart } from "../Context/CartContext";
 
 function Wishlist() {
-  const { user, wishlist, fetchWishlist, setWishlist, fetchCart } = useUser();
+  const { wishlist,fetchWishlist, removeFromWishlist } = useWishlist();
+  const { user } =useUser();
+  const { fetchCart } = useCart()
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,25 +121,15 @@ function Wishlist() {
       alert("Please login first!");
       navigate("/login");
     } else {
-      fetchWishlist();
+      fetchWishlist(); 
     }
   }, [user]);
 
-  const removeFromWishlist = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3001/wishlist/${id}`);
-      setWishlist(wishlist.filter((item) => item.id !== id));
-      alert("Removed from wishlist!");
-    } catch (error) {
-      console.error("Error removing item:", error);
-    }
-  };
+  
 
   const moveToCart = async (item) => {
     try {
-      const res = await axios.get(
-        `http://localhost:3001/carts?userId=${user.id}&productId=${item.productId || item.id}`
-      );
+      const res = await axios.get(`http://localhost:3001/carts?userId=${user.id}&productId=${item.productId || item.id}`);
 
       if (res.data.length === 0) {
         await axios.post("http://localhost:3001/carts", {
@@ -144,11 +138,11 @@ function Wishlist() {
           name: item.name,
           image: item.image,
           price: item.price,
-          qty: 1,
+          qty: 1
         });
         fetchCart();
         alert(`${item.name} added to cart!`);
-        removeFromWishlist(item.id);
+        removeFromWishlist(item.id); 
       } else {
         alert("This item is already in your cart");
       }
@@ -160,13 +154,13 @@ function Wishlist() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fff9f5] to-[#f8ede4] py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
+        {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#5a3f2d] mb-4">
-            Your Wishlist <span className="text-[#f3a847]">💝</span>
+            Your Wishlist <span className="text-[#f3a847]"></span>
           </h2>
           <p className="text-lg text-[#6f4e37] max-w-2xl mx-auto">
-            {wishlist.length === 0 
+            {wishlist.length === 0
               ? "Your wishlist is waiting to be filled with chocolatey delights!"
               : "All your favorite chocolates in one place"}
           </p>
@@ -175,9 +169,7 @@ function Wishlist() {
         {/* Empty State */}
         {wishlist.length === 0 ? (
           <div className="text-center py-16">
-            <div className="inline-block p-6 bg-white rounded-full shadow-lg mb-6">
-              <Heart size={48} className="text-[#f3a847]" strokeWidth={1.5} />
-            </div>
+           
             <p className="text-xl text-[#6f4e37] mb-8">
               No items in your wishlist yet
             </p>
@@ -189,7 +181,7 @@ function Wishlist() {
             </button>
           </div>
         ) : (
-          /* Wishlist Items Grid */
+          // Wishlist Grid
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {wishlist.map((item) => (
               <div
@@ -212,7 +204,7 @@ function Wishlist() {
                   </button>
                 </div>
 
-                {/* Product Info */}
+                {/* Info & Actions */}
                 <div className="p-5">
                   <h3 className="text-xl font-semibold text-[#5a3f2d] mb-1">
                     {item.name}
@@ -220,8 +212,6 @@ function Wishlist() {
                   <p className="text-[#6f4e37] font-bold text-lg mb-4">
                     ₹{item.price}
                   </p>
-
-                  {/* Action Buttons */}
                   <div className="flex gap-3">
                     <button
                       onClick={() => moveToCart(item)}

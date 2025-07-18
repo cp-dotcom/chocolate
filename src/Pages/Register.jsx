@@ -1,24 +1,36 @@
-import React, { useState } from 'react'
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
- const [user, setUser] = useState({ username: "", email: "", password: "", role: "user" });
-
+  const [user, setUser] = useState({ username: "", email: "", password: "", role: "user" });
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const setRegister = async (form) => {
-    if (!form.email || !form.password) {
-      alert("Please fill all fields.");
-      return;
-    }
+  const validate = () => {
+    const newErrors = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!user.username.trim()) newErrors.username = "Username is required";
+    if (!user.email.trim()) newErrors.email = "Email is required";
+    else if (!emailRegex.test(user.email)) newErrors.email = "Invalid email format";
+
+    if (!user.password) newErrors.password = "Password is required";
+    else if (user.password.length < 6) newErrors.password = "Password must be at least 6 characters";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleRegister = async () => {
+    if (!validate()) return;
 
     try {
-      const res = await axios.get(`http://localhost:3001/users?email=${encodeURIComponent(form.email)}`);
+      const res = await axios.get(`http://localhost:3001/users?email=${encodeURIComponent(user.email)}`);
       if (res.data.length > 0) {
         alert("Email already registered!");
       } else {
-        await axios.post("http://localhost:3001/users", { ...form });
+        await axios.post("http://localhost:3001/users", user);
         alert("Registered successfully!");
         navigate("/login");
       }
@@ -26,56 +38,56 @@ function Register() {
       console.error("Error during registration:", error);
       alert("Registration failed. Please try again.");
     }
-  }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#fef6f3]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-[#6f4e37] mb-6">Create Account</h2>
-        
-      
         <div className="space-y-4">
+          <div>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+            />
+            {errors.username && <p className="text-red-500 text-sm mt-1">{errors.username}</p>}
+          </div>
 
-          <input
-          type="text"
-          placeholder="Enter your name"
-          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6f4e37]"
-          onChange={(e) => setUser({ ...user, username: e.target.value })}
-        />
+          <div>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+            />
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+          </div>
 
-
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6f4e37]"
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-          />
-
-          <input
-            type="password"
-            placeholder="Enter your password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6f4e37]"
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-          />
-
-          {/* <select
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6f4e37]"
-            onChange={(e) => setUser({ ...user, role: e.target.value })}
-          >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select> */}
+          <div>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+            />
+            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
+          </div>
 
           <button
-            onClick={() => setRegister(user)}
+            onClick={handleRegister}
             className="w-full bg-[#6f4e37] text-white py-2 rounded-md hover:bg-[#5a3f2d] transition"
           >
             Register
           </button>
+          <button type="button" className="w-full text-blue-900 py-2" onClick={() => navigate("/Login")}>
+            Login
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

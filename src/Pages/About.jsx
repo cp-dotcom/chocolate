@@ -29,6 +29,7 @@ function About() {
         </p>
       </section>
 
+
      
       <section className="bg-[#f3e8e3] py-12 px-6 text-center">
         <h2 className="text-3xl font-bold text-[#6f4e37] mb-4">The Art of Handcrafting</h2>
@@ -36,12 +37,10 @@ function About() {
           Every ChocoLuxe piece is a labor of love. From tempering the chocolate to designing the perfect mold,
           our artisans pour care into each step to ensure the texture, taste, and aroma are simply divine.
         </p>
-        <img
-          src="cht.avif"
-          alt="Chocolate Making"
-          className="w-full max-w-3xl mx-auto mt-8 rounded-lg shadow-md object-cover"
-        />
+        <img src="cchoco.jpg" alt="Chocolate Making"
+          className="w-full max-w-3xl mx-auto mt-8 rounded-lg shadow-md object-cover"/>       
       </section>
+
 
       
       <section className="py-12 px-6 text-center">
@@ -53,6 +52,7 @@ function About() {
       </section>
 
      
+
       <footer className="bg-[#3e2c23] text-white text-center py-6">
         <p>&copy; 2025 ChocoLuxe. All rights reserved.</p>
         <div className="mt-2 space-x-4">
@@ -61,6 +61,7 @@ function About() {
           <a href="/contact" className="underline">Contact</a>
         </div>
       </footer>
+      
     </div>
   );
 }
