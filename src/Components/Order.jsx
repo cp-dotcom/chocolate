@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+ 
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -9,10 +11,11 @@ const Orders = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const user = useMemo(() => JSON.parse(localStorage.getItem("user")), []);
+  
 
   useEffect(() => {
     if (!user) {
-      alert("Please login first!");
+      toast.error("Please login first!");
       navigate("/login");
       return;
     }

@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
-import { FaUserCircle } from 'react-icons/fa';
 import { Facebook, Instagram, LucideTwitter, ShoppingBag } from 'lucide-react';
 
 
@@ -70,13 +68,13 @@ function Home() {
       </div>
       <div className="p-5 text-center">
         <div className="flex justify-center mb-2">
-          {[...Array(5)].map((_, i) => (
+          {[...Array(5)].map((_, i) => (    //rating
             <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
             </svg>
           ))}
         </div>
-        <h3 className="text-lg font-bold text-gray-800 mb-1">Dark Indulgence</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Pista chocolate</h3>
         <p className="text-sm text-gray-500 mb-3">70% Cocoa | Rich Flavor</p>
       </div>
     </div>
@@ -100,7 +98,7 @@ function Home() {
             </svg>
           ))}
         </div>
-        <h3 className="text-lg font-bold text-gray-800 mb-1">Milk Bliss</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Hershey's</h3>
         <p className="text-sm text-gray-500 mb-3">Creamy | Smooth Texture</p>
       </div>
     </div>
@@ -135,7 +133,7 @@ function Home() {
       <div className="relative overflow-hidden h-60">
         <img src="candy4.jpeg" alt="Hazelnut Chocolate" 
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
-        <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+        <span className="absolute top-2 right-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-full">
           LIMITED
         </span>
       </div>
@@ -147,7 +145,7 @@ function Home() {
             </svg>
           ))}
         </div>
-        <h3 className="text-lg font-bold text-gray-800 mb-1">Nutty Crunch</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-1">Dairy Milk</h3>
         <p className="text-sm text-gray-500 mb-3">Hazelnut | Crunchy</p>
       </div>
     </div>

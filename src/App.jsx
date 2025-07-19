@@ -1,50 +1,52 @@
+// src/App.jsx
 
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import Home from './Pages/Home';
 import Register from './Pages/Register';
 import Login from './Pages/Login';
 import Products from './Pages/Products';
-
 import Cart from './Components/Cart';
 import About from './Pages/About';
-import Navbar from './Components/Navbar'
 import Wishlist from './Components/Wishlist';
 import Checkout from './Pages/Checkout';
 import Orders from './Components/Order';
 import ProductCard from './Components/ProductCard';
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import {Toaster} from 'react-hot-toast';
+
 
 import { UserProvider } from './Context/UserContext';
 import { CartProvider } from './Context/CartContext';
 import { WishlistProvider } from './Context/WishlistContext';
-import Footer from './Components/Footer';
 
-function App() { 
+function App() {
   return (
-    <UserProvider> {/* ✅ Add this */}
-     <CartProvider>
+    <UserProvider>
+      <CartProvider>
         <WishlistProvider>
-      <BrowserRouter>
-        <Navbar />
-       
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/Register' element={<Register />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/Products' element={<Products />} />
-          <Route path='/Cart' element={<Cart />} />
-          <Route path='/About' element={<About />} />
-          <Route path='/Wishlist' element={<Wishlist />} />
-          <Route path='/Checkout' element={<Checkout />} />
-          <Route path='/Orders' element={<Orders />} />
-          <Route path='/ProductCard' element={<ProductCard />} />
-          <Route path='/UserProvider' element={<UserProvider />} />
-          
+          <BrowserRouter>
+            <Navbar />
 
-        </Routes>
-         <Footer/>
-      </BrowserRouter>
-      </WishlistProvider>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/wishlist' element={<Wishlist />} />
+              <Route path='/checkout' element={<Checkout />} />
+              <Route path='/orders' element={<Orders />} />
+              <Route path='/productcard' element={<ProductCard />} />
+            </Routes>
+
+            <Footer />
+            <Toaster position="top-center" toastOptions={{duration:2000}}/>
+          </BrowserRouter>
+        </WishlistProvider>
       </CartProvider>
     </UserProvider>
   );

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
 import axios from "axios";
 import { useCart } from "../Context/CartContext";
+import toast from "react-hot-toast";
 
 function Cart() {
   const { user } = useUser();
@@ -18,7 +19,7 @@ function Cart() {
 
   useEffect(() => {
     if (!user) {
-      alert("Please login first");
+      toast.error("Please login first");
       navigate("/login");
       return;
     }
@@ -52,7 +53,7 @@ function Cart() {
       await fetchCart();
     } catch (err) {
       console.error("Update quantity error:", err);
-      alert("Failed to update quantity");
+      toast.error("Failed to update quantity");
     } finally {
       stopUpdating(id);
     }
@@ -66,7 +67,7 @@ function Cart() {
       await fetchCart();
     } catch (err) {
       console.error("Remove item error:", err);
-      alert("Failed to remove item");
+      toast.error("Failed to remove item");
     } finally {
       stopUpdating(id);
     }
@@ -127,7 +128,7 @@ function Cart() {
             onClick={() => navigate("/products")}
             className="bg-[#6f4e37] hover:bg-[#5a3d2a] text-white px-6 py-2 rounded-lg transition"
           >
-            Browse Products
+            See Products
           </button>
         </div>
       ) : (
@@ -140,9 +141,7 @@ function Cart() {
                   key={item.id}
                   className="bg-white rounded-2xl shadow-md flex flex-col sm:flex-row p-4 gap-6 hover:shadow-lg transition"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.name}
+                  <img src={item.image}alt={item.name}
                     className="w-32 h-32 object-contain bg-white rounded-md"
                   />
                   <div className="flex flex-col justify-between flex-1">

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Register() {
-  const [user, setUser] = useState({ username: "", email: "", password: "", role: "user" });
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -11,12 +12,18 @@ function Register() {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!user.username.trim()) newErrors.username = "Username is required";
-    if (!user.email.trim()) newErrors.email = "Email is required";
-    else if (!emailRegex.test(user.email)) newErrors.email = "Invalid email format";
+    if (!user.username.trim()) {
+      newErrors.username = "Username is required";
+    }
+
+    if (!user.email.trim()) {
+      newErrors.email = "Email is required";
+    }else if (!emailRegex.test(user.email)) {
+      newErrors.email = "Invalid email format";
+    }
 
     if (!user.password) newErrors.password = "Password is required";
-    else if (user.password.length < 6) newErrors.password = "Password must be at least 6 characters";
+    else if (user.password.length < 8) newErrors.password = "Password must be at least 6 characters";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -28,15 +35,15 @@ function Register() {
     try {
       const res = await axios.get(`http://localhost:3001/users?email=${encodeURIComponent(user.email)}`);
       if (res.data.length > 0) {
-        alert("Email already registered!");
+        toast.error("Email already registered!");
       } else {
         await axios.post("http://localhost:3001/users", user);
-        alert("Registered successfully!");
+        toast.success("Registered successfully!");
         navigate("/login");
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
+      toast.error("Registration failed. Please try again.");
     }
   };
 

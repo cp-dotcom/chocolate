@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
+import toast from "react-hot-toast";
 
 function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -28,11 +29,13 @@ function Login() {
 
     const success = await login(loginData.email, loginData.password);
     if (success) {
-      alert("Login successful!");
+      toast.success("Login successful!");
       navigate("/");
     } else {
-      alert("Invalid credentials! Please register first.");
-      navigate("/Register");
+      toast.error("Invalid credentials! Please register first.");
+      setTimeout(() => {
+        navigate("/Register");
+      }, 1500); 
     }
   };
 
@@ -46,6 +49,7 @@ function Login() {
               name="email"
               type="email"
               placeholder="Email"
+              value={loginData.email}
               onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md"
             />
@@ -56,15 +60,23 @@ function Login() {
               name="password"
               type="password"
               placeholder="Password"
+              value={loginData.password}
               onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
               className="w-full px-4 py-2 border border-gray-300 rounded-md"
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
-          <button type="submit" className="w-full bg-[#6f4e37] text-white py-2 rounded-md hover:bg-[#5a3f2d]">
+          <button
+            type="submit"
+            className="w-full bg-[#6f4e37] text-white py-2 rounded-md hover:bg-[#5a3f2d]"
+          >
             Login
           </button>
-          <button type="button" className="w-full text-blue-900 py-2 rounded-md" onClick={() => navigate("/Register")}>
+          <button
+            type="button"
+            className="w-full text-blue-900 py-2 rounded-md"
+            onClick={() => navigate("/Register")}
+          >
             Register
           </button>
         </form>

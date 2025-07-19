@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
-  const [details, setDetails] = useState({
-    name: "",
-    address: "",
-    phone: "",
-    payment: "cod",
-  });
+  const [details, setDetails] = useState({name: "",address: "",phone: "",payment: "cod",});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -18,7 +14,7 @@ const Checkout = () => {
 
   useEffect(() => {
     if (!user) {
-      alert("Please login first!");
+      toast.error("Please login first!");
       navigate("/login");
       return;
     }
@@ -56,12 +52,12 @@ const Checkout = () => {
 
   const placeOrder = async () => {
     if (!details.name || !details.address || !details.phone) {
-      alert("Please fill in all shipping details.");
+      toast.error("Please fill in all shipping details.");
       return;
     }
 
     if (cart.length === 0) {
-      alert("Your cart is empty.");
+      toast.error("Your cart is empty.");
       return;
     }
 
@@ -89,7 +85,7 @@ const Checkout = () => {
         )
       );
 
-      alert("Order placed successfully!");
+      toast.success("Order placed successfully!");
       navigate("/orders");
     } catch (err) {
       console.error("Order Error:", err);

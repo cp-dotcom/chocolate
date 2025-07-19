@@ -124,6 +124,18 @@
       "email": "cpq@gmail.com",
       "password": "123456",
       "role": "user"
+    },
+    {
+      "id": "ef5a",
+      "username": "vishnu",
+      "email": "cmdvishnu@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "9d6d",
+      "username": "cp",
+      "email": "ffc@gmail.com",
+      "password": "12345678"
     }
   ],
   "products": [
@@ -347,13 +359,58 @@
       "qty": 6
     },
     {
-      "id": "910c",
-      "userId": "c998",
+      "id": "a1d6",
+      "userId": "cd65",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "3ddf",
+      "userId": "cd65",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "a267",
+      "userId": "cd65",
       "productId": "11",
       "name": "Cnstowy Roast Almond Chocolate",
       "image": "productsimg/milk1.jpg",
       "price": 299,
-      "qty": 20
+      "qty": 1
+    },
+    {
+      "id": "f5c5",
+      "userId": "cd65",
+      "productId": "15",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium4.jpg",
+      "price": 1560,
+      "qty": 1
+    },
+    {
+      "id": "1aa3",
+      "userId": "c998",
+      "productId": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "image": "productsimg/dubai1.jpg",
+      "price": 600,
+      "qty": 1
+    },
+    {
+      "id": "dc4e",
+      "userId": "c998",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
     }
   ],
   "wishlist": [
@@ -502,6 +559,26 @@
       "price": 380
     },
     {
+      "id": "9",
+      "name": "Miskets Dubai Kadayif Chocolate",
+      "description": "Milk chocolate with crispy Kadayif and Antep pistachios. Bilingual packaging (English/Turkish).",
+      "price": 600,
+      "category": "Gift Pack",
+      "image": "productsimg/gift1.jpg",
+      "userId": "cd65",
+      "productId": "9"
+    },
+    {
+      "id": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
+      "price": 380,
+      "category": "Dubai chocolates",
+      "image": "productsimg/dubai2.jpg",
+      "userId": "ef5a",
+      "productId": "6"
+    },
+    {
       "id": "6",
       "name": "HELOS Dark Chocolate Bar",
       "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
@@ -512,14 +589,14 @@
       "productId": "6"
     },
     {
-      "id": "9",
-      "name": "Miskets Dubai Kadayif Chocolate",
-      "description": "Milk chocolate with crispy Kadayif and Antep pistachios. Bilingual packaging (English/Turkish).",
+      "id": "5",
+      "name": "Gold Quibai Kadayif Chocolate",
+      "description": "Luxurious milk chocolate with crispy Kadayif (shredded pastry) and pistachio filling,inspired by Middle Eastern desserts.",
       "price": 600,
-      "category": "Gift Pack",
-      "image": "productsimg/gift1.jpg",
+      "category": "Dubai chocolates",
+      "image": "productsimg/dubai1.jpg",
       "userId": "c998",
-      "productId": "9"
+      "productId": "5"
     }
   ],
   "orders": [
@@ -935,6 +1012,50 @@
       "total": 2850,
       "status": "Processing",
       "date": "2025-07-18T11:45:55.552Z"
+    },
+    {
+      "id": "6e4b",
+      "userId": "ef5a",
+      "items": [
+        {
+          "id": "8c5a",
+          "userId": "ef5a",
+          "productId": "6",
+          "name": "HELOS Dark Chocolate Bar",
+          "image": "productsimg/dubai2.jpg",
+          "price": 380,
+          "qty": 2
+        }
+      ],
+      "name": "vishnu",
+      "address": "chemmad",
+      "phone": "8457647847",
+      "payment": "upi",
+      "total": 760,
+      "status": "Processing",
+      "date": "2025-07-19T05:55:22.543Z"
+    },
+    {
+      "id": "69df",
+      "userId": "c998",
+      "items": [
+        {
+          "id": "ff8f",
+          "userId": "c998",
+          "productId": "3",
+          "name": "Mabon 55% Dark Chocolate with Roasted Almonds",
+          "image": "productsimg/dark1.jpg",
+          "price": 499,
+          "qty": 2
+        }
+      ],
+      "name": "sinan",
+      "address": "sxcv",
+      "phone": "123456",
+      "payment": "card",
+      "total": 998,
+      "status": "Processing",
+      "date": "2025-07-19T07:40:35.808Z"
     }
   ]
 }

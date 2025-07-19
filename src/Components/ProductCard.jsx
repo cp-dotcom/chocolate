@@ -1,6 +1,5 @@
 import React from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { useUser } from '../Context/UserContext'; 
 import { useWishlist } from '../Context/WishlistContext';
 import { ShoppingCart } from 'lucide-react';
 
@@ -9,9 +8,8 @@ const ProductCard = ({ product, openProductDetails, addToCart }) => {
 
   const {wishlist , addToWishlist, removeFromWishlist } =useWishlist();
 
-  // ✅ Check if this product is already in the wishlist
+  
   const isWishlisted = wishlist.some(item => item.id === product.id);
-
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
     if (isWishlisted) {

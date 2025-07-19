@@ -16,7 +16,7 @@ function About() {
       <section className="py-16 px-6 max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-[#6f4e37] mb-6 text-center">A Journey Through Chocolate</h2>
         <p className="mb-4 text-lg leading-relaxed">
-          Chocolate’s story begins over 3,000 years ago with the ancient Mesoamerican cultures.
+          Chocolate's story begins over 3,000 years ago with the ancient Mesoamerican cultures.
           The Mayans and Aztecs believed cacao was a gift from the gods — a sacred, bitter drink that was often used in rituals and ceremonies.
         </p>
         <p className="mb-4 text-lg leading-relaxed">
