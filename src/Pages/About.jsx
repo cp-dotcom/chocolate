@@ -53,14 +53,7 @@ function About() {
 
      
 
-      <footer className="bg-[#3e2c23] text-white text-center py-6">
-        <p>&copy; 2025 ChocoLuxe. All rights reserved.</p>
-        <div className="mt-2 space-x-4">
-          <a href="/" className="underline">Home</a>
-          <a href="/products" className="underline">Shop</a>
-          <a href="/contact" className="underline">Contact</a>
-        </div>
-      </footer>
+   
       
     </div>
   );

@@ -1,5 +1,6 @@
 import { Facebook, Instagram, LucideTwitter } from 'lucide-react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -31,7 +32,7 @@ function Footer() {
                 <h4 className="font-bold mb-4">Shop</h4>
                 <ul className="space-y-2">
                   {['All Chocolates', 'Collections', 'Gift Boxes', 'Seasonal Specials'].map((item) => (
-                    <li key={item}><a href="/Products" className="hover:text-[#f3a847] transition">{item}</a></li>
+                    <li key={item}><Link to="/Products" className="hover:text-[#f3a847] transition">{item}</Link></li>
                   ))}
                 </ul>
               </div>
@@ -39,7 +40,7 @@ function Footer() {
                 <h4 className="font-bold mb-4">About</h4>
                 <ul className="space-y-2">
                   {['Our Story', 'Sustainability', 'Chocolate Making', 'Locations'].map((item) => (
-                    <li key={item}><a href="/About" className="hover:text-[#f3a847] transition">{item}</a></li>
+                    <li key={item}><Link to="/About" className="hover:text-[#f3a847] transition">{item}</Link></li>
                   ))}
                 </ul>
               </div>

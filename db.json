@@ -2,139 +2,38 @@
   "users": [
     {
       "id": "1",
-      "name": "Admin",
-      "email": "admin@gmail.com",
+      "email": "admin@example.com",
       "password": "admin123",
       "role": "admin"
     },
     {
       "id": "2",
-      "name": "Vishnu",
-      "email": "vishnu@gmail.com",
-      "password": "vishnu123",
+      "email": "user@example.com",
+      "password": "user123",
       "role": "user"
     },
     {
-      "id": "3",
-      "name": "Nis",
-      "email": "nis@gmail.com",
-      "password": "1234",
-      "role": "user"
+      "id": "5d51",
+      "username": "marva",
+      "email": "marva@gmail.com",
+      "password": "marva@gmail.com"
     },
     {
-      "id": "cd65",
-      "email": "risal@gmail.com",
-      "password": "risal@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "d897",
+      "id": "e4de",
       "username": "cp",
       "email": "cp@gmail.com",
-      "password": "12345",
-      "role": "user"
+      "password": "cp@gmail.com"
     },
     {
-      "id": "36a1",
-      "username": "vish",
-      "email": "vish@gmail.com",
-      "password": "1234",
-      "role": "user"
+      "id": "e0f8",
+      "username": "fpo",
+      "email": "efdg@gmail.com",
+      "password": "efdg@gmail.com"
     },
     {
-      "id": "6d0f",
-      "username": "affan",
-      "email": "affan@gmail.com",
-      "password": "affan@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "fabc",
-      "username": "fazlu",
-      "email": "qwertyuiop",
-      "password": "qwertyuiop",
-      "role": "user"
-    },
-    {
-      "id": "e06d",
-      "username": "risal",
-      "email": "risalz@gmail.com",
-      "password": "risalz@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "7fb6",
-      "username": "vishnu",
-      "email": "cpo@gmail.com",
-      "password": "cpo@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "7b0a",
-      "username": "got",
-      "email": "got@gmail.com",
-      "password": "got@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "c998",
-      "username": "sinan",
-      "email": "op@gmail.com",
-      "password": "op@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "94dc",
-      "username": "json",
-      "email": "dummy@gmail.com",
-      "password": "1234",
-      "role": "user"
-    },
-    {
-      "id": "44bc",
-      "username": "op",
-      "email": "opf@gmail.com",
-      "password": "opf@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "83c4",
-      "username": "goot",
-      "email": "jood@gmail.com",
-      "password": "jood@gmail.com",
-      "role": "user"
-    },
-    {
-      "id": "9b69",
-      "username": "nishas",
-      "email": "nish@gmail.com",
-      "password": "1234",
-      "role": "user"
-    },
-    {
-      "id": "a889",
-      "username": "vishnu",
-      "email": "vcp@gmail.com",
-      "password": "12345",
-      "role": "user"
-    },
-    {
-      "id": "8296",
-      "username": "cp",
-      "email": "cpq@gmail.com",
-      "password": "123456",
-      "role": "user"
-    },
-    {
-      "id": "ef5a",
-      "username": "vishnu",
-      "email": "cmdvishnu@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "9d6d",
-      "username": "cp",
-      "email": "ffc@gmail.com",
+      "id": "97b1",
+      "username": "sinan op",
+      "email": "sinan@gmail.com",
       "password": "12345678"
     }
   ],
@@ -148,12 +47,13 @@
       "image": "productsimg/dubai1.jpg"
     },
     {
-      "id": "6",
       "name": "HELOS Dark Chocolate Bar",
-      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
       "price": 380,
+      "image": "productsimg/dubai2.jpg",
       "category": "Dubai chocolates",
-      "image": "productsimg/dubai2.jpg"
+      "details": "",
+      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
+      "id": "6"
     },
     {
       "id": "7",
@@ -266,6 +166,14 @@
       "price": 380,
       "category": "Dark Chocolate",
       "image": "productsimg/dark2.jpg"
+    },
+    {
+      "id": "fdf6",
+      "name": "suku",
+      "price": "100000",
+      "image": "add.jpeg",
+      "category": "milk chocolate",
+      "Details": "its a good product for your helth 100g"
     }
   ],
   "carts": [
@@ -410,6 +318,60 @@
       "name": "MABON Dark Chocolate Almonds",
       "image": "productsimg/dubai3.jpg",
       "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "52d7",
+      "userId": "2",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "352e",
+      "userId": null,
+      "productId": "14",
+      "name": "GIRUULTY Artisan Chocolate",
+      "image": "productsimg/premium3.jpg",
+      "price": 1999,
+      "qty": 1
+    },
+    {
+      "id": "5d60",
+      "userId": null,
+      "productId": "8",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "image": "productsimg/dubai4.jpg",
+      "price": 800,
+      "qty": 1
+    },
+    {
+      "id": "4244",
+      "userId": null,
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "9053",
+      "userId": "97b1",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "7e41",
+      "userId": "97b1",
+      "productId": "10",
+      "name": "Happy Joy Premium Milk Chocolate",
+      "image": "productsimg/gift2.jpg",
+      "price": 1200,
       "qty": 1
     }
   ],
@@ -597,6 +559,32 @@
       "image": "productsimg/dubai1.jpg",
       "userId": "c998",
       "productId": "5"
+    },
+    {
+      "id": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "description": "55% dark chocolate with roasted almonds, organic cacao, vegan-friendly, and crafted in India.",
+      "price": 300,
+      "category": "Dubai chocolates",
+      "image": "productsimg/dubai3.jpg",
+      "userId": null,
+      "productId": "7"
+    },
+    {
+      "id": "f40a",
+      "userId": null,
+      "productId": "8",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "image": "productsimg/dubai4.jpg",
+      "price": 800
+    },
+    {
+      "id": "35ea",
+      "userId": "97b1",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380
     }
   ],
   "orders": [
@@ -1056,6 +1044,59 @@
       "total": 998,
       "status": "Processing",
       "date": "2025-07-19T07:40:35.808Z"
+    },
+    {
+      "id": "c484",
+      "userId": "e0f8",
+      "items": [
+        {
+          "id": "0845",
+          "userId": "e0f8",
+          "productId": "16",
+          "name": "Ferrero Rocher",
+          "image": "productsimg/premium5.jpg",
+          "price": 340,
+          "qty": 2
+        }
+      ],
+      "name": "cp",
+      "address": "dfghjkl",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 680,
+      "status": "shipped",
+      "date": "2025-07-19T14:33:40.734Z"
+    },
+    {
+      "id": "2222",
+      "userId": null,
+      "items": [
+        {
+          "id": "4890",
+          "userId": "a5c4",
+          "productId": "7",
+          "name": "MABON Dark Chocolate Almonds",
+          "image": "productsimg/dubai3.jpg",
+          "price": 300,
+          "qty": 1
+        },
+        {
+          "id": "b308",
+          "userId": "a5c4",
+          "productId": "6",
+          "name": "HELOS Dark Chocolate Bar",
+          "image": "productsimg/dubai1.jpg",
+          "price": 380,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "fdsds",
+      "phone": "1234567890",
+      "payment": "upi",
+      "total": 680,
+      "status": "delivered",
+      "date": "2025-07-22T05:59:22.849Z"
     }
   ]
 }
