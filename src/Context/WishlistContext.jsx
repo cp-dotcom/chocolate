@@ -8,8 +8,7 @@ export const WishlistProvider = ({ children }) => {
   const { user } = useUser();
   const [wishlist, setWishlist] = useState([]);
 
-
-
+  // Fetch wishlist on login
   const fetchWishlist = useCallback(async () => {
     if (!user?.id) return;
     try {
@@ -20,15 +19,21 @@ export const WishlistProvider = ({ children }) => {
     }
   }, [user?.id]);
 
-
-
+  // Add to wishlist
   const addToWishlist = async (item) => {
     if (!user?.id) return;
-
     try {
-      const res = await axios.get(`http://localhost:3001/wishlist?userId=${user.id}&productId=${item.id}`);
+      // Check if product already exists in wishlist
+      const res = await axios.get(
+        `http://localhost:3001/wishlist?userId=${user.id}&productId=${item.id}`
+      );
+
       if (res.data.length === 0) {
-        const newItem = { ...item, userId: user.id, productId: item.id };
+        const newItem = {
+          ...item,
+          userId: user.id,
+          productId: item.id, // for lookup
+        };
         const response = await axios.post("http://localhost:3001/wishlist", newItem);
         setWishlist(prev => [...prev, response.data]);
       }
@@ -37,31 +42,26 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
-
-  
-  const removeFromWishlist = async (itemId) => {
-    if (!user?.id) return;
-
+  // Remove from wishlist using wishlistItem.id directly
+  const removeFromWishlist = async (wishlistItemId) => {
     try {
-      const res = await axios.get(`http://localhost:3001/wishlist?userId=${user.id}&productId=${itemId}`);
-      if (res.data.length > 0) {
-        const wishlistItemId = res.data[0].id;
-        await axios.delete(`http://localhost:3001/wishlist/${wishlistItemId}`);
-        setWishlist(prev => prev.filter(item => item.id !== wishlistItemId));
-      }
+      await axios.delete(`http://localhost:3001/wishlist/${wishlistItemId}`);
+      setWishlist(prev => prev.filter(item => item.id !== wishlistItemId));
     } catch (error) {
       console.error("Failed to remove from wishlist:", error);
     }
   };
 
   useEffect(() => {
-    if (user) {
+    if (user?.id) {
       fetchWishlist();
     }
-  }, [user, fetchWishlist]);
+  }, [user?.id, fetchWishlist]);
 
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist, fetchWishlist }}>
+    <WishlistContext.Provider
+      value={{ wishlist, addToWishlist, removeFromWishlist, fetchWishlist }}
+    >
       {children}
     </WishlistContext.Provider>
   );

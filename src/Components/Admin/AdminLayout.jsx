@@ -1,148 +1,129 @@
-// import React from 'react';
-// import { NavLink, Outlet } from 'react-router-dom';
-
-// const AdminLayout = () => {
-//   return (
-//     <div className="flex min-h-screen bg-gray-100 ">
-
-//       {/* Sidebar */}
-//       <aside className="w-64 bg-gray-800 text-white flex flex-col">
-//         <div className="p-5.5 text-2xl font-bold border-b border-black-bold  bg-[#D2C1B6] ">Admin Panel</div>
-//         <nav className="flex-1 p-6 space-y-4 bg-[#F0E4D3] text-black ">
-//           <NavLink to="/admin/dashboard" className = { ({isActive}) => isActive ?  "block py-2 px-4 rounded-full bg-[#5c2c06] text-white font-bold" : "block py-2 px-4 rounded-full hover:bg-[#5c2c06] text-white font-bold " }>Dashboard</NavLink>  
-//           <NavLink to="/admin/products"  className = { ({isActive}) => isActive ?  "block py-2 px-4 rounded-full bg-[#5c2c06] text-white font-bold" : "block py-2 px-4 rounded-full hover:bg-[#5c2c06] text-white font-bold " }>Products</NavLink>
-//           <NavLink to="/admin/orders"  className = { ({isActive}) => isActive ?  "block py-2 px-4 rounded-full bg-[#5c2c06] text-white font-bold": "block py-2 px-4 rounded-full hover:bg-[#5c2c06] text-white font-bold " }>Orders</NavLink>
-//           <NavLink to="/admin/users"  className = { ({isActive}) => isActive ?  "block py-2 px-4 rounded-full bg-[#5c2c06] text-white font-bold" : "block py-2 px-4 rounded-full hover:bg-[#5c2c06] text-white font-bold " }>Users</NavLink>
-//         </nav>
-//       </aside>
-
-//       {/* Main Content */}
-//       <div className="flex-1 flex flex-col">
-        
-//         {/* Top Navbar */}
-//         <header className="flex items-center justify-between bg-transparent backdrop-blur-xl px-6 py-4 shadow text-white">
-//           <div className="flex items-center">
-//             <button className="text-gray-600 p-2 rounded hover:bg-gray-200 focus:outline-none">&#9776;</button>
-//             <input
-//               type="search"
-//               placeholder="Search..."
-//               className="ml-4 px-4 py-2 border border-gray-300 rounded focus:outline-none"
-//             />
-//           </div>
-//         </header>
-
-//         {/* Page Content */}
-//         <main className="flex-1 p-6 overflow-y-auto">
-//           <Outlet />
-//         </main>
-
-//         {/* Footer */}
-//         <footer className="p-4 bg-white text-center text-gray-500 border-t">
-//           © 2025 Your Company
-//         </footer>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AdminLayout;
-
-
-
-
-
-import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 
 const AdminLayout = () => {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const location = useLocation();
+
+  // Get active menu based on current path
+  
+
+  const menuItems = [
+    { id: 'dashboard', name: 'Dashboard', icon: '📊', path: '/admin/dashboard' },
+    { id: 'products', name: 'Products', icon: '📦', path: '/admin/products' },
+    { id: 'orders', name: 'Orders', icon: '🛒', path: '/admin/orders' },
+    { id: 'users', name: 'Users', icon: '👥', path: '/admin/users' },
+    { id: 'settings', name: 'Logout', path: '/login' },
+  ];
+
+  const activeMenu = menuItems.find(item => location.pathname.includes(item.path))?.id || 'dashboard';
+
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-slate-50">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white flex flex-col">
-        <div className="p-5 text-2xl font-bold border-b border-gray-600 bg-[#D2C1B6] text-gray-800">
-          Admin Panel
+      <aside className={`${sidebarCollapsed ? 'w-20' : 'w-56'} bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col shadow-sm`}>
+        {/* Logo Section */}
+        <div className="p-3 border-b border-slate-200">
+          <div className="flex items-center justify-between">
+            {!sidebarCollapsed && (
+              <div>
+                <h1 className="text-2xl font-bold text-slate-800">ChocoLuxe</h1>
+                <p className="text-sm text-slate-500">Admin Panel</p>
+              </div>
+            )}
+            <button
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              className="p-2 rounded-lg hover:bg-slate-100 transition-colors p-4"
+            >
+              <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
-        <nav className="flex-1 p-6 space-y-4 bg-[#F0E4D3]">
-          <NavLink 
-            to="/admin/dashboard" 
-            className={({isActive}) => 
-              isActive 
-                ? "block py-3 px-4 rounded-full bg-[#5c2c06] text-white font-semibold transition-colors" 
-                : "block py-3 px-4 rounded-full hover:bg-[#5c2c06] hover:text-white text-gray-700 font-semibold transition-colors"
-            }
-          >
-            Dashboard
-          </NavLink>
-          
-          <NavLink 
-            to="/admin/products" 
-            className={({isActive}) => 
-              isActive 
-                ? "block py-3 px-4 rounded-full bg-[#5c2c06] text-white font-semibold transition-colors" 
-                : "block py-3 px-4 rounded-full hover:bg-[#5c2c06] hover:text-white text-gray-700 font-semibold transition-colors"
-            }
-          >
-            Products
-          </NavLink>
-          
-          <NavLink 
-            to="/admin/orders" 
-            className={({isActive}) => 
-              isActive 
-                ? "block py-3 px-4 rounded-full bg-[#5c2c06] text-white font-semibold transition-colors" 
-                : "block py-3 px-4 rounded-full hover:bg-[#5c2c06] hover:text-white text-gray-700 transition-colors"
-            }
-          >
-            Orders
-          </NavLink>
-          
-          <NavLink 
-            to="/admin/users" 
-            className={({isActive}) => 
-              isActive 
-                ? "block py-3 px-4 rounded-full bg-[#5c2c06] text-white font-semibold transition-colors" 
-                : "block py-3 px-4 rounded-full hover:bg-[#5c2c06] hover:text-white text-gray-700 font-semibold transition-colors"
-            }
-          >
-            Users
-          </NavLink>
+
+        {/* Navigation */}
+        <nav className="flex-1 py-6">
+          <div className="px-4 space-y-2">
+            {menuItems.map((item) => (
+              <NavLink
+                key={item.id}
+                to={item.path}
+                className={({ isActive }) => 
+                  `w-full flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-start'} px-4 py-3 rounded-xl transition-all duration-200 group ${
+                    isActive
+                      ? 'bg-blue-50 text-blue-600 shadow-sm'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-800'
+                  }`}
+              >
+                <span className="text-xl">{item.icon}</span>
+                {!sidebarCollapsed && (
+                  <span className="ml-3 font-medium">{item.name}</span>
+                )}
+                {!sidebarCollapsed && activeMenu === item.id && (
+                  <div className="ml-auto w-2 h-2 bg-blue-600 rounded-full"></div>
+                )}
+              </NavLink>
+            ))}
+          </div>
         </nav>
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col">
-        {/* Top Navbar */}
-        <header className="flex items-center justify-between bg-white/80 backdrop-blur-sm px-6 py-4 shadow-sm border-b">
-          <div className="flex items-center">
-            <button className="text-gray-600 p-2 rounded hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors">
-              &#9776;
-            </button>
-            <input
-              type="search"
-              placeholder="Search..."
-              className="ml-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-gray-800 transition-colors">
-              🔔
-            </button>
-            <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-              👤
+      <div className="flex-1 flex flex-col min-h-screen">
+        {/* Top Header */}
+        <header className="bg-white border-b border-slate-200 px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Left Side */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <h2 className="text-xl font-semibold text-slate-800 capitalize">
+                  {menuItems.find(item => item.id === activeMenu)?.name || 'Dashboard'}
+                </h2>
+                <div className="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full font-medium">
+                  Live
+                </div>
+              </div>
+            </div>
+
+            {/* Search Bar */}
+         
+
+            {/* Right Side */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
+                <div className="text-right">
+                  <p className="text-sm font-medium text-slate-800">Vishnu</p>
+                  <p className="text-xs text-slate-500">Administrator</p>
+                </div>
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold">
+                  cp
+                </div>
+              </div>
             </div>
           </div>
         </header>
 
-        {/* Page Content */}
-        <main className="flex-1 p-6 overflow-y-auto">
-          <Outlet />
+        {/* Breadcrumb */}
+        <div className="px-6 py-3 bg-slate-50/50 border-b border-slate-100">
+          <div className="flex items-center space-x-2 text-sm">
+            <span className="text-slate-500">Admin</span>
+            <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+            <span className="text-slate-700 font-medium capitalize">{activeMenu}</span>
+          </div>
+        </div>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-6 bg-slate-50">
+          <div className="max-w-7xl mx-auto">
+            {/* This is where child routes will render */}
+            <Outlet />
+          </div>
         </main>
 
-        {/* Footer */}
-        <footer className="p-4 bg-white text-center text-gray-500 border-t">
-          © 2025 Your Company
-        </footer>
+       
       </div>
     </div>
   );

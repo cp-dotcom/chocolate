@@ -1,13 +1,35 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { login } = useUser();
+  const [allUsers, setAllUsers] = useState([]);  // All users fetched from server
+
+// Fetch users once on component mount
+useEffect(() => {
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get("http://localhost:3001/users");
+      setAllUsers(res.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      toast.error("Failed to fetch users");
+    }
+  };
+  
+  fetchUsers();
+}, []);
+
+
+
+
+
 
   const validate = () => {
     const newErrors = {};
@@ -23,21 +45,36 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
 
-    const success = await login(loginData.email, loginData.password);
-    if (success) {
-      toast.success("Login successful!");
-      navigate("/");
+
+
+
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
+  
+  const { email, password } = loginData; 
+
+  const matchedUser = allUsers.find(
+    (user) => user.email === email && user.password === password
+  );
+  if (matchedUser) {
+    toast.success("Login successful!");
+    // Store user in localStorage or context
+    localStorage.setItem("user", JSON.stringify(matchedUser));
+    if (matchedUser.role === "admin") {
+      navigate("/admin/dashboard");
     } else {
-      toast.error("Invalid credentials! Please register first.");
-      setTimeout(() => {
-        navigate("/Register");
-      }, 1500); 
+      navigate("/"); // or homepage
     }
-  };
+  } else {
+    toast.error("Invalid credentials! Please register first.");
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
+  }
+};
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#fef6f3]">

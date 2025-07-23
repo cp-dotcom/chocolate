@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import ProductForm from "../Components/Admin/ProductForm";
+import ProductDetails from "../Components/ProductDetails";
+
 
 const ProductManagement = () => {
   const [products, setProducts] = useState([]);
@@ -11,14 +13,17 @@ const ProductManagement = () => {
   const [productsPerPage] = useState(6);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const fetchProducts = async () => {
-    try {
-      const res = await axios.get("http://localhost:3001/products");
-      setProducts(res.data.reverse()); // Latest first
-    } catch (err) {
-      toast.error("Failed to fetch products");
-    }
-  };
+const fetchProducts = async () => {
+  try {
+    const res = await axios.get("http://localhost:3001/products");
+    console.log("Fetched products:", res.data);  // 👈 Add this
+    setProducts(res.data.reverse());
+  } catch (err) {
+    toast.error("Failed to fetch products");
+    console.error("Fetch error:", err);  // 👈 Add this
+  }
+};
+
 
   useEffect(() => {
     fetchProducts();
@@ -78,10 +83,10 @@ const ProductManagement = () => {
   const categories = ["All", ...new Set(products.map((p) => p.category).filter(Boolean))];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fef3e7] via-[#f9e0c7] to-[#fbe4d5] p-8">
+    <div className="min-h-screen  bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-extrabold text-[#5c2c06] tracking-wide">
+          <h2 className="text-4xl font-extrabold text-[#5c2c06] tracking-wide ml-70">
             🍫 Product Management
           </h2>
           <button
@@ -94,14 +99,14 @@ const ProductManagement = () => {
 
         {/* Filter Dropdown */}
         <div className="mb-6">
-          <label className="block text-[#5c2c06] font-semibold mb-2">Filter by Category:</label>
+          <label className="block text-[#5c2c06] font-semibold mb-2 ">Filter by Category:</label>
           <select
             value={selectedCategory}
             onChange={(e) => {
               setSelectedCategory(e.target.value);
               setCurrentPage(1); // reset to page 1 when filter changes
             }}
-            className="px-4 py-2 border border-[#d8b9a3] rounded-md shadow-sm bg-white text-[#4b2e2e]"
+            className="px-4 py-2 border border-black rounded-md shadow-sm bg-white text-[#4b2e2e]"
           >
             {categories.map((cat, idx) => (
               <option key={idx} value={cat}>
@@ -112,41 +117,53 @@ const ProductManagement = () => {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentProducts.map((p) => (
-            <div
-              key={p.id}
-              className="bg-white/70 backdrop-blur border border-[#d8b9a3] p-5 rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
-            >
-              <img
-                src={`/${p.image}`}
-                alt={p.name}
-                className="w-full h-48 object-cover rounded-xl mb-4 border border-[#c8a07e]"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/productsimg/default.jpg";
-                }}
-              />
-              <h3 className="text-xl font-bold text-[#4b2e2e] mb-1">{p.name}</h3>
-              <p className="text-[#754c24] text-lg mb-1">₹{p.price}</p>
-              <p className="text-sm text-[#8d6748] italic mb-4">{p.category}</p>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => handleEditClick(p)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-full text-sm font-medium transition"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => deleteProduct(p.id)}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-full text-sm font-medium transition"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
+     <div className="space-y-4 ">
+  {currentProducts.map((p) => (
+    <div
+      key={p.id}
+      // className="bg-gradient-to-br from-[#f9f2ee] to-[#ecd6c5] border border-[#c8a07e] rounded-2xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl p-4 ">
+      className="bg-white border border-[#5c2c06] rounded-2xl overflow-hidden shadow-xl transition-transform duration-300 hover:scale-105 hover:shadow-2xl p-4 ">
+      <div className="flex items-center justify-between h-20">
+        {/* Product Info */}
+        <div className="flex items-center gap-4">
+          <img
+            src={`/${p.image}`}
+            alt={p.name}
+            className="w-25 h-16 object-cover rounded border h-30  "
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "/productsimg/default.jpg";
+            }}
+          />
+          <div>
+            <h3 className="text-base font-semibold text-gray-800">{p.name}</h3>
+            <p className="text-sm text-gray-600">₹{p.price} | {p.category}</p>
+          </div>
         </div>
+
+        {/* Buttons */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => handleEditClick(p)}
+            className="bg-gradient-to-r from-yellow-400 to-amber-500 text-[#4b2e2e] font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => deleteProduct(p.id)}
+            className="bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+
+
 
         {/* Pagination Controls */}
         {totalPages > 1 && (

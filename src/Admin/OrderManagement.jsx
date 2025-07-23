@@ -262,7 +262,7 @@ const OrderManagement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fef3e7] via-[#f9e0c7] to-[#fbe4d5] p-6 text-white font-sans">
+    <div className="min-h-screen bg- bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100 p-6 text-white font-sans">
       <h2 className="text-4xl font-bold mb-6 text-[#5c2c06]">🍫 Manage Orders</h2>
 
       {/* Filters */}
@@ -303,7 +303,7 @@ const OrderManagement = () => {
           {filteredOrders.map((order) => (
             <div
               key={order.id}
-              className="bg-white text-[#3d2b1f] border border-amber-200 rounded-2xl shadow-2xl p-6 transition hover:scale-[1.01] duration-300"
+              className="bg-white text-[#3d2b1f] border border-[#00000] rounded-2xl shadow-2xl p-6 transition hover:scale-[1.01] duration-300"
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
@@ -327,13 +327,13 @@ const OrderManagement = () => {
                 <div className="space-x-2">
                   <button
                     onClick={() => handleEditClick(order)}
-                    className="bg-gradient-to-r from-yellow-400 to-amber-500 text-[#4b2e2e] font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition duration-200"
+                    className="bg-gradient-to-r from-yellow-400 to-amber-500 text-[#4b2e2e] font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDeleteOrder(order.id)}
-                    className="bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition duration-200"
+                    className="bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition duration-200"
                   >
                     Delete
                   </button>

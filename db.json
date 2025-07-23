@@ -2,38 +2,21 @@
   "users": [
     {
       "id": "1",
+      "username": "vishnu",
       "email": "admin@example.com",
       "password": "admin123",
       "role": "admin"
     },
     {
-      "id": "2",
-      "email": "user@example.com",
-      "password": "user123",
-      "role": "user"
+      "id": "a058",
+      "username": "nish",
+      "email": "nish@gmail.com",
+      "password": "12345678"
     },
     {
-      "id": "5d51",
-      "username": "marva",
-      "email": "marva@gmail.com",
-      "password": "marva@gmail.com"
-    },
-    {
-      "id": "e4de",
+      "id": "ab4d",
       "username": "cp",
       "email": "cp@gmail.com",
-      "password": "cp@gmail.com"
-    },
-    {
-      "id": "e0f8",
-      "username": "fpo",
-      "email": "efdg@gmail.com",
-      "password": "efdg@gmail.com"
-    },
-    {
-      "id": "97b1",
-      "username": "sinan op",
-      "email": "sinan@gmail.com",
       "password": "12345678"
     }
   ],
@@ -168,12 +151,22 @@
       "image": "productsimg/dark2.jpg"
     },
     {
-      "id": "fdf6",
-      "name": "suku",
+      "name": "pro",
       "price": "100000",
       "image": "add.jpeg",
-      "category": "milk chocolate",
-      "Details": "its a good product for your helth 100g"
+      "category": "Milk Chocolate",
+      "details": "",
+      "description": "its a good for helth ....",
+      "id": "fdf6"
+    },
+    {
+      "id": "3c84",
+      "name": "zzz",
+      "price": "1000000",
+      "image": "add.jpeg",
+      "category": "Dubai chocolates",
+      "details": "",
+      "description": "scbkdszcbkjzcvjzdjcnzncnznclzndlcjvnzljcvnljzdnlcjbzdjlcvzdljbljzdbvcljbxzljcvlzxvcljznlvjnzdljcvljzcbzdljbcvljzcvjcnzlvnlzndcljvnzjlncvljznvljnzlvnljznvljnzlvnlznvln"
     }
   ],
   "carts": [
@@ -318,60 +311,6 @@
       "name": "MABON Dark Chocolate Almonds",
       "image": "productsimg/dubai3.jpg",
       "price": 300,
-      "qty": 1
-    },
-    {
-      "id": "52d7",
-      "userId": "2",
-      "productId": "7",
-      "name": "MABON Dark Chocolate Almonds",
-      "image": "productsimg/dubai3.jpg",
-      "price": 300,
-      "qty": 1
-    },
-    {
-      "id": "352e",
-      "userId": null,
-      "productId": "14",
-      "name": "GIRUULTY Artisan Chocolate",
-      "image": "productsimg/premium3.jpg",
-      "price": 1999,
-      "qty": 1
-    },
-    {
-      "id": "5d60",
-      "userId": null,
-      "productId": "8",
-      "name": "Locali Pistachio Kunafa Chocolate",
-      "image": "productsimg/dubai4.jpg",
-      "price": 800,
-      "qty": 1
-    },
-    {
-      "id": "4244",
-      "userId": null,
-      "productId": "7",
-      "name": "MABON Dark Chocolate Almonds",
-      "image": "productsimg/dubai3.jpg",
-      "price": 300,
-      "qty": 1
-    },
-    {
-      "id": "9053",
-      "userId": "97b1",
-      "productId": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "image": "productsimg/dubai2.jpg",
-      "price": 380,
-      "qty": 1
-    },
-    {
-      "id": "7e41",
-      "userId": "97b1",
-      "productId": "10",
-      "name": "Happy Joy Premium Milk Chocolate",
-      "image": "productsimg/gift2.jpg",
-      "price": 1200,
       "qty": 1
     }
   ],
@@ -559,544 +498,39 @@
       "image": "productsimg/dubai1.jpg",
       "userId": "c998",
       "productId": "5"
-    },
-    {
-      "id": "7",
-      "name": "MABON Dark Chocolate Almonds",
-      "description": "55% dark chocolate with roasted almonds, organic cacao, vegan-friendly, and crafted in India.",
-      "price": 300,
-      "category": "Dubai chocolates",
-      "image": "productsimg/dubai3.jpg",
-      "userId": null,
-      "productId": "7"
-    },
-    {
-      "id": "f40a",
-      "userId": null,
-      "productId": "8",
-      "name": "Locali Pistachio Kunafa Chocolate",
-      "image": "productsimg/dubai4.jpg",
-      "price": 800
-    },
-    {
-      "id": "35ea",
-      "userId": "97b1",
-      "productId": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "image": "productsimg/dubai2.jpg",
-      "price": 380
     }
   ],
   "orders": [
     {
-      "id": "0b40",
-      "userId": "3",
+      "id": "811e",
+      "userId": "ab4d",
       "items": [
         {
-          "id": "e521",
-          "userId": "3",
-          "productId": "6",
-          "name": "Toblerone",
-          "image": "productsimg/dubai2.jpg",
-          "price": 320,
-          "qty": 11
-        },
-        {
-          "id": "c3f3",
-          "userId": "3",
-          "productId": "8",
-          "name": "Bournville",
-          "image": "productsimg/dubai4.jpg",
-          "price": 160,
+          "id": "b3bd",
+          "userId": "ab4d",
+          "productId": "14",
+          "name": "GIRUULTY Artisan Chocolate",
+          "image": "productsimg/premium3.jpg",
+          "price": 1999,
           "qty": 1
         },
         {
-          "id": "e9fd",
-          "userId": "3",
-          "productId": "11",
-          "name": "Cadbury Celebrations",
-          "image": "productsimg/milk1.jpg",
-          "price": 299,
-          "qty": 1
-        },
-        {
-          "id": "a9d5",
-          "userId": "3",
-          "productId": "2",
-          "name": "KitKat",
-          "image": "productsimg/dairy1.jpg",
-          "price": 50,
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "oolanpara",
-      "phone": "222334555",
-      "payment": "cod",
-      "total": 4029,
-      "status": "Processing",
-      "date": "2025-07-16T11:17:39.448Z"
-    },
-    {
-      "id": "cbff",
-      "userId": "3",
-      "items": [
-        {
-          "id": "cce3",
-          "userId": "3",
-          "productId": "11",
-          "name": "Cadbury Celebrations",
-          "image": "productsimg/milk1.jpg",
-          "price": 299,
-          "qty": 1
-        },
-        {
-          "id": "fae7",
-          "userId": "3",
-          "productId": "8",
-          "name": "Bournville",
-          "image": "productsimg/dubai4.jpg",
-          "price": 160,
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "oolanpara",
-      "phone": "21345678",
-      "payment": "cod",
-      "total": 459,
-      "status": "Processing",
-      "date": "2025-07-16T11:23:24.241Z"
-    },
-    {
-      "id": "8e59",
-      "userId": "c998",
-      "items": [
-        {
-          "id": "8105",
-          "userId": "c998",
-          "productId": "6",
-          "name": "Toblerone",
-          "image": "productsimg/dubai2.jpg",
-          "price": 320,
-          "qty": 1
-        },
-        {
-          "id": "8680",
-          "userId": "c998",
-          "productId": "7",
-          "name": "Munch",
-          "image": "productsimg/dubai3.jpg",
-          "price": 15,
-          "qty": 1
-        },
-        {
-          "id": "fbce",
-          "userId": "c998",
-          "productId": "8",
-          "name": "Bournville",
-          "image": "productsimg/dubai4.jpg",
-          "price": 160,
-          "qty": 1
-        }
-      ],
-      "name": "cp",
-      "address": "rrtrtr",
-      "phone": "7684546274",
-      "payment": "cod",
-      "total": 495,
-      "status": "Processing",
-      "date": "2025-07-16T13:03:50.059Z"
-    },
-    {
-      "id": "a12f",
-      "userId": "44bc",
-      "items": [
-        {
-          "id": "a341",
-          "userId": "44bc",
-          "productId": "5",
-          "name": "5 Star",
-          "image": "productsimg/dubai1.jpg",
-          "price": 20,
-          "qty": 7
-        },
-        {
-          "id": "4876",
-          "userId": "44bc",
-          "productId": "7",
-          "name": "Munch",
-          "image": "productsimg/dubai3.jpg",
-          "price": 15,
-          "qty": 2
-        },
-        {
-          "id": "401d",
-          "userId": "44bc",
-          "productId": "6",
-          "name": "Toblerone",
-          "image": "productsimg/dubai2.jpg",
-          "price": 320,
-          "qty": 1
-        }
-      ],
-      "name": "cp",
-      "address": "dfgh",
-      "phone": "7684546274",
-      "payment": "cod",
-      "total": 490,
-      "status": "Processing",
-      "date": "2025-07-16T17:53:02.150Z"
-    },
-    {
-      "id": "0992",
-      "userId": "44bc",
-      "items": [
-        {
-          "id": "1fdf",
-          "userId": "44bc",
-          "productId": "6",
-          "name": "Toblerone",
-          "image": "productsimg/dubai2.jpg",
-          "price": 320,
-          "qty": 1
-        },
-        {
-          "id": "dbc6",
-          "userId": "44bc",
-          "productId": "8",
-          "name": "Bournville",
-          "image": "productsimg/dubai4.jpg",
-          "price": 160,
-          "qty": 1
-        },
-        {
-          "id": "7b84",
-          "userId": "44bc",
-          "productId": "16",
-          "name": "Cadbury Celebrations",
-          "image": "productsimg/premium5.jpg",
-          "price": 299,
-          "qty": 1
-        },
-        {
-          "id": "65ef",
-          "userId": "44bc",
-          "productId": "5",
-          "name": "5 Star",
-          "image": "productsimg/dubai1.jpg",
-          "price": 20,
-          "qty": 1
-        },
-        {
-          "id": "61ac",
-          "userId": "44bc",
-          "productId": "7",
-          "name": "MABON Dark Chocolate Almonds",
-          "image": "productsimg/dubai3.jpg",
-          "price": "300 rs",
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "yugbhjn",
-      "phone": "7684546274",
-      "payment": "upi",
-      "total": null,
-      "status": "Processing",
-      "date": "2025-07-17T11:06:10.765Z"
-    },
-    {
-      "id": "92ea",
-      "userId": "44bc",
-      "items": [
-        {
-          "id": "5762",
-          "userId": "44bc",
-          "productId": "13",
-          "name": "Kumara Cocoa Pistachio Chocolate",
-          "image": "productsimg/premium2.jpg",
-          "price": 1600,
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "DDFFDDDD",
-      "phone": "7684546274",
-      "payment": "cod",
-      "total": 1600,
-      "status": "Processing",
-      "date": "2025-07-17T11:12:43.272Z"
-    },
-    {
-      "id": "61e1",
-      "userId": "44bc",
-      "items": [
-        {
-          "id": "f7a2",
-          "userId": "44bc",
-          "productId": "3",
-          "name": "Mabon 55% Dark Chocolate with Roasted Almonds",
-          "image": "productsimg/dark1.jpg",
-          "price": 499,
-          "qty": 14
-        }
-      ],
-      "name": "e",
-      "address": "eecew",
-      "phone": "8888888888",
-      "payment": "cod",
-      "total": 6986,
-      "status": "Processing",
-      "date": "2025-07-17T11:32:29.407Z"
-    },
-    {
-      "id": "f09b",
-      "userId": "44bc",
-      "items": [
-        {
-          "id": "6f0e",
-          "userId": "44bc",
-          "productId": "16",
-          "name": "Cadbury Celebrations",
-          "image": "productsimg/premium5.jpg",
-          "price": 299,
-          "qty": 5
-        },
-        {
-          "id": "72df",
-          "userId": "44bc",
-          "productId": "7",
-          "name": "MABON Dark Chocolate Almonds",
-          "image": "productsimg/dubai3.jpg",
-          "price": 300,
-          "qty": 5
-        },
-        {
-          "id": "d371",
-          "userId": "44bc",
-          "productId": "5",
-          "name": "5 Star",
-          "image": "productsimg/dubai1.jpg",
-          "price": 20,
-          "qty": 6
-        }
-      ],
-      "name": "e",
-      "address": "nk ",
-      "phone": "mn",
-      "payment": "cod",
-      "total": 3115,
-      "status": "Processing",
-      "date": "2025-07-17T11:33:59.383Z"
-    },
-    {
-      "id": "826f",
-      "userId": "cd65",
-      "items": [
-        {
-          "id": "3a8f",
-          "userId": "cd65",
-          "productId": "6",
-          "name": "HELOS Dark Chocolate Bar",
-          "image": "productsimg/dubai2.jpg",
-          "price": 380,
-          "qty": 1
-        },
-        {
-          "id": "bce2",
-          "userId": "cd65",
-          "productId": "8",
-          "name": "Locali Pistachio Kunafa Chocolate",
-          "image": "productsimg/dubai4.jpg",
-          "price": 800,
-          "qty": 1
-        },
-        {
-          "id": "ebf8",
-          "userId": "cd65",
-          "productId": "7",
-          "name": "MABON Dark Chocolate Almonds",
-          "image": "productsimg/dubai3.jpg",
-          "price": 300,
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "YHU",
-      "phone": "T23546789",
-      "payment": "upi",
-      "total": 1480,
-      "status": "Processing",
-      "date": "2025-07-18T04:27:30.829Z"
-    },
-    {
-      "id": "f008",
-      "userId": "a889",
-      "items": [
-        {
-          "id": "a205",
-          "userId": "a889",
-          "productId": "6",
-          "name": "HELOS Dark Chocolate Bar",
-          "image": "productsimg/dubai2.jpg",
-          "price": 380,
-          "qty": 5
-        },
-        {
-          "id": "2533",
-          "userId": "a889",
-          "productId": "5",
-          "name": "Gold Quibai Kadayif Chocolate",
-          "image": "productsimg/dubai1.jpg",
-          "price": 600,
-          "qty": 6
-        }
-      ],
-      "name": "e",
-      "address": "wadesf",
-      "phone": "12345t",
-      "payment": "cod",
-      "total": 5500,
-      "status": "Processing",
-      "date": "2025-07-18T07:12:07.348Z"
-    },
-    {
-      "id": "ddd5",
-      "userId": "c998",
-      "items": [
-        {
-          "id": "5d63",
-          "userId": "c998",
-          "productId": "12",
+          "id": "649f",
+          "userId": "ab4d",
+          "productId": "15",
           "name": "Royal Delights Premium Sweets",
-          "image": "productsimg/premium1.jpg",
-          "price": 850,
-          "qty": 1
-        },
-        {
-          "id": "f544",
-          "userId": "c998",
-          "productId": "10",
-          "name": "Happy Joy Premium Milk Chocolate",
-          "image": "productsimg/gift2.jpg",
-          "price": 1200,
-          "qty": 1
-        },
-        {
-          "id": "f5f2",
-          "userId": "c998",
-          "productId": "8",
-          "name": "Locali Pistachio Kunafa Chocolate",
-          "image": "productsimg/dubai4.jpg",
-          "price": 800,
+          "image": "productsimg/premium4.jpg",
+          "price": 1560,
           "qty": 1
         }
       ],
       "name": "cp",
-      "address": "dcc",
-      "phone": "acaecaec",
+      "address": "malappuram",
+      "phone": "9897878675",
       "payment": "card",
-      "total": 2850,
-      "status": "Processing",
-      "date": "2025-07-18T11:45:55.552Z"
-    },
-    {
-      "id": "6e4b",
-      "userId": "ef5a",
-      "items": [
-        {
-          "id": "8c5a",
-          "userId": "ef5a",
-          "productId": "6",
-          "name": "HELOS Dark Chocolate Bar",
-          "image": "productsimg/dubai2.jpg",
-          "price": 380,
-          "qty": 2
-        }
-      ],
-      "name": "vishnu",
-      "address": "chemmad",
-      "phone": "8457647847",
-      "payment": "upi",
-      "total": 760,
-      "status": "Processing",
-      "date": "2025-07-19T05:55:22.543Z"
-    },
-    {
-      "id": "69df",
-      "userId": "c998",
-      "items": [
-        {
-          "id": "ff8f",
-          "userId": "c998",
-          "productId": "3",
-          "name": "Mabon 55% Dark Chocolate with Roasted Almonds",
-          "image": "productsimg/dark1.jpg",
-          "price": 499,
-          "qty": 2
-        }
-      ],
-      "name": "sinan",
-      "address": "sxcv",
-      "phone": "123456",
-      "payment": "card",
-      "total": 998,
-      "status": "Processing",
-      "date": "2025-07-19T07:40:35.808Z"
-    },
-    {
-      "id": "c484",
-      "userId": "e0f8",
-      "items": [
-        {
-          "id": "0845",
-          "userId": "e0f8",
-          "productId": "16",
-          "name": "Ferrero Rocher",
-          "image": "productsimg/premium5.jpg",
-          "price": 340,
-          "qty": 2
-        }
-      ],
-      "name": "cp",
-      "address": "dfghjkl",
-      "phone": "7684546274",
-      "payment": "cod",
-      "total": 680,
-      "status": "shipped",
-      "date": "2025-07-19T14:33:40.734Z"
-    },
-    {
-      "id": "2222",
-      "userId": null,
-      "items": [
-        {
-          "id": "4890",
-          "userId": "a5c4",
-          "productId": "7",
-          "name": "MABON Dark Chocolate Almonds",
-          "image": "productsimg/dubai3.jpg",
-          "price": 300,
-          "qty": 1
-        },
-        {
-          "id": "b308",
-          "userId": "a5c4",
-          "productId": "6",
-          "name": "HELOS Dark Chocolate Bar",
-          "image": "productsimg/dubai1.jpg",
-          "price": 380,
-          "qty": 1
-        }
-      ],
-      "name": "sinan",
-      "address": "fdsds",
-      "phone": "1234567890",
-      "payment": "upi",
-      "total": 680,
+      "total": 3559,
       "status": "delivered",
-      "date": "2025-07-22T05:59:22.849Z"
+      "date": "2025-07-23T17:09:44.840Z"
     }
   ]
 }
