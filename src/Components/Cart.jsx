@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
@@ -10,11 +8,9 @@ import toast from "react-hot-toast";
 function Cart() {
   const { user } = useUser();
   const navigate = useNavigate();
+  const { cart, fetchCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-   const { fetchCart,cart } =  useCart()
-
-  
   const [updatingItemIds, setUpdatingItemIds] = useState([]);
 
   useEffect(() => {
@@ -27,10 +23,10 @@ function Cart() {
     const loadCart = async () => {
       try {
         setLoading(true);
-        await fetchCart();
+        await fetchCart(); // context-managed
       } catch (err) {
+        console.error("❌ Failed to load cart:", err);
         setError("Failed to load cart. Please try again.");
-        console.error("Cart error:", err);
       } finally {
         setLoading(false);
       }
@@ -39,20 +35,17 @@ function Cart() {
     loadCart();
   }, [user, fetchCart, navigate]);
 
-  const startUpdating = (id) => setUpdatingItemIds((ids) => [...ids, id]);
-  const stopUpdating = (id) =>
-    setUpdatingItemIds((ids) => ids.filter((itemId) => itemId !== id));
+  const startUpdating = (id) => setUpdatingItemIds((prev) => [...prev, id]);
+  const stopUpdating = (id) => setUpdatingItemIds((prev) => prev.filter((itemId) => itemId !== id));
 
   const updateQty = async (id, newQty) => {
     if (newQty < 1) return;
-
     startUpdating(id);
-
     try {
       await axios.patch(`http://localhost:3001/carts/${id}`, { qty: newQty });
-      await fetchCart();
+      await fetchCart(); // Refetch after update
     } catch (err) {
-      console.error("Update quantity error:", err);
+      console.error("❌ Failed to update quantity:", err);
       toast.error("Failed to update quantity");
     } finally {
       stopUpdating(id);
@@ -61,32 +54,25 @@ function Cart() {
 
   const removeItem = async (id) => {
     startUpdating(id);
-
     try {
       await axios.delete(`http://localhost:3001/carts/${id}`);
-      await fetchCart();
+      await fetchCart(); // Refetch after deletion
     } catch (err) {
-      console.error("Remove item error:", err);
+      console.error("❌ Failed to remove item:", err);
       toast.error("Failed to remove item");
     } finally {
       stopUpdating(id);
     }
   };
 
- 
-  const getTotal = () => {
-    return cart.reduce((sum, item) => {
-      const price = typeof item.price === "number" ? item.price : Number(item.price);
-      const qty = typeof item.qty === "number" ? item.qty : Number(item.qty);
-      return sum + (price || 0) * (qty || 0);
+  const getTotal = () =>
+    cart.reduce((sum, item) => {
+      const price = Number(item.price) || 0;
+      const qty = Number(item.qty) || 0;
+      return sum + price * qty;
     }, 0);
-  };
 
- 
-  const formatPrice = (price) => {
-    const num = typeof price === "number" ? price : Number(price);
-    return isNaN(num) ? "0.00" : num.toFixed(2);
-  };
+  const formatPrice = (price) => (isNaN(price) ? "0.00" : Number(price).toFixed(2));
 
   if (loading) {
     return (
@@ -141,7 +127,9 @@ function Cart() {
                   key={item.id}
                   className="bg-white rounded-2xl shadow-md flex flex-col sm:flex-row p-4 gap-6 hover:shadow-lg transition"
                 >
-                  <img src={item.image}alt={item.name}
+                  <img
+                    src={item.image}
+                    alt={item.name}
                     className="w-32 h-32 object-contain bg-white rounded-md"
                   />
                   <div className="flex flex-col justify-between flex-1">
@@ -154,30 +142,26 @@ function Cart() {
                         </span>
                       </p>
                     </div>
-
                     <div className="flex items-center mt-3 space-x-3">
                       <button
                         onClick={() => updateQty(item.id, item.qty - 1)}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={item.qty <= 1 || isUpdating}
-                        aria-label={`Decrease quantity of ${item.name}`}
+                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         -
                       </button>
                       <span className="text-lg font-medium">{item.qty}</span>
                       <button
                         onClick={() => updateQty(item.id, item.qty + 1)}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isUpdating}
-                        aria-label={`Increase quantity of ${item.name}`}
+                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         +
                       </button>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="ml-auto text-red-500 hover:text-red-600 text-sm transition disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={isUpdating}
-                        aria-label={`Remove ${item.name} from cart`}
+                        className="ml-auto text-red-500 hover:text-red-600 text-sm transition disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         Remove
                       </button>

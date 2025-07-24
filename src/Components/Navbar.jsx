@@ -8,13 +8,12 @@ import { useWishlist } from '../Context/WishlistContext';
 
 const Navbar = () => {
   const { user, logout } = useUser();
-  const { fetchCart , cart} =  useCart()
-  const { fetchWishlist, wishlist } =  useWishlist()
+  const { fetchCart, cart } = useCart();
+  const { fetchWishlist, wishlist } = useWishlist();
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  
   useEffect(() => {
     if (user) {
       fetchCart();
@@ -26,9 +25,9 @@ const Navbar = () => {
     <nav className={`sticky top-0 z-50 shadow-md transition duration-300 
       ${isHome ? "bg-transparent backdrop-blur-xl bg-white/10" : "bg-white"}`}>
 
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center ">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
 
-        
+        {/* Logo */}
         <NavLink 
           to="/" 
           className="text-3xl font-bold hover:text-[#885537] transition"
@@ -36,8 +35,10 @@ const Navbar = () => {
           ChocoLuxe
         </NavLink>
 
+        {/* Nav Links */}
         <div className="hidden md:flex gap-6 items-center text-lg">
-         
+
+          {/* Home */}
           <NavLink 
             to="/" 
             className={({ isActive }) => `
@@ -48,6 +49,7 @@ const Navbar = () => {
             Home
           </NavLink>
 
+          {/* Products */}
           <NavLink 
             to="/products" 
             className={({ isActive }) => `
@@ -58,6 +60,7 @@ const Navbar = () => {
             Products
           </NavLink>
 
+          {/* Orders */}
           <NavLink 
             to="/orders" 
             className={({ isActive }) => `
@@ -68,40 +71,39 @@ const Navbar = () => {
             Orders
           </NavLink>
 
-         
-          <NavLink 
-            to="/cart" 
-            className="relative hover:text-[#885537] transition group"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            
-            <ShoppingCart size={22} className="group-hover:scale-110 transition-transform" />
-          
-            {cart?.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
-                {cart.length}
-              </span>
-              
-            )}
-          </NavLink>
+          {/* Cart - Only show when logged in */}
+          {user && (
+            <NavLink 
+              to="/cart" 
+              className="relative hover:text-[#885537] transition group"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <ShoppingCart size={22} className="group-hover:scale-110 transition-transform" />
+              {cart?.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </NavLink>
+          )}
 
-          <NavLink 
-            to="/wishlist" 
-            className="relative hover:text-[#885537] transition group"
-            style={{ fontFamily: "'Poppins', sans-serif" }}
-          >
-            <Heart size={22} className="group-hover:scale-110 transition-transform" />
-           
-            {wishlist?.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
-                {wishlist.length}
-              </span>
-            )}
-          </NavLink>
+          {/* Wishlist - Only show when logged in */}
+          {user && (
+            <NavLink 
+              to="/wishlist" 
+              className="relative hover:text-[#885537] transition group"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
+              <Heart size={22} className="group-hover:scale-110 transition-transform" />
+              {wishlist?.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
+                  {wishlist.length}
+                </span>
+              )}
+            </NavLink>
+          )}
 
-         
-
-         
+          {/* User Dropdown */}
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button 

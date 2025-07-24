@@ -18,6 +18,24 @@
       "username": "cp",
       "email": "cp@gmail.com",
       "password": "12345678"
+    },
+    {
+      "id": "43ca",
+      "username": "gol",
+      "email": "gol@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "a4d1",
+      "username": "jood",
+      "email": "jood@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "3033",
+      "username": "risal",
+      "email": "risal@gmail.com",
+      "password": "12345678"
     }
   ],
   "products": [
@@ -312,6 +330,42 @@
       "image": "productsimg/dubai3.jpg",
       "price": 300,
       "qty": 1
+    },
+    {
+      "id": "5481",
+      "userId": "ab4d",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "5092",
+      "userId": "43ca",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "58af",
+      "userId": "43ca",
+      "productId": "12",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium1.jpg",
+      "price": 850,
+      "qty": 1
+    },
+    {
+      "id": "11",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
+      "price": 299,
+      "category": "Milk Chocolate",
+      "image": "productsimg/milk1.jpg",
+      "userId": "a4d1"
     }
   ],
   "wishlist": [
@@ -460,16 +514,6 @@
       "price": 380
     },
     {
-      "id": "9",
-      "name": "Miskets Dubai Kadayif Chocolate",
-      "description": "Milk chocolate with crispy Kadayif and Antep pistachios. Bilingual packaging (English/Turkish).",
-      "price": 600,
-      "category": "Gift Pack",
-      "image": "productsimg/gift1.jpg",
-      "userId": "cd65",
-      "productId": "9"
-    },
-    {
       "id": "6",
       "name": "HELOS Dark Chocolate Bar",
       "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
@@ -498,6 +542,26 @@
       "image": "productsimg/dubai1.jpg",
       "userId": "c998",
       "productId": "5"
+    },
+    {
+      "id": "11",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
+      "price": 299,
+      "category": "Milk Chocolate",
+      "image": "productsimg/milk1.jpg",
+      "userId": "a4d1",
+      "productId": "11"
+    },
+    {
+      "id": "10",
+      "name": "Happy Joy Premium Milk Chocolate",
+      "description": "Smooth milk chocolate with a playful design, possibly limited edition or artist collaboration.",
+      "price": 1200,
+      "category": "Gift Pack",
+      "image": "productsimg/gift2.jpg",
+      "userId": "a4d1",
+      "productId": "10"
     }
   ],
   "orders": [
@@ -529,8 +593,145 @@
       "phone": "9897878675",
       "payment": "card",
       "total": 3559,
-      "status": "delivered",
+      "status": "cancelled",
       "date": "2025-07-23T17:09:44.840Z"
+    },
+    {
+      "id": "3c30",
+      "userId": "a4d1",
+      "items": [
+        {
+          "id": "bc47",
+          "userId": "a4d1",
+          "productId": "11",
+          "name": "Cnstowy Roast Almond Chocolate",
+          "image": "productsimg/milk1.jpg",
+          "price": 299,
+          "qty": 1
+        },
+        {
+          "id": "5de5",
+          "userId": "a4d1",
+          "productId": "9",
+          "name": "Miskets Dubai Kadayif Chocolate",
+          "image": "productsimg/gift1.jpg",
+          "price": 600,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "'\ninnkj",
+      "phone": "acaecaec",
+      "payment": "cod",
+      "total": 899,
+      "status": "shipped",
+      "date": "2025-07-24T04:26:36.535Z"
+    },
+    {
+      "id": "4962",
+      "userId": "a4d1",
+      "items": [
+        {
+          "id": "05f6",
+          "userId": "a4d1",
+          "productId": "6",
+          "name": "HELOS Dark Chocolate Bar",
+          "image": "productsimg/dubai2.jpg",
+          "price": 380,
+          "qty": 1
+        },
+        {
+          "id": "009b",
+          "userId": "a4d1",
+          "productId": "10",
+          "name": "Happy Joy Premium Milk Chocolate",
+          "image": "productsimg/gift2.jpg",
+          "price": 1200,
+          "qty": 1
+        },
+        {
+          "id": "489a",
+          "userId": "a4d1",
+          "productId": "9",
+          "name": "Miskets Dubai Kadayif Chocolate",
+          "image": "productsimg/gift1.jpg",
+          "price": 600,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "DSsd",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 2180,
+      "status": "delivered",
+      "date": "2025-07-24T05:14:12.352Z"
+    },
+    {
+      "id": "fe7e",
+      "userId": "a4d1",
+      "items": [
+        {
+          "id": "7170",
+          "userId": "a4d1",
+          "productId": "9",
+          "name": "Miskets Dubai Kadayif Chocolate",
+          "image": "productsimg/gift1.jpg",
+          "price": 600,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "csZC",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 600,
+      "status": "delivered",
+      "date": "2025-07-24T05:14:27.604Z"
+    },
+    {
+      "id": "aa4c",
+      "userId": "a4d1",
+      "items": [
+        {
+          "id": "aec1",
+          "userId": "a4d1",
+          "productId": "7",
+          "name": "MABON Dark Chocolate Almonds",
+          "image": "productsimg/dubai3.jpg",
+          "price": 300,
+          "qty": 1
+        }
+      ],
+      "name": "suku",
+      "address": "sCS",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 300,
+      "status": "shipped",
+      "date": "2025-07-24T05:14:45.514Z"
+    },
+    {
+      "id": "2ff9",
+      "userId": "a4d1",
+      "items": [
+        {
+          "id": "b96d",
+          "userId": "a4d1",
+          "productId": "12",
+          "name": "Royal Delights Premium Sweets",
+          "image": "productsimg/premium1.jpg",
+          "price": 850,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "xczxc",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 850,
+      "status": "Processing",
+      "date": "2025-07-24T05:14:57.141Z"
     }
   ]
 }

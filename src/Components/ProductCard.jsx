@@ -1,28 +1,48 @@
 import React from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { useWishlist } from '../Context/WishlistContext';
 import { ShoppingCart } from 'lucide-react';
+import { useWishlist } from '../Context/WishlistContext';
+import { useCart } from '../Context/CartContext';
+import { useUser } from '../Context/UserContext';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ product, openProductDetails, addToCart }) => {
-  
+  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { user } = useUser();
+  const { addToCart: addToCartContext } = useCart();
 
-  const {wishlist , addToWishlist, removeFromWishlist } =useWishlist();
-
-  
   const isWishlisted = wishlist.some(item => item.id === product.id);
+
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
+    if (!user) {
+      toast.error("Please login to manage wishlist");
+      return;
+    }
+
     if (isWishlisted) {
       removeFromWishlist(product.id);
+      toast.success("Removed from wishlist");
     } else {
       addToWishlist(product);
+      toast.success("Added to wishlist");
     }
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    if (!user) {
+      toast.error("Please login to add to cart");
+      return;
+    }
+
+    addToCartContext(product);
+    toast.success("Added to cart");
   };
 
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-
-     
+      {/* Product Image */}
       <div
         className="relative w-full h-60 cursor-pointer"
         onClick={() => openProductDetails(product)}
@@ -33,9 +53,7 @@ const ProductCard = ({ product, openProductDetails, addToCart }) => {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-       
-
-
+        {/* Wishlist Button */}
         <button
           type="button"
           onClick={handleWishlistToggle}
@@ -48,9 +66,7 @@ const ProductCard = ({ product, openProductDetails, addToCart }) => {
           )}
         </button>
 
-
-
-      
+        {/* New Label */}
         {product.isNew && (
           <span className="absolute top-3 left-3 bg-[#6f4e37] text-white text-xs font-bold px-2 py-1 rounded-full">
             NEW
@@ -58,7 +74,7 @@ const ProductCard = ({ product, openProductDetails, addToCart }) => {
         )}
       </div>
 
-      
+      {/* Product Info */}
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-lg font-bold text-gray-800">{product.name}</h3>
@@ -67,40 +83,34 @@ const ProductCard = ({ product, openProductDetails, addToCart }) => {
           </span>
         </div>
 
-        
         <p className="text-sm text-gray-500 mb-4 line-clamp-2">{product.description}</p>
+
         <div className="mt-auto flex flex-col gap-4">
+          {/* Price & Rating */}
           <div className="flex justify-between items-center">
             <span className="text-xl font-bold text-[#6f4e37]">₹{product.price}</span>
 
-
-
-
-            
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
                   className={`w-4 h-4 ${i < (product.rating || 4) ? 'text-yellow-400' : 'text-gray-300'}`}
                   fill="currentColor"
-                  viewBox="0 0 20 20">
+                  viewBox="0 0 20 20"
+                >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                 </svg>
               ))}
             </div>
           </div>
 
-         
-
-
+          {/* Add to Cart Button */}
           <button
             type="button"
-            onClick={(e) => {e.stopPropagation();
-              addToCart(product);
-            }}
+            onClick={handleAddToCart}
             className="w-full bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-2 px-4 rounded-md transition-colors duration-300 flex items-center justify-center gap-2"
           >
-          <ShoppingCart/>
+            <ShoppingCart />
             Add to Cart
           </button>
         </div>

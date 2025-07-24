@@ -191,6 +191,32 @@ const OrderManagement = () => {
     }
   };
 
+
+    // Add this function to your OrderManagement component
+const getStatusDistribution = () => {
+  const statusCounts = {
+    pending: 0,
+    shipped: 0,
+    delivered: 0,
+    cancelled: 0
+  };
+
+  orders.forEach(order => {
+    statusCounts[order.status]++;
+  });
+
+  return [
+    { name: 'Pending', value: statusCounts.pending },
+    { name: 'Shipped', value: statusCounts.shipped },
+    { name: 'Delivered', value: statusCounts.delivered },
+    { name: 'Cancelled', value: statusCounts.cancelled }
+  ];
+};
+
+// Define colors for the pie chart segments
+const COLORS = ['#FFBB28', '#0088FE', '#00C49F', '#FF8042'];
+
+
   const filterOrders = () => {
     let filtered = [...orders];
     if (statusFilter !== "all") {
