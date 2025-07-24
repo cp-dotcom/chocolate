@@ -1,18 +1,16 @@
-
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
 import axios from "axios";
-import { Heart, ShoppingCart, Trash2, ArrowRight } from "lucide-react";
+import { ShoppingCart, Trash2, ArrowRight } from "lucide-react";
 import { useWishlist } from "../Context/WishlistContext";
 import { useCart } from "../Context/CartContext";
 import toast from "react-hot-toast";
 
 function Wishlist() {
-  const { wishlist,fetchWishlist, removeFromWishlist } = useWishlist();
-  const { user } =useUser();
-  const { fetchCart } = useCart()
-
+  const { wishlist, fetchWishlist, removeFromWishlist } = useWishlist();
+  const { user } = useUser();
+  const { cart, fetchCart } = useCart();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,33 +18,38 @@ function Wishlist() {
       toast.error("Please login first!");
       navigate("/login");
     } else {
-      fetchWishlist(); 
+      fetchWishlist();
+      fetchCart();
     }
   }, [user]);
 
-  
-
   const moveToCart = async (item) => {
-    try {
-      const res = await axios.get(`http://localhost:3001/carts?userId=${user.id}&productId=${item.productId || item.id}`);
+    const productId = item.productId || item.id;
 
-      if (res.data.length === 0) {
-        await axios.post("http://localhost:3001/carts", {
-          userId: user.id,
-          productId: item.productId || item.id,
-          name: item.name,
-          image: item.image,
-          price: item.price,
-          qty: 1
-        });
-        fetchCart();
-        toast.success(`${item.name} added to cart!`);
-        removeFromWishlist(item.id); 
-      } else {
-        toast.error("This item is already in your cart");
-      }
+    const alreadyInCart = cart.some(
+      (cartItem) => cartItem.productId === productId
+    );
+
+    if (alreadyInCart) {
+      toast.error("Item already exists in cart.");
+      return;
+    }
+
+    try {
+      await axios.post("http://localhost:3001/carts", {
+        userId: user.id,
+        productId,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        qty: 1,
+      });
+
+      await fetchCart(); // Refresh cart after successful add
+      toast.success(`${item.name} added to cart!`);
     } catch (error) {
-      console.error("Error moving to cart:", error);
+      console.error("Move to cart error:", error);
+      toast.error("Failed to move item to cart.");
     }
   };
 
@@ -55,7 +58,7 @@ function Wishlist() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#5a3f2d] mb-4">
-            Your Wishlist <span className="text-[#f3a847]"></span>
+            Your Wishlist
           </h2>
           <p className="text-lg text-[#6f4e37] max-w-2xl mx-auto">
             {wishlist.length === 0
@@ -64,10 +67,8 @@ function Wishlist() {
           </p>
         </div>
 
-        
         {wishlist.length === 0 ? (
           <div className="text-center py-16">
-           
             <p className="text-xl text-[#6f4e37] mb-8">
               No items in your wishlist yet
             </p>
@@ -75,7 +76,7 @@ function Wishlist() {
               onClick={() => navigate("/products")}
               className="bg-[#5a3f2d] text-white px-8 py-3 rounded-full hover:bg-[#3e2c23] transition flex items-center gap-2 mx-auto"
             >
-              see Products <ArrowRight size={18} />
+              See Products <ArrowRight size={18} />
             </button>
           </div>
         ) : (
@@ -85,7 +86,6 @@ function Wishlist() {
                 key={item.id}
                 className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group"
               >
-              
                 <div className="relative h-60 overflow-hidden">
                   <img
                     src={item.image}
@@ -101,7 +101,6 @@ function Wishlist() {
                   </button>
                 </div>
 
-                
                 <div className="p-5">
                   <h3 className="text-xl font-semibold text-[#5a3f2d] mb-1">
                     {item.name}

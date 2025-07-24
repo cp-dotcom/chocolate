@@ -1,3 +1,5 @@
+// src/Context/WishlistContext.jsx
+
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useUser } from './UserContext';
@@ -8,22 +10,24 @@ export const WishlistProvider = ({ children }) => {
   const { user } = useUser();
   const [wishlist, setWishlist] = useState([]);
 
-  // Fetch wishlist on login
+  // ✅ Fetch wishlist on login or reload
   const fetchWishlist = useCallback(async () => {
     if (!user?.id) return;
+
     try {
       const res = await axios.get(`http://localhost:3001/wishlist?userId=${user.id}`);
       setWishlist(res.data);
     } catch (err) {
-      console.error("Failed to fetch wishlist:", err);
+      console.error('❌ Failed to fetch wishlist:', err);
     }
   }, [user?.id]);
 
-  // Add to wishlist
+  // ✅ Add to wishlist (prevent duplicates)
   const addToWishlist = async (item) => {
     if (!user?.id) return;
+
     try {
-      // Check if product already exists in wishlist
+      // Check if item already exists
       const res = await axios.get(
         `http://localhost:3001/wishlist?userId=${user.id}&productId=${item.id}`
       );
@@ -32,29 +36,34 @@ export const WishlistProvider = ({ children }) => {
         const newItem = {
           ...item,
           userId: user.id,
-          productId: item.id, // for lookup
+          productId: item.id,
         };
-        const response = await axios.post("http://localhost:3001/wishlist", newItem);
-        setWishlist(prev => [...prev, response.data]);
+        const response = await axios.post('http://localhost:3001/wishlist', newItem);
+        setWishlist((prev) => [...prev, response.data]);
+      } else {
+        console.warn('⚠️ Item already in wishlist.');
       }
     } catch (error) {
-      console.error("Failed to add to wishlist:", error);
+      console.error('❌ Failed to add to wishlist:', error);
     }
   };
 
-  // Remove from wishlist using wishlistItem.id directly
+  // ✅ Remove from wishlist
   const removeFromWishlist = async (wishlistItemId) => {
     try {
       await axios.delete(`http://localhost:3001/wishlist/${wishlistItemId}`);
-      setWishlist(prev => prev.filter(item => item.id !== wishlistItemId));
+      setWishlist((prev) => prev.filter((item) => item.id !== wishlistItemId));
     } catch (error) {
-      console.error("Failed to remove from wishlist:", error);
+      console.error('❌ Failed to remove from wishlist:', error);
     }
   };
 
+  // ✅ Effect to run on login/logout change
   useEffect(() => {
     if (user?.id) {
       fetchWishlist();
+    } else {
+      setWishlist([]); // clear on logout
     }
   }, [user?.id, fetchWishlist]);
 
@@ -67,4 +76,5 @@ export const WishlistProvider = ({ children }) => {
   );
 };
 
+// ✅ Custom hook
 export const useWishlist = () => useContext(WishlistContext);

@@ -1,14 +1,16 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { useUser } from './UserContext';
+import toast from 'react-hot-toast';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const { user } = useUser();
   const [cart, setCart] = useState([]);
+  const addAttempts = useRef({}); // 🟡 Track repeated add attempts by productId
 
-  // Fetch cart from server
+  // ✅ Fetch cart from JSON Server
   const fetchCart = useCallback(async () => {
     if (!user?.id) return;
     try {
@@ -19,53 +21,93 @@ export const CartProvider = ({ children }) => {
     }
   }, [user?.id]);
 
-  // Add item to cart (no duplicates)
+  // ✅ Add item to cart with controlled toast
   const addToCart = async (item) => {
     if (!user?.id) return;
 
-    try {
-      // Check for duplicate product for same user
-      const existing = await axios.get(
-        `http://localhost:3001/carts?userId=${user.id}&productId=${item.productId}`
-      );
+    const productId = item.productId || item.id;
 
-      if (existing.data.length > 0) {
-        console.warn('⚠️ Product already in cart!');
+    // Local cart check
+    const alreadyInCart = cart.some((i) => i.productId === productId);
+
+    if (alreadyInCart) {
+      addAttempts.current[productId] = (addAttempts.current[productId] || 0) + 1;
+      if (addAttempts.current[productId] >= 2) {
+        toast.error("Item already in cart");
+      }
+      return;
+    }
+
+    try {
+      // Server check for safety (optional redundancy)
+      const res = await axios.get(
+        `http://localhost:3001/carts?userId=${user.id}&productId=${productId}`
+      );
+      if (res.data.length > 0) {
+        addAttempts.current[productId] = (addAttempts.current[productId] || 0) + 1;
+        if (addAttempts.current[productId] >= 2) {
+          toast.error("Item already in cart");
+        }
         return;
       }
 
-      const newItem = { ...item, userId: user.id };
-      const res = await axios.post('http://localhost:3001/carts', newItem);
+      const newItem = {
+        userId: user.id,
+        productId,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        qty: 1,
+      };
 
-      setCart((prev) => [...prev, res.data]);
-      // Optional: await fetchCart(); // for fresh data from DB
+      const postRes = await axios.post('http://localhost:3001/carts', newItem);
+      setCart((prev) => [...prev, postRes.data]);
+      toast.success(`${item.name} added to cart`);
+      addAttempts.current[productId] = 1; // mark first successful add
     } catch (err) {
-      console.error('❌ Failed to add item to cart:', err);
+      console.error('❌ Failed to add to cart:', err);
     }
   };
 
-  // Remove item from cart
+  // ✅ Remove item
   const removeFromCart = async (itemId) => {
     try {
       await axios.delete(`http://localhost:3001/carts/${itemId}`);
       setCart((prev) => prev.filter((item) => item.id !== itemId));
-      // Optional: await fetchCart(); // for fresh sync
     } catch (err) {
-      console.error('❌ Failed to remove item from cart:', err);
+      console.error('❌ Failed to remove from cart:', err);
     }
   };
 
-  // On login / reload, get cart
+  // ✅ Update quantity
+  const updateQty = async (itemId, newQty) => {
+    try {
+      await axios.patch(`http://localhost:3001/carts/${itemId}`, { qty: newQty });
+      await fetchCart();
+    } catch (err) {
+      console.error('❌ Failed to update quantity:', err);
+    }
+  };
+
+  // ✅ Auto-fetch when user logs in
   useEffect(() => {
     if (user?.id) {
       fetchCart();
     } else {
-      setCart([]); // Clear cart on logout
+      setCart([]);
     }
   }, [user, fetchCart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, fetchCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        fetchCart,
+        updateQty,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

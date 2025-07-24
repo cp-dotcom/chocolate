@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../Context/UserContext";
-import axios from "axios";
 import { useCart } from "../Context/CartContext";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 function Cart() {
@@ -11,8 +11,9 @@ function Cart() {
   const { cart, fetchCart } = useCart();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [updatingItemIds, setUpdatingItemIds] = useState([]);
+  const [updatingIds, setUpdatingIds] = useState([]);
 
+  // Load cart only if user is present
   useEffect(() => {
     if (!user) {
       toast.error("Please login first");
@@ -23,45 +24,50 @@ function Cart() {
     const loadCart = async () => {
       try {
         setLoading(true);
-        await fetchCart(); // context-managed
+        await fetchCart();
       } catch (err) {
-        console.error("❌ Failed to load cart:", err);
-        setError("Failed to load cart. Please try again.");
+        console.error("❌ Cart fetch failed:", err);
+        setError("Failed to load cart. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
 
     loadCart();
-  }, [user, fetchCart, navigate]);
+  }, [user]);
 
-  const startUpdating = (id) => setUpdatingItemIds((prev) => [...prev, id]);
-  const stopUpdating = (id) => setUpdatingItemIds((prev) => prev.filter((itemId) => itemId !== id));
+  const startLoading = (id) =>
+    setUpdatingIds((prev) => [...new Set([...prev, id])]);
+
+  const stopLoading = (id) =>
+    setUpdatingIds((prev) => prev.filter((itemId) => itemId !== id));
 
   const updateQty = async (id, newQty) => {
     if (newQty < 1) return;
-    startUpdating(id);
+    startLoading(id);
     try {
-      await axios.patch(`http://localhost:3001/carts/${id}`, { qty: newQty });
-      await fetchCart(); // Refetch after update
-    } catch (err) {
-      console.error("❌ Failed to update quantity:", err);
-      toast.error("Failed to update quantity");
+      await axios.patch(`http://localhost:3001/carts/${id}`, {
+        qty: newQty,
+      });
+      await fetchCart();
+    } catch (error) {
+      console.error("❌ Quantity update failed:", error);
+      toast.error("Could not update quantity.");
     } finally {
-      stopUpdating(id);
+      stopLoading(id);
     }
   };
 
   const removeItem = async (id) => {
-    startUpdating(id);
+    startLoading(id);
     try {
       await axios.delete(`http://localhost:3001/carts/${id}`);
-      await fetchCart(); // Refetch after deletion
-    } catch (err) {
-      console.error("❌ Failed to remove item:", err);
-      toast.error("Failed to remove item");
+      await fetchCart();
+    } catch (error) {
+      console.error("❌ Item removal failed:", error);
+      toast.error("Failed to remove item.");
     } finally {
-      stopUpdating(id);
+      stopLoading(id);
     }
   };
 
@@ -72,14 +78,15 @@ function Cart() {
       return sum + price * qty;
     }, 0);
 
-  const formatPrice = (price) => (isNaN(price) ? "0.00" : Number(price).toFixed(2));
+  const formatPrice = (price) =>
+    isNaN(price) ? "0.00" : Number(price).toFixed(2);
 
   if (loading) {
     return (
-      <div className="bg-[#fef6f3] min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[#fef6f3]">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6f4e37] mx-auto"></div>
-          <p className="mt-4 text-[#6f4e37]">Loading your cart...</p>
+          <div className="animate-spin h-10 w-10 border-4 border-[#6f4e37] border-t-transparent rounded-full mx-auto" />
+          <p className="mt-3 text-[#6f4e37] font-medium">Loading your cart...</p>
         </div>
       </div>
     );
@@ -87,12 +94,12 @@ function Cart() {
 
   if (error) {
     return (
-      <div className="bg-[#fef6f3] min-h-screen flex items-center justify-center">
-        <div className="text-center p-6 bg-white rounded-lg shadow-md">
+      <div className="min-h-screen flex items-center justify-center bg-[#fef6f3]">
+        <div className="bg-white p-6 rounded-lg shadow-lg text-center">
           <p className="text-red-500 mb-4">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="bg-[#6f4e37] text-white px-4 py-2 rounded hover:bg-[#5a3d2a]"
+            className="bg-[#6f4e37] text-white px-4 py-2 rounded hover:bg-[#54372a]"
           >
             Retry
           </button>
@@ -103,39 +110,41 @@ function Cart() {
 
   return (
     <div className="bg-[#fef6f3] min-h-screen p-6">
-      <h2 className="text-center text-4xl font-bold text-[#6f4e37] mb-2 font-serif">
+      <h2 className="text-3xl md:text-4xl text-center font-bold text-[#6f4e37] mb-8">
         Your Cart 🛒
       </h2>
 
       {cart.length === 0 ? (
-        <div className="text-center mt-8">
-          <p className="text-gray-500 text-lg mb-4">Your cart is currently empty.</p>
+        <div className="text-center mt-16">
+          
+          <p className="text-gray-600 text-lg mb-4">Oops! Your cart is empty.</p>
           <button
             onClick={() => navigate("/products")}
-            className="bg-[#6f4e37] hover:bg-[#5a3d2a] text-white px-6 py-2 rounded-lg transition"
+            className="bg-[#6f4e37] hover:bg-[#4a3224] text-white px-6 py-2 rounded-lg transition"
           >
-            See Products
+            Browse Products
           </button>
         </div>
       ) : (
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
+          {/* Cart Items Section */}
           <div className="lg:col-span-2 space-y-6">
             {cart.map((item) => {
-              const isUpdating = updatingItemIds.includes(item.id);
+              const isUpdating = updatingIds.includes(item.id);
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-2xl shadow-md flex flex-col sm:flex-row p-4 gap-6 hover:shadow-lg transition"
+                  className="bg-white rounded-xl shadow-md flex flex-col sm:flex-row p-4 gap-5 hover:shadow-lg transition"
                 >
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-32 h-32 object-contain bg-white rounded-md"
+                    className="w-28 h-28 object-contain rounded-md bg-[#fffaf7]"
                   />
                   <div className="flex flex-col justify-between flex-1">
                     <div>
                       <h4 className="text-xl font-semibold text-[#6f4e37]">{item.name}</h4>
-                      <p className="text-gray-600 text-sm mt-1">
+                      <p className="text-sm text-gray-600 mt-1">
                         ₹{formatPrice(item.price)} × {item.qty}
                         <span className="ml-2 font-semibold text-black">
                           = ₹{formatPrice(item.price * item.qty)}
@@ -146,22 +155,22 @@ function Cart() {
                       <button
                         onClick={() => updateQty(item.id, item.qty - 1)}
                         disabled={item.qty <= 1 || isUpdating}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50"
                       >
-                        -
+                        −
                       </button>
                       <span className="text-lg font-medium">{item.qty}</span>
                       <button
                         onClick={() => updateQty(item.id, item.qty + 1)}
                         disabled={isUpdating}
-                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="px-3 py-1 bg-gray-200 hover:bg-gray-300 rounded-md font-bold transition disabled:opacity-50"
                       >
                         +
                       </button>
                       <button
                         onClick={() => removeItem(item.id)}
                         disabled={isUpdating}
-                        className="ml-auto text-red-500 hover:text-red-600 text-sm transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="ml-auto text-red-500 hover:text-red-600 text-sm transition disabled:opacity-50"
                       >
                         Remove
                       </button>
@@ -172,24 +181,25 @@ function Cart() {
             })}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-md p-6 h-fit sticky top-24">
+          {/* Summary Section */}
+          <div className="bg-white rounded-xl shadow-md p-6 sticky top-24 h-fit">
             <h3 className="text-2xl font-bold text-[#6f4e37] mb-4">Order Summary</h3>
-            <div className="flex justify-between text-gray-700 mb-2">
+            <div className="flex justify-between mb-2 text-gray-700">
               <span>Subtotal ({cart.length} items)</span>
               <span>₹{formatPrice(getTotal())}</span>
             </div>
-            <div className="flex justify-between text-gray-500 text-sm mb-6">
+            <div className="flex justify-between mb-6 text-sm text-gray-500">
               <span>Shipping</span>
               <span>Free</span>
             </div>
             <hr className="mb-4" />
-            <div className="flex justify-between text-lg font-bold text-black mb-6">
+            <div className="flex justify-between text-lg font-semibold mb-6">
               <span>Total</span>
               <span>₹{formatPrice(getTotal())}</span>
             </div>
             <button
               onClick={() => navigate("/checkout")}
-              className="w-full bg-[#6f4e37] hover:bg-[#5a3d2a] text-white py-3 rounded-lg transition font-medium"
+              className="w-full bg-[#6f4e37] hover:bg-[#4a3224] text-white py-3 rounded-lg transition"
             >
               Proceed to Checkout
             </button>

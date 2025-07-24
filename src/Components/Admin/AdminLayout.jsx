@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
+import { Loader, LogOut } from 'lucide-react';
+import React, { useState,useEffect } from 'react';
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 
 const AdminLayout = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const location = useLocation();
 
+  
+
   // Get active menu based on current path
+
+
   
 
   const menuItems = [
-    { id: 'dashboard', name: 'Dashboard', icon: '📊', path: '/admin/dashboard' },
-    { id: 'products', name: 'Products', icon: '📦', path: '/admin/products' },
-    { id: 'orders', name: 'Orders', icon: '🛒', path: '/admin/orders' },
-    { id: 'users', name: 'Users', icon: '👥', path: '/admin/users' },
-    { id: 'settings', name: 'Logout', path: '/login' },
+    { id: 'dashboard', name: 'Dashboard', icon: <img src={"/dashboard.png"} alt="logout" className="w-5 h-5" />, path: '/admin/dashboard' },
+    { id: 'products', name: 'Products', icon: <img src={"/products.png"} alt="logout" className="w-5 h-5" />, path: '/admin/products' },
+    { id: 'orders', name: 'Orders', icon: <img src={"/order.png"} alt="logout" className="w-5 h-5" />, path: '/admin/orders' },
+    { id: 'users', name: 'Users', icon: <img src={"/people.png"} alt="logout" className="w-5 h-5" />, path: '/admin/users' },
+    { id: 'settings', name: 'Logout',icon: <img src={"/logout.png"} alt="logout" className="w-5 h-5" />, path: '/login' },
   ];
+
+  const [admin, setAdmin] = useState(null);
+
+useEffect(() => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  if (storedUser && storedUser.role === "admin") {
+    setAdmin(storedUser);
+  }
+}, []);
+
 
   const activeMenu = menuItems.find(item => location.pathname.includes(item.path))?.id || 'dashboard';
 
@@ -90,17 +105,18 @@ const AdminLayout = () => {
          
 
             {/* Right Side */}
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-3">
-                <div className="text-right">
-                  <p className="text-sm font-medium text-slate-800">Vishnu</p>
-                  <p className="text-xs text-slate-500">Administrator</p>
-                </div>
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold">
-                  cp
-                </div>
-              </div>
-            </div>
+            <div className="flex items-center space-x-3">
+  <div className="text-right">
+    <p className="text-sm font-medium text-slate-800">
+      {admin?.username || "Admin"}
+    </p>
+    <p className="text-xs text-slate-500">Administrator</p>
+  </div>
+  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold uppercase">
+    {admin?.username?.slice(0, 2) || "cp"}
+  </div>
+</div>
+
           </div>
         </header>
 

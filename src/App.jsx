@@ -57,9 +57,10 @@
 
 
 
+// src/App.jsx
 
 import React from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import Home from './Pages/Home';
 import Register from './Pages/Register';
@@ -75,22 +76,28 @@ import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import { Toaster } from 'react-hot-toast';
 
-
-
-// ✅ Admin
+// Admin
 import AdminDashboard from './Admin/AdminDashboard';
-import ProductManagement from './Admin/productManagement';
+import ProductManagement from './Admin/ProductManagement';
 import OrderManagement from './Admin/OrderManagement';
 import UserManagement from './Admin/UserManagement';
 import AdminLayout from './Components/Admin/AdminLayout';
 
-function App() {
+// Contexts
+import { UserProvider } from './Context/UserContext';
+import { CartProvider } from './Context/CartContext';
+import { WishlistProvider } from './Context/WishlistContext';
+
+function AppRoutes() {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith("/admin");
+  const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
+  const hideNavAndFooter = isAdminRoute || isAuthPage;
 
   return (
     <>
-      {!isAdminRoute && <Navbar />}
+      {!hideNavAndFooter && <Navbar />}
 
       <Routes>
         {/* User Routes */}
@@ -105,7 +112,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/productcard" element={<ProductCard />} />
 
-        {/*  Admin Routes */}
+        {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="products" element={<ProductManagement />} />
@@ -114,14 +121,24 @@ function App() {
         </Route>
       </Routes>
 
-      {!isAdminRoute && <Footer />}
+      {!hideNavAndFooter && <Footer />}
       <Toaster position="top-center" toastOptions={{ duration: 2000 }} />
     </>
   );
 }
 
+function App() {
+  return (
+    <UserProvider>
+      <CartProvider>
+        <WishlistProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </WishlistProvider>
+      </CartProvider>
+    </UserProvider>
+  );
+}
 
 export default App;
-
-
-

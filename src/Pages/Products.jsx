@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineHeart, AiFillHeart, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { BsArrowDownUp } from "react-icons/bs";
 import { ArrowLeftCircle, ArrowRightCircle, LucideList } from "lucide-react";
 import ProductCard from "../Components/ProductCard";
 import ProductDetails from "../Components/ProductDetails";
 import toast from "react-hot-toast";
+import { useCart } from "../Context/CartContext"; 
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -18,13 +19,12 @@ function Products() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-
   const itemsPerPage = 8;
 
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  const { addToCart } = useCart(); 
 
-  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -38,38 +38,35 @@ function Products() {
         setIsLoading(false);
       }
     };
-
     fetchProducts();
   }, []);
 
-  
   useEffect(() => {
     if (user) {
-      axios.get(`http://localhost:3001/wishlist?userId=${user.id}`)
-        .then(res => setWishlist(res.data))
-        .catch(err => console.error("Wishlist error:", err));
+      axios
+        .get(`http://localhost:3001/wishlist?userId=${user.id}`)
+        .then((res) => setWishlist(res.data))
+        .catch((err) => console.error("Wishlist error:", err));
     }
   }, [user]);
 
-  
   const categories = ["All"];
-  products.forEach(product => {
+  products.forEach((product) => {
     if (!categories.includes(product.category)) {
       categories.push(product.category);
     }
   });
 
-  
   let filteredProducts = products;
 
   if (search.trim() !== "") {
-    filteredProducts = filteredProducts.filter(p =>
+    filteredProducts = filteredProducts.filter((p) =>
       p.name.toLowerCase().includes(search.toLowerCase())
     );
   }
 
   if (category !== "All") {
-    filteredProducts = filteredProducts.filter(p => p.category === category);
+    filteredProducts = filteredProducts.filter((p) => p.category === category);
   }
 
   if (sortOrder === "asc") {
@@ -78,48 +75,13 @@ function Products() {
     filteredProducts = filteredProducts.slice().sort((a, b) => b.price - a.price);
   }
 
-  
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
-  
   useEffect(() => {
     setCurrentPage(1);
   }, [search, category, sortOrder]);
-
-  const addToCart = async (product) => {
-    if (!user) {
-      toast.error("Please login first!");
-      navigate("/login");
-      return;
-    }
-
-    try {
-      const exists = await axios.get(
-        `http://localhost:3001/carts?userId=${user.id}&productId=${product.id}`
-      );
-
-      if (exists.data.length > 0) {
-        toast.error("Item already in cart!");
-        return;
-      }
-
-      await axios.post("http://localhost:3001/carts", {
-        userId: user.id,
-        productId: product.id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        qty: 1,
-      });
-
-      toast.success("Added to cart!");
-    } catch (err) {
-      console.error("Cart Error:", err);
-      toast.error("Something went wrong while adding to cart.");
-    }
-  };
 
   const toggleWishlist = async (product) => {
     if (!user) {
@@ -155,16 +117,16 @@ function Products() {
     }
   };
 
-  const wishlistIds = new Set(wishlist.map(item => item.productId));
+  const wishlistIds = new Set(wishlist.map((item) => item.productId));
 
   const openProductDetails = (product) => {
     setSelectedProduct(product);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeProductDetails = () => {
     setSelectedProduct(null);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   };
 
   if (isLoading) {
@@ -189,8 +151,6 @@ function Products() {
         </p>
       </div>
 
-
-
       <div className="flex flex-wrap justify-center gap-4 mb-12 bg-white p-4 rounded-lg shadow-sm">
         <div className="relative w-full sm:w-64">
           <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -203,8 +163,6 @@ function Products() {
           />
         </div>
 
-
-
         <div className="relative">
           <LucideList className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           <select
@@ -213,12 +171,12 @@ function Products() {
             className="pl-10 pr-8 py-2 border border-gray-200 rounded-md focus:ring-2 focus:ring-[#6f4e37] focus:border-[#6f4e37] appearance-none bg-white"
           >
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
         </div>
-
-
 
         <div className="relative">
           <BsArrowDownUp className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -240,7 +198,7 @@ function Products() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {paginatedProducts.map(product => (
+          {paginatedProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -253,25 +211,24 @@ function Products() {
         </div>
       )}
 
-      
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-4 mt-8">
           <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
             className="px-4 py-2 rounded bg-[#6f4e37] text-white disabled:opacity-50"
           >
-            <ArrowLeftCircle/>
+            <ArrowLeftCircle />
           </button>
           <span className="text-[#6f4e37] font-semibold">
             Page {currentPage} of {totalPages}
           </span>
           <button
-            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
             className="px-4 py-2 rounded bg-[#6f4e37] text-white disabled:opacity-50"
           >
-            <ArrowRightCircle/>
+            <ArrowRightCircle />
           </button>
         </div>
       )}

@@ -16,8 +16,14 @@ html, body {
 
 
 #root{
-  background-image: url("cvp.jpg");
-/* background-color: #b6988c; */
+  /* background-image: url("cvp.jpg"); */
+background: linear-gradient(to top, #f9c7b3, #d0b09a);
+
+
+
+
+
+/* background-image: linear-gradient(to righ  t, #f56565, [your_second_color]); */
 }
 
 

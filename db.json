@@ -12,6 +12,7 @@
       "username": "nish",
       "email": "nish@gmail.com",
       "password": "12345678"
+      
     },
     {
       "id": "ab4d",
@@ -35,6 +36,30 @@
       "id": "3033",
       "username": "risal",
       "email": "risal@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "0472",
+      "username": "kol",
+      "email": "kol@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "862f",
+      "username": "vishnu",
+      "email": "vishnu@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "a3c6",
+      "username": "vish",
+      "email": "vish@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "d5dd",
+      "username": "sinan",
+      "email": "sinan@gmail.com",
       "password": "12345678"
     }
   ],
@@ -176,15 +201,6 @@
       "details": "",
       "description": "its a good for helth ....",
       "id": "fdf6"
-    },
-    {
-      "id": "3c84",
-      "name": "zzz",
-      "price": "1000000",
-      "image": "add.jpeg",
-      "category": "Dubai chocolates",
-      "details": "",
-      "description": "scbkdszcbkjzcvjzdjcnzncnznclzndlcjvnzljcvnljzdnlcjbzdjlcvzdljbljzdbvcljbxzljcvlzxvcljznlvjnzdljcvljzcbzdljbcvljzcvjcnzlvnlzndcljvnzjlncvljznvljnzlvnljznvljnzlvnlznvln"
     }
   ],
   "carts": [
@@ -332,15 +348,6 @@
       "qty": 1
     },
     {
-      "id": "5481",
-      "userId": "ab4d",
-      "productId": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "image": "productsimg/dubai2.jpg",
-      "price": 380,
-      "qty": 1
-    },
-    {
       "id": "5092",
       "userId": "43ca",
       "productId": "7",
@@ -359,13 +366,94 @@
       "qty": 1
     },
     {
-      "id": "11",
+      "id": "2de1",
+      "userId": "0472",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "bb62",
+      "userId": "0472",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "f89e",
+      "userId": "0472",
+      "productId": "12",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium1.jpg",
+      "price": 850,
+      "qty": 1
+    },
+    {
+      "id": "11a0",
+      "userId": "ab4d",
+      "productId": "12",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium1.jpg",
+      "price": 850,
+      "qty": 1
+    },
+    {
+      "id": "d954",
+      "userId": "ab4d",
+      "productId": "11",
       "name": "Cnstowy Roast Almond Chocolate",
-      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
-      "price": 299,
-      "category": "Milk Chocolate",
       "image": "productsimg/milk1.jpg",
-      "userId": "a4d1"
+      "price": 299,
+      "qty": 1
+    },
+    {
+      "id": "722f",
+      "userId": "ab4d",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300,
+      "qty": 1
+    },
+    {
+      "id": "57df",
+      "userId": "ab4d",
+      "productId": "8",
+      "name": "Locali Pistachio Kunafa Chocolate",
+      "image": "productsimg/dubai4.jpg",
+      "price": 800,
+      "qty": 1
+    },
+    {
+      "id": "a5e8",
+      "userId": "ab4d",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380,
+      "qty": 1
+    },
+    {
+      "id": "72d3",
+      "userId": "ab4d",
+      "productId": "10",
+      "name": "Happy Joy Premium Milk Chocolate",
+      "image": "productsimg/gift2.jpg",
+      "price": 1200,
+      "qty": 1
+    },
+    {
+      "id": "a546",
+      "userId": "ab4d",
+      "productId": "fdf6",
+      "name": "pro",
+      "image": "add.jpeg",
+      "price": "100000",
+      "qty": 1
     }
   ],
   "wishlist": [
@@ -514,26 +602,6 @@
       "price": 380
     },
     {
-      "id": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
-      "price": 380,
-      "category": "Dubai chocolates",
-      "image": "productsimg/dubai2.jpg",
-      "userId": "ef5a",
-      "productId": "6"
-    },
-    {
-      "id": "6",
-      "name": "HELOS Dark Chocolate Bar",
-      "description": "Bean-to-bar 70% dark chocolate, single-origin, crafted for intense cocoa flavor. Net weight: 80g.",
-      "price": 380,
-      "category": "Dubai chocolates",
-      "image": "productsimg/dubai2.jpg",
-      "userId": "c998",
-      "productId": "6"
-    },
-    {
       "id": "5",
       "name": "Gold Quibai Kadayif Chocolate",
       "description": "Luxurious milk chocolate with crispy Kadayif (shredded pastry) and pistachio filling,inspired by Middle Eastern desserts.",
@@ -544,16 +612,6 @@
       "productId": "5"
     },
     {
-      "id": "11",
-      "name": "Cnstowy Roast Almond Chocolate",
-      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
-      "price": 299,
-      "category": "Milk Chocolate",
-      "image": "productsimg/milk1.jpg",
-      "userId": "a4d1",
-      "productId": "11"
-    },
-    {
       "id": "10",
       "name": "Happy Joy Premium Milk Chocolate",
       "description": "Smooth milk chocolate with a playful design, possibly limited edition or artist collaboration.",
@@ -562,6 +620,78 @@
       "image": "productsimg/gift2.jpg",
       "userId": "a4d1",
       "productId": "10"
+    },
+    {
+      "id": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "description": "55% dark chocolate with roasted almonds, organic cacao, vegan-friendly, and crafted in India.",
+      "price": 300,
+      "category": "Dubai chocolates",
+      "image": "productsimg/dubai3.jpg",
+      "userId": "ab4d",
+      "productId": "7"
+    },
+    {
+      "id": "12",
+      "name": "Royal Delights Premium Sweets",
+      "description": "Handcrafted traditional sweets, 500g box. Includes assorted flavors and textures.",
+      "price": 850,
+      "category": "Premium",
+      "image": "productsimg/premium1.jpg",
+      "userId": "ab4d",
+      "productId": "12"
+    },
+    {
+      "id": "9",
+      "name": "Miskets Dubai Kadayif Chocolate",
+      "description": "Milk chocolate with crispy Kadayif and Antep pistachios. Bilingual packaging (English/Turkish).",
+      "price": 600,
+      "category": "Gift Pack",
+      "image": "productsimg/gift1.jpg",
+      "userId": "ab4d",
+      "productId": "9"
+    },
+    {
+      "id": "11",
+      "name": "Cnstowy Roast Almond Chocolate",
+      "description": "Classic dairy milk chocolate with crunchy roasted almonds.",
+      "price": 299,
+      "category": "Milk Chocolate",
+      "image": "productsimg/milk1.jpg",
+      "userId": "ab4d",
+      "productId": "11"
+    },
+    {
+      "id": "abc3",
+      "userId": "1",
+      "productId": "12",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium1.jpg",
+      "price": 850
+    },
+    {
+      "id": "5930",
+      "userId": "a3c6",
+      "productId": "6",
+      "name": "HELOS Dark Chocolate Bar",
+      "image": "productsimg/dubai2.jpg",
+      "price": 380
+    },
+    {
+      "id": "bb48",
+      "userId": "a3c6",
+      "productId": "7",
+      "name": "MABON Dark Chocolate Almonds",
+      "image": "productsimg/dubai3.jpg",
+      "price": 300
+    },
+    {
+      "id": "7c5b",
+      "userId": "d5dd",
+      "productId": "15",
+      "name": "Royal Delights Premium Sweets",
+      "image": "productsimg/premium4.jpg",
+      "price": 1560
     }
   ],
   "orders": [
@@ -732,6 +862,162 @@
       "total": 850,
       "status": "Processing",
       "date": "2025-07-24T05:14:57.141Z"
+    },
+    {
+      "id": "0ed5",
+      "userId": "0472",
+      "items": [
+        {
+          "id": "8",
+          "name": "Locali Pistachio Kunafa Chocolate",
+          "description": "Creamy milk chocolate blended with Kunafa (Middle Eastern pastry) and pistachio flakes.",
+          "price": 800,
+          "category": "Dubai chocolates",
+          "image": "productsimg/dubai4.jpg",
+          "userId": "0472"
+        }
+      ],
+      "name": "e",
+      "address": "juhyf",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 0,
+      "status": "Processing",
+      "date": "2025-07-24T05:44:11.345Z"
+    },
+    {
+      "id": "1ff6",
+      "userId": "0472",
+      "items": [
+        {
+          "id": "20fd",
+          "userId": "0472",
+          "productId": "6",
+          "name": "HELOS Dark Chocolate Bar",
+          "image": "productsimg/dubai2.jpg",
+          "price": 380,
+          "qty": 1
+        },
+        {
+          "id": "c263",
+          "userId": "0472",
+          "productId": "8",
+          "name": "Locali Pistachio Kunafa Chocolate",
+          "image": "productsimg/dubai4.jpg",
+          "price": 800,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "asdfghj",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 1180,
+      "status": "pending",
+      "date": "2025-07-24T05:48:43.069Z"
+    },
+    {
+      "id": "6f67",
+      "userId": "ab4d",
+      "items": [
+        {
+          "id": "5481",
+          "userId": "ab4d",
+          "productId": "6",
+          "name": "HELOS Dark Chocolate Bar",
+          "image": "productsimg/dubai2.jpg",
+          "price": 380,
+          "qty": 8
+        },
+        {
+          "id": "12",
+          "name": "Royal Delights Premium Sweets",
+          "description": "Handcrafted traditional sweets, 500g box. Includes assorted flavors and textures.",
+          "price": 850,
+          "category": "Premium",
+          "image": "productsimg/premium1.jpg",
+          "userId": "ab4d",
+          "qty": 6
+        }
+      ],
+      "name": "cp",
+      "address": "hsdhfhsdbfhsdbchk",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 8140,
+      "status": "pending",
+      "date": "2025-07-24T06:11:53.165Z"
+    },
+    {
+      "id": "1eb8",
+      "userId": "a3c6",
+      "items": [
+        {
+          "id": "d805",
+          "userId": "a3c6",
+          "productId": "5",
+          "name": "Gold Quibai Kadayif Chocolate",
+          "image": "productsimg/dubai1.jpg",
+          "price": 600,
+          "qty": 1
+        }
+      ],
+      "name": "vish",
+      "address": "aszdxfcgb",
+      "phone": "7684546274",
+      "payment": "cod",
+      "total": 600,
+      "status": "delivered",
+      "date": "2025-07-24T07:18:22.107Z"
+    },
+    {
+      "id": "5d10",
+      "userId": "d5dd",
+      "items": [
+        {
+          "id": "7eac",
+          "userId": "d5dd",
+          "productId": "15",
+          "name": "Royal Delights Premium Sweets",
+          "image": "productsimg/premium4.jpg",
+          "price": 1560,
+          "qty": 1
+        },
+        {
+          "id": "27d0",
+          "userId": "d5dd",
+          "productId": "14",
+          "name": "GIRUULTY Artisan Chocolate",
+          "image": "productsimg/premium3.jpg",
+          "price": 1999,
+          "qty": 1
+        },
+        {
+          "id": "45d3",
+          "userId": "d5dd",
+          "productId": "16",
+          "name": "Ferrero Rocher",
+          "image": "productsimg/premium5.jpg",
+          "price": 340,
+          "qty": 1
+        },
+        {
+          "id": "767e",
+          "userId": "d5dd",
+          "productId": "13",
+          "name": "Kumara Cocoa Pistachio Chocolate",
+          "image": "productsimg/premium2.jpg",
+          "price": 1600,
+          "qty": 1
+        }
+      ],
+      "name": "sinan",
+      "address": "fdxcgvhbjkml",
+      "phone": "8888888888",
+      "payment": "cod",
+      "total": 5499,
+      "status": "pending",
+      "date": "2025-07-24T07:28:09.921Z"
     }
   ]
 }

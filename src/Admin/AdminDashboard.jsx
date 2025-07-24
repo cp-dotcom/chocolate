@@ -106,49 +106,49 @@ function AdminDashboard() {
     <div className="p-6 space-y-6">
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-gradient-to-r from-green-500 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-r from-green-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Total Revenue</p>
               <p className="text-3xl font-bold text-gray-900 mt-1">₹{stats.totalRevenue.toLocaleString()}</p>
             </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-green-300 to-emerald-500 rounded-xl flex items-center justify-center">
               <IndianRupee size={24} className="text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-500 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-r from-blue-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Total Orders</p>
               <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalOrders.toLocaleString()}</p>
             </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-blue-300 to-cyan-500 rounded-xl flex items-center justify-center">
               <ShoppingCart size={24} className="text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-[#8B5CF6] rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-r from-violet-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Total Users</p>
               <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalUsers.toLocaleString()}</p>
             </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-300 to-pink-500 rounded-xl flex items-center justify-center">
               <Users size={24} className="text-white" />
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-[#F59E0B] rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
+        <div className="bg-gradient-to-r from-amber-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Total Products</p>
               <p className="text-3xl font-bold text-gray-900 mt-1">{stats.totalProducts.toLocaleString()}</p>
             </div>
-            <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-orange-300 to-red-500 rounded-xl flex items-center justify-center">
               <Package size={24} className="text-white" />
             </div>
           </div>
@@ -205,9 +205,9 @@ function AdminDashboard() {
                 data={getOrderStatusData()}
                 cx="50%"
                 cy="50%"
-                innerRadius={60}
-                outerRadius={120}
-                paddingAngle={5}
+                innerRadius={50}
+                outerRadius={110}
+                paddingAngle={1}
                 dataKey="value"
                 label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
               >
@@ -218,7 +218,7 @@ function AdminDashboard() {
               <Tooltip 
                 formatter={(value) => [`${value} orders`, 'Count']}
                 contentStyle={{ 
-                  backgroundColor: 'white', 
+                  backgroundColor: {COLORS}, 
                   border: 'none', 
                   borderRadius: '12px', 
                   boxShadow: '0 10px 40px rgba(0,0,0,0.1)' 

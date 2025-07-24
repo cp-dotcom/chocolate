@@ -1,43 +1,18 @@
 import React from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { ShoppingCart } from 'lucide-react';
-import { useWishlist } from '../Context/WishlistContext';
-import { useCart } from '../Context/CartContext';
-import { useUser } from '../Context/UserContext';
-import toast from 'react-hot-toast';
 
-const ProductCard = ({ product, openProductDetails, addToCart }) => {
-  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
-  const { user } = useUser();
-  const { addToCart: addToCartContext } = useCart();
-
-  const isWishlisted = wishlist.some(item => item.id === product.id);
+const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds, addToCart }) => {
+  const isWishlisted = wishlistIds.has(product.id);
 
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
-    if (!user) {
-      toast.error("Please login to manage wishlist");
-      return;
-    }
-
-    if (isWishlisted) {
-      removeFromWishlist(product.id);
-      toast.success("Removed from wishlist");
-    } else {
-      addToWishlist(product);
-      toast.success("Added to wishlist");
-    }
+    toggleWishlist(product); // Will update wishlist in parent
   };
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    if (!user) {
-      toast.error("Please login to add to cart");
-      return;
-    }
-
-    addToCartContext(product);
-    toast.success("Added to cart");
+    addToCart(product);
   };
 
   return (
