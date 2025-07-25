@@ -11,7 +11,7 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useUser();
 
-  // ✅ Fetch all users once
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -26,7 +26,7 @@ function Login() {
     fetchUsers();
   }, []);
 
-  // ✅ Form validation
+ 
   const validate = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,7 +42,7 @@ function Login() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ Handle Login
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!validate()) return;

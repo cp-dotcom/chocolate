@@ -45,7 +45,7 @@ function Wishlist() {
         qty: 1,
       });
 
-      await fetchCart(); // Refresh cart after successful add
+      await fetchCart(); 
       toast.success(`${item.name} added to cart!`);
     } catch (error) {
       console.error("Move to cart error:", error);

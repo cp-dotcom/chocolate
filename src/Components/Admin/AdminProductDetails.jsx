@@ -4,11 +4,11 @@ import { AiOutlineClose } from "react-icons/ai";
 const AdminProductDetails = ({ product, closeProductDetails }) => {
   if (!product) return null;
 
-  // Determine the correct image source
+  
   const getImageSrc = (imgPath) => {
     if (!imgPath) return "/productsimg/default.jpg";
 
-    // If it's a full URL
+    
     if (imgPath.startsWith("http")) return imgPath;
 
     // Clean filename and prepend the correct folder
@@ -31,7 +31,6 @@ const AdminProductDetails = ({ product, closeProductDetails }) => {
           </button>
 
           <div className="grid md:grid-cols-2 gap-8 p-6">
-            {/* Image Section */}
             <div>
               <img
                 src={getImageSrc(product.image)}
@@ -44,7 +43,8 @@ const AdminProductDetails = ({ product, closeProductDetails }) => {
               />
             </div>
 
-            {/* Details Section */}
+            
+            
             <div>
               <h2 className="text-3xl font-bold text-[#5c2c06] mb-2">
                 {product.name}

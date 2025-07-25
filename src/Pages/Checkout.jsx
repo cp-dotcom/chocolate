@@ -68,7 +68,7 @@ const Checkout = () => {
         items: cart,
         ...details,
         total: totalAmount,
-        status: "pending", // ✅ Set status as 'pending'
+        status: "pending", 
         date: new Date().toISOString(),
       };
 

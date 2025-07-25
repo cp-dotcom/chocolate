@@ -7,7 +7,7 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
 
   const handleWishlistToggle = (e) => {
     e.stopPropagation();
-    toggleWishlist(product); // Will update wishlist in parent
+    toggleWishlist(product); 
   };
 
   const handleAddToCart = (e) => {
@@ -17,7 +17,6 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
 
   return (
     <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group">
-      {/* Product Image */}
       <div
         className="relative w-full h-60 cursor-pointer"
         onClick={() => openProductDetails(product)}
@@ -28,7 +27,7 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        {/* Wishlist Button */}
+        
         <button
           type="button"
           onClick={handleWishlistToggle}
@@ -41,7 +40,7 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
           )}
         </button>
 
-        {/* New Label */}
+        
         {product.isNew && (
           <span className="absolute top-3 left-3 bg-[#6f4e37] text-white text-xs font-bold px-2 py-1 rounded-full">
             NEW
@@ -49,7 +48,7 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
         )}
       </div>
 
-      {/* Product Info */}
+    
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-lg font-bold text-gray-800">{product.name}</h3>
@@ -61,7 +60,7 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
         <p className="text-sm text-gray-500 mb-4 line-clamp-2">{product.description}</p>
 
         <div className="mt-auto flex flex-col gap-4">
-          {/* Price & Rating */}
+          
           <div className="flex justify-between items-center">
             <span className="text-xl font-bold text-[#6f4e37]">₹{product.price}</span>
 
@@ -79,7 +78,6 @@ const ProductCard = ({ product, openProductDetails, toggleWishlist, wishlistIds,
             </div>
           </div>
 
-          {/* Add to Cart Button */}
           <button
             type="button"
             onClick={handleAddToCart}

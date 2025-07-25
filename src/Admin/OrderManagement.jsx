@@ -12,7 +12,7 @@ const OrderManagement = () => {
   const [editingOrder, setEditingOrder] = useState(null);
   const [editValues, setEditValues] = useState({ status: "", payment: "" });
 
-  // 🔁 Pagination states
+  
   const [currentPage, setCurrentPage] = useState(1);
   const ordersPerPage = 5;
 
@@ -29,6 +29,9 @@ const OrderManagement = () => {
     }
   };
 
+
+
+
   const filterOrders = () => {
     let filtered = [...orders];
     if (statusFilter !== "all") {
@@ -40,6 +43,8 @@ const OrderManagement = () => {
     setFilteredOrders(filtered);
   };
 
+
+
   const handleDeleteOrder = async (id) => {
     if (!window.confirm("Are you sure you want to delete this order?")) return;
     try {
@@ -50,6 +55,7 @@ const OrderManagement = () => {
       toast.error("Failed to delete order.");
     }
   };
+  
 
   const handleEditClick = (order) => {
     setEditingOrder(order);
@@ -67,7 +73,6 @@ const OrderManagement = () => {
       toast.error("Failed to update order.");
     }
   };
-
   const handleCancelEdit = () => setEditingOrder(null);
 
   const formatPrice = (price) => {
@@ -75,7 +80,7 @@ const OrderManagement = () => {
     return isNaN(num) ? "0.00" : num.toFixed(2);
   };
 
-  // 🧮 Pagination calculation
+  
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
   const currentOrders = filteredOrders.slice(indexOfFirstOrder, indexOfLastOrder);
@@ -87,7 +92,7 @@ const OrderManagement = () => {
 
   useEffect(() => {
     filterOrders();
-    setCurrentPage(1); // reset to page 1 on filter change
+    setCurrentPage(1); 
   }, [orders, statusFilter, paymentFilter]);
 
   useEffect(() => {
@@ -111,9 +116,13 @@ const OrderManagement = () => {
 
   return (
     <div className="min-h-screen bg-white rounded-2xl p-6 shadow-xl border border-gray-100 text-white font-sans">
-      <h2 className="text-4xl font-bold mb-6 text-[#5c2c06]">🍫 Manage Orders</h2>
+         <h2 className="flex items-center gap-2 text-3xl font-bold mb-6 text-[#5c2c06] ml-75">
+  <img src="/order.png" alt="Manage Orders" className="w-5 h-5" />
+  Manage Orders
+</h2>
 
-      {/* Filters */}
+
+     
       <div className="flex flex-wrap gap-4 mb-6">
         <div>
           <label className="block text-[#5c2c06] mb-1">Filter by Status</label>
@@ -144,7 +153,8 @@ const OrderManagement = () => {
         </div>
       </div>
 
-      {/* Orders */}
+      
+
       {filteredOrders.length === 0 ? (
         <p className="text-gray-400">No orders match the selected filters.</p>
       ) : (
@@ -152,7 +162,7 @@ const OrderManagement = () => {
           {currentOrders.map((order) => (
             <div
               key={order.id}
-              className="bg-white text-[#3d2b1f] border border-[#00000] rounded-2xl shadow-2xl p-6 transition hover:scale-[1.01] duration-300"
+              className="bg-white text-[#3d2b1f]  rounded-2xl shadow-2xl/30 p-6 transition hover:scale-[1.01] duration-300"
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
@@ -221,7 +231,8 @@ const OrderManagement = () => {
         </div>
       )}
 
-      {/* Pagination Controls */}
+    
+
       {totalPages > 1 && (
         <div className="flex justify-center mt-10 space-x-2">
           {Array.from({ length: totalPages }, (_, idx) => (
@@ -241,9 +252,10 @@ const OrderManagement = () => {
       )}
 
       {/* Edit Modal */}
+
       {editingOrder && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="bg-white w-[95%] max-w-md p-6 rounded-2xl shadow-2xl border border-amber-300 animate-fadeIn">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm bg-opacity-60 flex items-center justify-center z-50">
+          <div className="bg-white w-[95%] max-w-md p-6 rounded-2xl shadow-2xl  animate-fadeIn">
             <h3 className="text-xl font-bold text-[#4b2e2e] mb-4">
               Edit Order #{editingOrder.id}
             </h3>

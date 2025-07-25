@@ -13,7 +13,8 @@ function Cart() {
   const [error, setError] = useState(null);
   const [updatingIds, setUpdatingIds] = useState([]);
 
-  // Load cart only if user is present
+
+
   useEffect(() => {
     if (!user) {
       toast.error("Please login first");
@@ -26,7 +27,7 @@ function Cart() {
         setLoading(true);
         await fetchCart();
       } catch (err) {
-        console.error("❌ Cart fetch failed:", err);
+        console.error(" Cart fetch failed:", err);
         setError("Failed to load cart. Please try again later.");
       } finally {
         setLoading(false);
@@ -51,7 +52,7 @@ function Cart() {
       });
       await fetchCart();
     } catch (error) {
-      console.error("❌ Quantity update failed:", error);
+      console.error(" Quantity update failed:", error);
       toast.error("Could not update quantity.");
     } finally {
       stopLoading(id);
@@ -63,8 +64,9 @@ function Cart() {
     try {
       await axios.delete(`http://localhost:3001/carts/${id}`);
       await fetchCart();
+      toast.success("item will be removed")
     } catch (error) {
-      console.error("❌ Item removal failed:", error);
+      console.error(" Item removal failed:", error);
       toast.error("Failed to remove item.");
     } finally {
       stopLoading(id);
@@ -127,7 +129,8 @@ function Cart() {
         </div>
       ) : (
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
-          {/* Cart Items Section */}
+          
+
           <div className="lg:col-span-2 space-y-6">
             {cart.map((item) => {
               const isUpdating = updatingIds.includes(item.id);
@@ -181,7 +184,8 @@ function Cart() {
             })}
           </div>
 
-          {/* Summary Section */}
+         
+         
           <div className="bg-white rounded-xl shadow-md p-6 sticky top-24 h-fit">
             <h3 className="text-2xl font-bold text-[#6f4e37] mb-4">Order Summary</h3>
             <div className="flex justify-between mb-2 text-gray-700">

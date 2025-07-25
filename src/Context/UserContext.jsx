@@ -1,4 +1,4 @@
-// src/Context/UserContext.jsx
+
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
@@ -6,7 +6,6 @@ import axios from 'axios';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  // ✅ Initialize from localStorage (only once)
   const [user, setUser] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('user')) || null;
@@ -15,7 +14,6 @@ export const UserProvider = ({ children }) => {
     }
   });
 
-  // ✅ Login function
   const login = async (email, password) => {
     try {
       const res = await axios.get(`http://localhost:3001/users?email=${email}&password=${password}`);
@@ -27,18 +25,16 @@ export const UserProvider = ({ children }) => {
       }
       return false;
     } catch (err) {
-      console.error('❌ Login error:', err);
+      console.error(' Login error:', err);
       return false;
     }
   };
 
-  // ✅ Logout function
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
 
-  // ✅ Ensure user sync on reload
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {

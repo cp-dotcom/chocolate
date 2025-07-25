@@ -14,7 +14,8 @@ function AdminDashboard() {
   const [products, setProducts] = useState([]);
   const [recentActivity, setRecentActivity] = useState([]);
 
-  // Function to calculate order status distribution
+  
+
   const getOrderStatusData = () => {
     const statusCounts = {
       pending: 0,
@@ -34,7 +35,7 @@ function AdminDashboard() {
       { name: 'Shipped', value: statusCounts.shipped },
       { name: 'Delivered', value: statusCounts.delivered },
       { name: 'Cancelled', value: statusCounts.cancelled }
-    ].filter(item => item.value > 0); // Only show statuses with orders
+    ].filter(item => item.value > 0); 
   };
 
   useEffect(() => {
@@ -49,11 +50,11 @@ function AdminDashboard() {
         const orders = ordersRes.data || [];
         const users = usersRes.data || [];
         const products = productsRes.data || [];
-
         const dataByDate = {};
         let total = 0;
 
-        // Aggregate sales data
+        
+        
         orders.forEach(order => {
           const date = new Date(order.date).toLocaleDateString();
           const orderTotal = order.total || 0;
@@ -61,15 +62,16 @@ function AdminDashboard() {
           total += orderTotal;
         });
 
-        // Aggregate category data
-        const categoryCount = {};
 
+
+       
+        const categoryCount = {};
         products.forEach(product => {
           const category = product.category || 'Unknown';
           categoryCount[category] = (categoryCount[category] || 0) + 1;
         });
 
-        // Set states
+        
         setSalesData(Object.entries(dataByDate).map(([date, total]) => ({ date, total })));
         setCategoryData(Object.entries(categoryCount).map(([category, value]) => ({
           name: category.charAt(0).toUpperCase() + category.slice(1),
@@ -104,7 +106,8 @@ function AdminDashboard() {
 
   return (
     <div className="p-6 space-y-6">
-      {/* Stats Cards */}
+      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-gradient-to-r from-green-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
@@ -118,6 +121,8 @@ function AdminDashboard() {
           </div>
         </div>
 
+
+
         <div className="bg-gradient-to-r from-blue-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
             <div>
@@ -129,6 +134,8 @@ function AdminDashboard() {
             </div>
           </div>
         </div>
+
+
 
         <div className="bg-gradient-to-r from-violet-100 rounded-2xl p-6 shadow-xl/20 border border-gray-100 hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between">
@@ -155,23 +162,25 @@ function AdminDashboard() {
         </div>
       </div>
 
-      {/* Charts Row */}
+      
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Revenue Chart */}
+       
+
         <div className="bg-white rounded-2xl p-6 shadow-xl/30 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-lg font-semibold text-gray-900">Revenue Overview</h3>
             <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-[#3dca0aff] rounded-full"></div>
               <span className="text-sm text-gray-600">Revenue</span>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={320}>
+          <ResponsiveContainer width="100%" height={350}>
             <AreaChart data={salesData}>
               <defs>
                 <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8B5CF6" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#8B5CF6" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#83f65cff" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#3dca0aff" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -188,7 +197,7 @@ function AdminDashboard() {
               <Area
                 type="monotone"
                 dataKey="total"
-                stroke="#8B5CF6"
+                stroke="#3dca0aff"
                 strokeWidth={3}
                 fill="url(#colorRevenue)"
               />
@@ -196,17 +205,20 @@ function AdminDashboard() {
           </ResponsiveContainer>
         </div>
 
-        {/* Order Status Distribution */}
+        
+        
+
+
         <div className="bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Order Status Distribution</h3>
           <ResponsiveContainer width="100%" height={320}>
             <PieChart>
               <Pie
                 data={getOrderStatusData()}
-                cx="50%"
+                cx="48.5%"
                 cy="50%"
-                innerRadius={50}
-                outerRadius={110}
+                innerRadius={40}
+                outerRadius={99}
                 paddingAngle={1}
                 dataKey="value"
                 label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
@@ -230,9 +242,13 @@ function AdminDashboard() {
         </div>
       </div>
 
-      {/* Bottom Row */}
+     
+
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Activity */}
+       
+
+
         <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Activity</h3>
           <div className="space-y-4">
@@ -260,7 +276,9 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* Quick Stats */}
+        
+
+
         <div className="bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Quick Stats</h3>
           <div className="space-y-4">

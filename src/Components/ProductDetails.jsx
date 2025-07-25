@@ -38,7 +38,7 @@ const ProductDetails = ({ product, closeProductDetails }) => {
     }
 
     try {
-      await addToCart(product); // server + local checks already exist
+      await addToCart(product); 
       toast.success("Added to cart");
       closeProductDetails();
     } catch (err) {
@@ -74,7 +74,7 @@ const ProductDetails = ({ product, closeProductDetails }) => {
         className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+       
         <div className="relative">
           <button
             onClick={closeProductDetails}
@@ -83,9 +83,9 @@ const ProductDetails = ({ product, closeProductDetails }) => {
             <AiOutlineClose className="text-gray-700 text-xl" />
           </button>
 
-          {/* Content */}
+         
           <div className="grid md:grid-cols-2 gap-8 p-6">
-            {/* Image */}
+            
             <div className="md:sticky md:top-0">
               <img
                 src={product.image}
@@ -94,13 +94,13 @@ const ProductDetails = ({ product, closeProductDetails }) => {
               />
             </div>
 
-            {/* Product Info */}
+            
             <div>
               <h2 className="text-3xl font-bold text-[#6f4e37] mb-2">
                 {product.name}
               </h2>
 
-              {/* Category & Rating */}
+              
               <div className="flex items-center mb-4">
                 <span className="bg-[#f3e8e3] text-[#6f4e37] text-sm px-3 py-1 rounded-full">
                   {product.category}
@@ -123,10 +123,10 @@ const ProductDetails = ({ product, closeProductDetails }) => {
                 </div>
               </div>
 
-              {/* Description */}
+             
               <p className="text-gray-700 mb-6">{product.description}</p>
 
-              {/* Extra Details */}
+             
               <div className="mb-6">
                 <h3 className="text-xl font-semibold text-[#6f4e37] mb-2">
                   Details
@@ -141,7 +141,7 @@ const ProductDetails = ({ product, closeProductDetails }) => {
                 </ul>
               </div>
 
-              {/* Price & Add to Cart */}
+              
               <div className="flex items-center justify-between mb-6">
                 <span className="text-2xl font-bold text-[#6f4e37]">
                   ₹{product.price}
@@ -170,7 +170,7 @@ const ProductDetails = ({ product, closeProductDetails }) => {
                 </button>
               </div>
 
-              {/* Wishlist Toggle */}
+              
               <button
                 onClick={handleToggleWishlist}
                 className="flex items-center gap-2 text-[#6f4e37] hover:text-[#5a3f2d] transition"

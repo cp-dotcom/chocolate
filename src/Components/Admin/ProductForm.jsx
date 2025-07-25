@@ -6,8 +6,7 @@ const ProductForm = ({ initialData, onSubmit, onClose }) => {
   price: "",
   image: "",
   category: "",
-  details: "",
-  description: ""   // ✅ add this line
+  description: ""  
 });
 
 
@@ -18,8 +17,7 @@ const ProductForm = ({ initialData, onSubmit, onClose }) => {
       price: initialData.price || "",
       image: initialData.image || "",
       category: initialData.category || "",
-      details: initialData.details || "",
-      description: initialData.description || ""   // ✅ include this
+      description: initialData.description || ""   
     });
   }
 }, [initialData]);
@@ -38,8 +36,8 @@ const ProductForm = ({ initialData, onSubmit, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded shadow-md w-96">
+    <div className="fixed inset-0  bg-black/40 backdrop-blur-sm bg-opacity-40 flex items-center justify-center z-50 ">
+      <div className="bg-white p-6 rounded shadow-md w-96 rounded-3xl">
         <h2 className="text-xl font-bold mb-4">{initialData ? "Edit Product" : "Add Product"}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

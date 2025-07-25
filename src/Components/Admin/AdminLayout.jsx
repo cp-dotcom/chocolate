@@ -6,12 +6,8 @@ const AdminLayout = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const location = useLocation();
 
-  
-
-  // Get active menu based on current path
 
 
-  
 
   const menuItems = [
     { id: 'dashboard', name: 'Dashboard', icon: <img src={"/dashboard.png"} alt="logout" className="w-5 h-5" />, path: '/admin/dashboard' },
@@ -35,9 +31,7 @@ useEffect(() => {
 
   return (
     <div className="flex min-h-screen bg-slate-50">
-      {/* Sidebar */}
       <aside className={`${sidebarCollapsed ? 'w-20' : 'w-56'} bg-white border-r border-slate-200 transition-all duration-300 ease-in-out flex flex-col shadow-sm`}>
-        {/* Logo Section */}
         <div className="p-3 border-b border-slate-200">
           <div className="flex items-center justify-between">
             {!sidebarCollapsed && (
@@ -57,7 +51,8 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Navigation */}
+        
+
         <nav className="flex-1 py-6">
           <div className="px-4 space-y-2">
             {menuItems.map((item) => (
@@ -101,26 +96,27 @@ useEffect(() => {
               </div>
             </div>
 
-            {/* Search Bar */}
+            
          
 
-            {/* Right Side */}
+          
             <div className="flex items-center space-x-3">
-  <div className="text-right">
-    <p className="text-sm font-medium text-slate-800">
-      {admin?.username || "Admin"}
-    </p>
-    <p className="text-xs text-slate-500">Administrator</p>
-  </div>
-  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold uppercase">
-    {admin?.username?.slice(0, 2) || "cp"}
-  </div>
-</div>
+            <div className="text-right">
+              <p className="text-sm font-medium text-slate-800">
+                {admin?.username || "Admin"}
+              </p>
+              <p className="text-xs text-slate-500">Administrator</p>
+            </div>
+            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold uppercase">
+              {admin?.username?.slice(0, 2) || "cp"}
+            </div>
+          </div>
 
           </div>
         </header>
 
-        {/* Breadcrumb */}
+        
+
         <div className="px-6 py-3 bg-slate-50/50 border-b border-slate-100">
           <div className="flex items-center space-x-2 text-sm">
             <span className="text-slate-500">Admin</span>
@@ -131,10 +127,10 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* Main Content Area */}
+        
+
         <main className="flex-1 p-6 bg-slate-50">
           <div className="max-w-7xl mx-auto">
-            {/* This is where child routes will render */}
             <Outlet />
           </div>
         </main>
