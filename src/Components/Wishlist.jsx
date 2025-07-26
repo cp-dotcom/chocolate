@@ -23,6 +23,20 @@ function Wishlist() {
     }
   }, [user]);
 
+
+
+    const handleRemove = async (id) => {
+    try {
+      await removeFromWishlist(id);
+      toast.success("Item removed from wishlist");
+    } catch (err) {
+      toast.error("Failed to remove item.");
+    }
+  };
+
+
+
+
   const moveToCart = async (item) => {
     const productId = item.productId || item.id;
 
@@ -92,8 +106,8 @@ function Wishlist() {
                     alt={item.name}
                     className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 p-4"
                   />
-                  <button
-                    onClick={() => removeFromWishlist(item.id)}
+                 <button
+                    onClick={() => handleRemove(item.id)} 
                     className="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-md hover:bg-red-500 hover:text-white transition"
                     title="Remove"
                   >
