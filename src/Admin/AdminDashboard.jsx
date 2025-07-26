@@ -38,6 +38,8 @@ function AdminDashboard() {
     ].filter(item => item.value > 0); 
   };
 
+
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -249,8 +251,8 @@ function AdminDashboard() {
        
 
 
-        <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">Recent Activity</h3>
+        <div className="lg:col-span-3 bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-6 text-center">Recent Activity</h3>
           <div className="space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
@@ -265,6 +267,7 @@ function AdminDashboard() {
                 <div className="flex-1">
                   <p className="text-sm font-medium text-gray-900">{activity.message}</p>
                   <p className="text-xs text-gray-500">{activity.time}</p>
+                  
                 </div>
                 {activity.amount && (
                   <div className="text-sm font-semibold text-green-600">
@@ -279,40 +282,7 @@ function AdminDashboard() {
         
 
 
-        <div className="bg-white rounded-2xl p-6 shadow-xl/20 border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">Quick Stats</h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
-              <div>
-                <p className="text-sm text-gray-600">Categories Sold</p>
-                <p className="text-xl font-bold text-gray-900">{categoryData.length}</p>
-              </div>
-              <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                <TrendingUp size={16} className="text-white" />
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
-              <div>
-                <p className="text-sm text-gray-600">Sales Days</p>
-                <p className="text-xl font-bold text-gray-900">{salesData.length} days</p>
-              </div>
-              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                <Eye size={16} className="text-white" />
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl">
-              <div>
-                <p className="text-sm text-gray-600">Avg Order Value</p>
-                <p className="text-xl font-bold text-gray-900">₹{orders.length > 0 ? Math.round(totalRevenue/ orders.length) : 0}</p>
-              </div>
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                <TrendingUp size={16} className="text-white" />
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

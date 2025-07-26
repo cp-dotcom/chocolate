@@ -338,24 +338,6 @@
       "qty": 1
     },
     {
-      "id": "5092",
-      "userId": null,
-      "productId": "7",
-      "name": "MABON Dark Chocolate Almonds",
-      "image": "productsimg/dubai3.jpg",
-      "price": 300,
-      "qty": 1
-    },
-    {
-      "id": "58af",
-      "userId": null,
-      "productId": "12",
-      "name": "Royal Delights Premium Sweets",
-      "image": "productsimg/premium1.jpg",
-      "price": 850,
-      "qty": 1
-    },
-    {
       "id": "2de1",
       "userId": "0472",
       "productId": "7",
@@ -1214,7 +1196,7 @@
       "phone": "8888888888",
       "payment": "cod",
       "total": 30795,
-      "status": "pending",
+      "status": "delivered",
       "date": "2025-07-26T04:35:09.353Z"
     }
   ]

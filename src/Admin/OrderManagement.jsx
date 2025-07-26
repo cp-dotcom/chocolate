@@ -14,7 +14,7 @@ const OrderManagement = () => {
 
   
   const [currentPage, setCurrentPage] = useState(1);
-  const ordersPerPage = 5;
+  const ordersPerPage = 4;
 
   const fetchOrders = async () => {
     try {
@@ -101,9 +101,9 @@ const OrderManagement = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex justify-center items-center bg-[#2e1a1a]">
-        <div className="text-center text-amber-300">
-          <div className="animate-spin h-12 w-12 rounded-full border-t-4 border-amber-300 mx-auto mb-4"></div>
+      <div className="min-h-screen flex justify-center items-center bg-white">
+        <div className="text-center ">
+          <div className="text-white h-12 w-12 rounded-full border-t-4  mx-auto mb-4"></div>
           <p>Loading Orders...</p>
         </div>
       </div>

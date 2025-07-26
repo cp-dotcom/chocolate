@@ -79,12 +79,10 @@ useEffect(() => {
         </nav>
       </aside>
 
-      {/* Main Content */}
+      
       <div className="flex-1 flex flex-col min-h-screen">
-        {/* Top Header */}
         <header className="bg-white border-b border-slate-200 px-6 py-4">
           <div className="flex items-center justify-between">
-            {/* Left Side */}
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <h2 className="text-xl font-semibold text-slate-800 capitalize">
