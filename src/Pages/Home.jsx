@@ -249,18 +249,41 @@
 
 
 
-
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useCallback, useMemo, lazy, Suspense } from 'react';
 import { ShoppingBag } from 'lucide-react';
+
+
+const VideoSection = lazy(() => Promise.resolve({
+  default: () => (
+    <section className="relative bg-[#6f4e37] text-white text-center py-12 px-4 overflow-hidden min-h-[400px] flex items-center justify-center">
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        src="video/Video .mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="none"
+        loading="lazy"
+      />
+      <div className="relative z-10 bg-black/50 py-8 sm:py-12 px-4 sm:px-8 rounded-xl backdrop-blur-sm max-w-xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4">ChocoLuxe</h2>
+        <p className="text-base sm:text-lg leading-relaxed">
+          Only selling good quality and premium chocolates...!
+        </p>
+      </div>
+    </section>
+  )
+}));
 
 function Home() {
   const [imageLoaded, setImageLoaded] = useState({});
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
 
   const navigate = useCallback((path) => {
     console.log(`Navigating to: ${path}`);
   }, []);
 
-  
   const StarRating = useMemo(() => ({ rating = 5 }) => (
     <div className="flex justify-center mb-2">
       {[...Array(5)].map((_, i) => (
@@ -276,7 +299,7 @@ function Home() {
     </div>
   ), []);
 
-  
+ 
   const chocolateProducts = useMemo(() => [
     {
       id: 1,
@@ -316,24 +339,34 @@ function Home() {
     }
   ], []);
 
-
   const handleImageLoad = useCallback((imageId) => {
     setImageLoaded(prev => ({ ...prev, [imageId]: true }));
   }, []);
 
+  const handleHeroImageLoad = useCallback(() => {
+    setHeroImageLoaded(true);
+  }, []);
+
   return (
     <div className="font-serif bg-[#fef6f3]">
-     
-      <section className="w-full h-screen bg-cover bg-center bg-no-repeat text-center text-white flex flex-col justify-center items-center px-4 relative">
-       
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(delicious-chocolate-arrangement-copy-space.jpg)",
-            willChange: 'transform'
-          }}
+      
+      <section className="w-full h-screen text-center text-white flex flex-col justify-center items-center px-4 relative">
+        
+        <div className="absolute inset-0 bg-[#6f4e37]" />
+        
+        {/* Background image with lazy loading */}
+        <img
+          src="delicious-chocolate-arrangement-copy-space.jpg"
+          alt="Delicious chocolate background"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+            heroImageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading="eager"
+          decoding="async"
+          onLoad={handleHeroImageLoad}
         />
-        <div className="absolute inset-0 bg-black/10" /> 
+        
+        <div className="absolute inset-0 bg-black/20" />
         
         <div className="relative z-10">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-4xl leading-tight">
@@ -345,13 +378,13 @@ function Home() {
           
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
-              className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-3 px-8 rounded transition-colors duration-300 font-medium min-w-[140px] transform hover:scale-105"
+              className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-3 px-8 rounded transition-all duration-200 font-medium min-w-[140px] hover:scale-105"
               onClick={() => navigate("/Products")}
             >
               Shop Now
             </button>
             <button
-              className="border-1 border-white py-3 px-8 rounded hover:bg-white hover:text-[#6f4e37] transition-all duration-300 font-medium min-w-[140px] transform hover:scale-105"
+              className="border border-white py-3 px-8 rounded hover:bg-white hover:text-[#6f4e37] transition-all duration-200 font-medium min-w-[140px] hover:scale-105"
               onClick={() => navigate("/About")}
             >
               Our Story
@@ -360,7 +393,7 @@ function Home() {
         </div>
       </section>
 
-     
+      
       <section className="flex flex-col md:flex-row flex-wrap justify-around text-center bg-white py-12 px-4 gap-8">
         {[
           { icon: "🍫", title: "All Natural", desc: "No additives, just pure chocolate goodness." },
@@ -376,7 +409,8 @@ function Home() {
         ))}
       </section>
 
-     
+      
+
       <section className="bg-[#f3e8e3] py-12 px-4">
         <h2 className="text-center text-2xl sm:text-3xl font-bold text-[#6f4e37] mb-8">
           Featured Chocolates
@@ -386,25 +420,26 @@ function Home() {
           {chocolateProducts.map((product) => (
             <div 
               key={product.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 mx-auto max-w-sm w-full"
+              className="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-200 hover:shadow-xl hover:-translate-y-1 mx-auto max-w-sm w-full"
             >
-              <div className="relative overflow-hidden h-48 sm:h-60">
+              <div className="relative overflow-hidden h-48 sm:h-60 bg-gray-100">
                
                 {!imageLoaded[product.id] && (
-                  <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-                    <div className="text-gray-400">Loading...</div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse" 
+                         style={{ animationDuration: '1.5s' }} />
                   </div>
                 )}
                 
                 <img 
                   src={product.image}
                   alt={product.alt}
-                  className={`w-full h-full object-cover transition-all duration-500 hover:scale-110 ${
+                  className={`w-full h-full object-cover transition-all duration-300 hover:scale-105 ${
                     imageLoaded[product.id] ? 'opacity-100' : 'opacity-0'
                   }`}
                   loading="lazy"
+                  decoding="async"
                   onLoad={() => handleImageLoad(product.id)}
-                  style={{ willChange: 'transform' }}
                 />
                 
                 {product.badge && (
@@ -425,7 +460,7 @@ function Home() {
 
         <div className="flex justify-center mt-10">
           <button
-            className="bg-[#6f4e37] text-white py-3 px-6 rounded-md hover:bg-[#5a3f2d] transition-colors duration-300 flex items-center gap-2 transform hover:scale-105"
+            className="bg-[#6f4e37] text-white py-3 px-6 rounded-md hover:bg-[#5a3f2d] transition-all duration-200 flex items-center gap-2 hover:scale-105"
             onClick={() => navigate("/Products")}
           >
             <ShoppingBag className="w-5 h-5" />
@@ -434,7 +469,7 @@ function Home() {
         </div>
       </section>
 
-     
+      
       <section className="flex flex-col-reverse lg:flex-row items-center justify-center bg-white py-12 px-4 gap-8 max-w-6xl mx-auto">
         <div className="w-full lg:w-1/2">
           <img 
@@ -442,6 +477,7 @@ function Home() {
             alt="Our mission"
             className="w-full max-w-md mx-auto lg:mx-0 rounded-lg shadow-lg"
             loading="lazy"
+            decoding="async"
           />
         </div>
         <div className="w-full lg:w-1/2 max-w-md mx-auto lg:mx-0 text-center lg:text-left">
@@ -452,7 +488,7 @@ function Home() {
             We create chocolate that not only tastes heavenly, but also supports ethical farming and eco-friendly packaging.
           </p>
           <button 
-            className="bg-[#6f4e37] text-white py-3 px-6 rounded hover:bg-[#5a3f2d] transition-colors duration-300 transform hover:scale-105" 
+            className="bg-[#6f4e37] text-white py-3 px-6 rounded hover:bg-[#5a3f2d] transition-all duration-200 hover:scale-105" 
             onClick={() => navigate("/About")}
           >
             Learn More
@@ -479,24 +515,18 @@ function Home() {
       </section>
 
       
-      <section className="relative bg-[#6f4e37] text-white text-center py-12 px-4 overflow-hidden min-h-[400px] flex items-center justify-center">
-        <video
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          src="video/Video .mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          style={{ willChange: 'transform' }}
-        />
-        <div className="relative z-10 bg-black/50 py-8 sm:py-12 px-4 sm:px-8 rounded-xl backdrop-blur-sm max-w-xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">ChocoLuxe</h2>
-          <p className="text-base sm:text-lg leading-relaxed">
-            Only selling good quality and premium chocolates...!
-          </p>
+      <Suspense fallback={
+        <div className="bg-[#6f4e37] text-white text-center py-12 px-4 min-h-[400px] flex items-center justify-center">
+          <div className="relative z-10 bg-black/50 py-8 sm:py-12 px-4 sm:px-8 rounded-xl backdrop-blur-sm max-w-xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">ChocoLuxe</h2>
+            <p className="text-base sm:text-lg leading-relaxed">
+              Only selling good quality and premium chocolates...!
+            </p>
+          </div>
         </div>
-      </section>
+      }>
+        <VideoSection />
+      </Suspense>
     </div>
   );
 }
