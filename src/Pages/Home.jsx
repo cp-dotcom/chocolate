@@ -358,7 +358,7 @@ function Home() {
         <img
           src="delicious-chocolate-arrangement-copy-space.jpg"
           alt="Delicious chocolate background"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10 ${
             heroImageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           loading="eager"
