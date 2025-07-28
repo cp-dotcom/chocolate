@@ -73,7 +73,7 @@ function Footer() {
               <address className="not-italic text-sm md:text-base">
                 <p className="mb-2">ChocoLux</p>
                 <p className="mb-2">Malappuram</p>
-                <p className="mb-2">Phone: 9895456367</p>
+                <p className="mb-2">Phone: 8891024242</p>
                 <p>Email: vishnu@gmail.com</p>
               </address>
             </div>
