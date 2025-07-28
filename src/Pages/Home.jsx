@@ -4,11 +4,12 @@
 
 import React from 'react';
 import { ShoppingBag } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const navigate = (path) => {
-    console.log(`Navigating to: ${path}`);
-  };
+  const navigate = useNavigate()
+  
+ 
 
   return (
     <div className="font-serif bg-[#fef6f3]">
@@ -27,7 +28,7 @@ function Home() {
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             className="bg-[#6f4e37] hover:bg-[#5a3f2d] text-white py-3 px-8 rounded transition-colors duration-300 font-medium min-w-[140px]"
-            onClick={() => navigate("/Products")}
+            onClick={() => navigate("/products")}
           >
             Shop Now
           </button>
